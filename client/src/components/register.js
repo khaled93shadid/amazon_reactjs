@@ -21,7 +21,7 @@ return(
 <>
  
 
-<Box  sx={{ maxWidth:350, mx:'auto',mt:5 }} className="box_register">
+<Box  sx={{ maxWidth:350, mx:'auto',mt:5 }} className="box_register" >
     <img className='img_logo' src='https://supersimple.dev/projects/amazon/images/amazon-logo.png' />
     <div className='borderDiv'>
     <p className='signin_typography'>  create account </p>

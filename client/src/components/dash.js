@@ -25,6 +25,7 @@ import Profile from './profile';
 import Product from './product';
 import Category from './category';
 import CategoryIcon from '@mui/icons-material/Category';
+import MainProducts from './user/mainProducts'
 
 
 const demoTheme = createTheme({
@@ -56,6 +57,7 @@ function DemoPageContent({ pathname,profileData }) {
         {pathname==="/profile"&&<Profile profileData={profileData}/> }
         {pathname==="/product"&&<Product />}
         {pathname==="/category"&& <Category/>}
+        {pathname==="/productuser"&& <MainProducts/>}
         
         {pathname==="/dashboard"&&(<Typography>dash page</Typography> )}
 
@@ -119,8 +121,8 @@ function CustomAppTitle() {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <CloudCircleIcon fontSize="large" color="primary" />
-      <Typography variant="h6">full stack</Typography>
-      <Chip size="small" label="BETA" color="info" />
+      <Typography variant="h6">amazon</Typography>
+      
       <Tooltip title="Connected to production">
         <CheckCircleIcon color="success" fontSize="small" />
       </Tooltip>

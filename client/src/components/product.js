@@ -126,7 +126,7 @@ return(
             <TableRow key={row._id}>
               <TableCell ><img id='product-img' src={row.image} /></TableCell>
               <TableCell ><img id='product-stars' src={row.stars} /></TableCell>
-              <TableCell >{row.name}</TableCell>
+              <TableCell ><p className='product-name'>{row.name}</p></TableCell>
               <TableCell >{row.price}</TableCell>
               <TableCell >{row.category}</TableCell>
               <TableCell ><button className="button1" onClick={async()=>{

@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 #product-img{width: 100px;height: 100px;}
 #product-stars{width: 80px;height: 20px;}
 .input1{width:1000px;height: 50px;margin-top: 5px;}
 .input11{width:330px;height: 50px;margin-top: 5px;}
-.b1{cursor: pointer;width: 100px;height: 30px;margin-top: 10px;}
-.button1{margin-top: 15px;width:100px ;}
+.b1{cursor: pointer;width: 100px;height: 30px;margin-top: 10px;cursor: pointer;}
+.button1{background-color:rgb(255, 216, 20);padding: 8px;border: none;
+border-radius: 20px;width:150px;margin-top: 5px;cursor: pointer;color:black;font-size:14px;}
+
+.product-name{font-family: Roboto;}
