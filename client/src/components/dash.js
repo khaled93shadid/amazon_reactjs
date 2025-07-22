@@ -26,7 +26,7 @@ import Product from './product';
 import Category from './category';
 import CategoryIcon from '@mui/icons-material/Category';
 import MainProducts from './user/mainProducts'
-
+import '../style/login.css'
 
 const demoTheme = createTheme({
   cssVariables: {
@@ -118,10 +118,11 @@ function SidebarFooter({ mini }) {
 }
 
 function CustomAppTitle() {
+  const navigate=useNavigate()
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <CloudCircleIcon fontSize="large" color="primary" />
-      <Typography variant="h6">amazon</Typography>
+     <Typography variant="h6"><a className='amazon_dash' href='/productuser'> amazon </a> </Typography> 
       
       <Tooltip title="Connected to production">
         <CheckCircleIcon color="success" fontSize="small" />

@@ -2,13 +2,25 @@ import '../../style/mainProduct.css'
 import logo from '../icons/logo.png'
 import cart from '../icons/cart-icon.png'
 import search from '../icons/search-icon.png'
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 export default function MainProductsNav(){
 
 return(
 <>
 <div className="header-main"> 
 
-  <div className="header-left"><a href="/productuser"><img className="header-logo"  src={logo} /></a> </div>
+     <div className="header-left"><a href="/productuser"><img className="header-logo"  src={logo} /></a> 
+     <div className='location'>
+      <div className='marginLogo'>   <LocationOnIcon className='location_logo'  sx={{ color: 'white' }} /> </div>
+         <div>
+         <div> <a className='location-a1'>Deliver to</a> </div>
+         <div> <a className='location-a2'>Jordan</a></div>
+         </div>
+     </div>
+  
+
+  </div>
 
   <div className="header-middle">
     <input className="header-middle-search" type="text" placeholder="Search" />
@@ -38,6 +50,26 @@ return(
 
 </div>
 
+
+
+<div className='navbar_container'>
+   <div className='icon_div'>
+    <DensityMediumIcon   sx={{ color: 'white' }}  />
+    <p className='all_p'>ALL</p>
+   </div>
+
+    <div className='rufus'>
+          <p className='rufus_p'>Rufus</p>
+    </div>
+    <div className='nav_p_div_container'></div>
+   <div className='nav_p_div'> <p className='nav_p'>Today's Deals</p> </div>
+    <div className='nav_p_div'> <p className='nav_p'>Prime Video</p> </div>
+    <div className='nav_p_div'> <p className='nav_p'>Buy Again</p> </div>
+    <div className='nav_p_div'> <p className='nav_p'>Customer Service</p> </div>
+   <div className='nav_p_div'> <p className='nav_p'>Registry</p> </div>
+   <div className='nav_p_div'> <p className='nav_p'>Gift Cards</p> </div>
+   <div className='nav_p_div'> <p className='nav_p'>sell</p> </div>
+</div>
 
 
 </>

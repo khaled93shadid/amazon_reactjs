@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{}
+.p-txt{color:rgb(15, 17, 17);font-family:Roboto;
+font-size: 28px;font-weight: bold;
+line-height: 16px;padding-left: 100px;
+margin-top:80px; ;
+}
+.container_div{display: grid;grid-template-columns:340px 340px 340px;
+padding-left: 100px;padding-right:100px ;
+column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
+padding-bottom: 50px;
+
+}
+.item-continer{border: solid rgb(213, 217, 217)1px;border-radius:8px;
+width: 310px;height:95px;padding: 12px;cursor: pointer;transition: background-color 0.15s;
+}
+.item-continer:hover{background-color: rgb(236, 234, 234);}
+.item-continer-horizontail{display: grid;grid-template-columns:25% 75%;}
+.item-continer-p1{color:rgb(17, 17, 17);font-family: Roboto; font-size:17px;}
+.item-continer-p2{color: rgb(86, 89, 89);font-family: Roboto; font-size:14px;}
+.item-continer-img{width:65px;margin-top: 0px;margin-top:10px;}
+
+.parent_div{display: grid;grid-template-columns:340px 340px 340px;
+padding-left: 100px;padding-right:100px ;
+column-gap: 12px;row-gap:15px;margin-top:50px ;
+}
+
+.child_div{border: solid rgb(213, 217, 217) 1px;border-radius:8px;
+width: 250px;padding: 12px;
+}
+.child_div_p{color:rgb(15, 17, 17);
+  font-family: Roboto; font-size:17px;
+font-weight:700;line-height: 32px;
+}
+.child_div_a{color:rgb(33, 98, 161);font-family: Roboto;
+cursor: pointer;font-size: 14px;font-weight:450;
+transition: color 0.15s;
+}
+.child_div_a:hover{text-decoration: underline;color:rgb(7, 48, 88) ;}

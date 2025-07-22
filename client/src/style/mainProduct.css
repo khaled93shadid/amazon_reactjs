@@ -2,7 +2,7 @@
 
 p{color: white;font-family: Roboto;}
 a{text-decoration: none;font-family: Roboto;color: white;}
-.all-products-container{margin-top:55px;display: grid;grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr ;
+.all-products-container{margin-top:0px;display: grid;grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr ;
 }
 
 .product-container{border: solid rgb(231, 231, 231) 1px;padding: 15px;}
@@ -28,7 +28,7 @@ border-radius: 20px;width: 152px;margin-top: 20px;cursor: pointer;color: rgb(53,
 position: fixed;left: 0px;right: 0px;z-index: 400;top:0px;}
 
 
-.header-left{width:200px}
+.header-left{width:200px;display: flex;justify-content: space-between;}
 
 .header-logo{width:80px;height:25px; margin-left: 15px; cursor: pointer;height: 30px;padding:5px;transition: border 1s;}
 .header-logo:hover{border: solid white 1px;}
@@ -63,3 +63,64 @@ transition:border 0.15s;
 .header-right-div2-img-p{position:relative;}
 .cart-quantity{position: absolute;left: 18px;top:-10px;color: rgb(240, 136, 4);font-weight: bold;font-size: 11px;}
 .header-right-div2-p{font-weight: bold;font-size: 15px;}
+
+
+.navbar_container{background-color:rgb(29, 39, 53);
+display:flex;justify-content: left;margin-top:50px ;
+
+}
+.icon_div{display: flex;align-items: center;padding-left:5px ;}
+.all_p{color: white;font-size: 14px;
+cursor: pointer;font-weight: 700;margin-left:5px;}
+
+.rufus{background-color: white;
+border-radius: 30px;
+height:22px;
+width: 60px;
+margin-top:15px ;
+margin-bottom: 10px;
+margin-left: 11px;
+display: flex;
+align-items: center;
+}
+.rufus_p{color: black;font-size:14px;
+font-weight: 700;font-family: Roboto;
+padding-left: 15px;
+padding-right: 6px;
+justify-content: center;
+
+}
+
+.nav_p{font-family: Roboto;
+cursor: pointer;
+font-size: 14px;
+height: 12px;
+font-weight: 400;
+text-decoration-style: solid ;
+}
+
+
+
+
+
+.nav_p_div{padding-left:2px;
+  padding-right:2px;
+  margin-left:13px ;
+  padding-bottom: 10px;
+  padding-top: 2px;
+  align-content: center;
+transition: border 0.15s;
+}
+nav_p_div:hover{border:solid white 1px;
+  border-radius: 2px;
+}
+
+
+.location{display:grid ;grid-template-columns:25% 75%;cursor: pointer;}
+.location-a1{color: rgb(204, 204, 204);font-size: 12px;font-family: Roboto;}
+.location-a2{color:white;font-size: 14px;font-family: Roboto;font-weight: 700;line-height: -10px;}
+.location_logo{margin-top: 15px;}
+.marginLogo{margin-right: 10px;}
+.nav_p_div_container{display: flex;align-items: center;
+justify-content: space-between
+}
