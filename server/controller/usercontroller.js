@@ -126,3 +126,24 @@ catch(error){console.log(error)}
 
 
 }
+
+exports.updateUser=async (req,res)=>{
+ console.log('you are in update user')
+
+try{
+const {fullname,email,address,phone}=req.body
+const user1 = await User.findByIdAndUpdate(req.user,{fullname,email,address,phone});
+if(!user1){res.status(400).json({message:"user not found"})}
+
+//user1.fullname=fullname||User.fullname
+//user1.address=address||User.address
+//user1.phone=phone||User.phone
+//user1.email=email||User.email
+await user1.save()
+res.status(200).json({message:'user updated successufly'})
+
+}
+catch(error){res.status(500).json({message:error.message})}
+
+
+}

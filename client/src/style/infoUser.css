@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.info_container{padding-left: 300px;padding-right: 200px;
+padding-top: 50px;
+
+
+}
+.login_atag{font-family: Roboto;color: rgb(15, 17, 17);
+font-size: 28px;font-weight: 400;line-height: 36px;
+
+}
+.login_atag_div{margin-bottom:20px;}
+
+.item_info{display: grid;grid-template-columns:300px 300px ; 
+  border-bottom:solid rgb(213, 217, 217)1px ;
+  border-bottom:solid rgb(213, 217, 217)1px ;
+  margin-top: 10px;
+
+
+}
+.item_info_p1{color: rgb(15, 17, 17);font-size: 14px;
+font-weight: 700;font-family: Roboto;}
+.item_info_p2{color: rgb(15, 17, 17);font-size: 14px;
+font-family: Roboto;}
+.item_info_B{color:rgb(15, 17, 17);
+  font-family: Roboto;font-size: 13px;
+  width:150px;height: 30px;
+  border-radius:15px ;
+  border: solid gray 1px;
+  background-color: white;
+  cursor: pointer;
+  margin-top:10px ;
+  margin-left: 150px;
+}
+.item_info_border{border: solid rgb(213, 217, 217)1px;border-radius:8px;
+width:600px;
+padding-left: 15px;
+padding-right: 15px;
+}
+.info_input{width: 300px;
+height:30px ;
+margin-bottom: 5px;
+border-radius:5px;
+}

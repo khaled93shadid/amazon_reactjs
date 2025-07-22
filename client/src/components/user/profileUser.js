@@ -27,6 +27,7 @@ return(
      </div>
 
   </div>
+  <a href="/InfoUser">
   <div className="item-continer">
      <div className="item-continer-horizontail">
          <div>
@@ -41,6 +42,7 @@ return(
      </div>
 
   </div>
+</a>
    <div className="item-continer">
      <div className="item-continer-horizontail">
          <div>

@@ -7,6 +7,7 @@ import Profile from './components/profile'
 import MainProducts from './components/user/mainProducts'
 import MainProductsNav from './components/user/navBar'
 import ProfileUser from './components/user/profileUser'
+import InfoUser from './components/user/infoUser'
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
                  <Route path="/productuser"  element={<MainProducts/>}/> 
                  <Route path="/productuserNav"  element={<MainProductsNav/>}/> 
                  <Route path="/ProfileUser"  element={<ProfileUser/>}/> 
+                 <Route path="/InfoUser"  element={<InfoUser/>}/> 
                  
          
        </Routes>

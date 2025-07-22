@@ -19,5 +19,6 @@ router.get("/getprofile",auth,usercontroller.getprofile)
 router.post("/register",usercontroller.register)
 router.post("/login",usercontroller.login)
 router.post("/changepassword",auth,usercontroller.changepassword)
+router.put("/updateUser",auth,usercontroller.updateUser)
 
 module.exports=router;
