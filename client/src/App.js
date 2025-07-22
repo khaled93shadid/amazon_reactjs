@@ -6,6 +6,7 @@ import Product from './components/product'
 import Profile from './components/profile'
 import MainProducts from './components/user/mainProducts'
 import MainProductsNav from './components/user/navBar'
+import ProfileUser from './components/user/profileUser'
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
                  <Route path="/product"  element={<Product/>}/> 
                  <Route path="/productuser"  element={<MainProducts/>}/> 
                  <Route path="/productuserNav"  element={<MainProductsNav/>}/> 
+                 <Route path="/ProfileUser"  element={<ProfileUser/>}/> 
                  
          
        </Routes>
