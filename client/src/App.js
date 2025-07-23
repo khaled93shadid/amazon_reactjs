@@ -8,6 +8,7 @@ import MainProducts from './components/user/mainProducts'
 import MainProductsNav from './components/user/navBar'
 import ProfileUser from './components/user/profileUser'
 import InfoUser from './components/user/infoUser'
+import Footer from './components/footer'
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
                  <Route path="/productuserNav"  element={<MainProductsNav/>}/> 
                  <Route path="/ProfileUser"  element={<ProfileUser/>}/> 
                  <Route path="/InfoUser"  element={<InfoUser/>}/> 
+                 <Route path="/Footer"  element={<Footer/>}/> 
                  
          
        </Routes>

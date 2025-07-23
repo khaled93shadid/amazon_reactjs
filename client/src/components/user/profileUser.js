@@ -2,7 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import '../../style/profileUser2.css'
 import MainProductsNav from "./navBar"
-
+import Footer from "../footer"
 
 
 export default function ProfileUser(){
@@ -293,6 +293,7 @@ return(
     
 
 </div>
+<Footer/>
 </>
 ) 
 }

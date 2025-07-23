@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import { useState,useEffect } from 'react'
 import MainProductsNav from "./navBar"
 import axios from 'axios'
+import Footer from "../footer"
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -182,6 +183,8 @@ return(
           
       </Box>
       </Modal>
+
+      <Footer />
 </>
 )
 }

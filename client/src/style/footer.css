@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.footer_div_1{width: 100%;background-color: rgb(35, 47, 62);height:45px;
+transition: opacity 0.15s;
+cursor: pointer;
+}
+.footer_a1{font-family: Roboto;
+font-size: 13px;
+text-align: center;
+padding-top:14px ;
+}
+.footer_div_1:hover{opacity:0.9 ;}
+
+.footer_div_2{display: grid;grid-template-columns:25% 25% 25% 25% ;
+padding-left:200px;
+padding-right:200px;
+background-color: rgb(27, 36, 48);
+border-bottom: solid rgb(58, 69, 83) 0.5px;
+}
+.footer_div_2_p1{font-family: Roboto;font-size: 16px;font-weight: 700;
+line-height: 16.8px;}
+.footer_div_2_p2{font-family: Roboto;color:colorrgb(221, 221, 221);
+cursor: pointer;font-size: 14px;line-height:16.8px;
+}
+.footer_div_2_p2:hover{text-decoration: underline;}
+
+.footer_div_3{background-color: rgb(27, 36, 48);
+display: flex;align-items: center;justify-content: center;
+padding-top:20px ;
+padding-bottom:30px ;
+}
+.footer_div_3_2{display: flex;align-items: center;}
+.footer_div_3_logo{width:75px;margin-top: 10px;margin-right: 5px;}
+.footer_div_3_p{font-family: Roboto;margin-left: 15px;
+color: rgb(204, 204, 204);cursor: pointer;font-size: 13px;
+border: solid white 1px;padding: 5px;
+}
+
+.footer_div_4{display: grid;background-color: rgb(19, 26, 34);
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr ;padding-left:200px;
+padding-right:200px;column-gap: 20px;}
+.footer_div_4_p1{color: rgb(221, 221, 221);cursor: pointer;
+font-size: 12px;
+font-weight: 400;
+line-height: 14px;
+font-family: Roboto;
+
+}
+.footer_div_4_p2{color: rgb(153, 153, 153);font-family: Roboto;
+cursor: pointer;font-size: 12px;line-height: 13.2px;
+
+}
+
+.footer_div_4_p1:hover{text-decoration: underline;}
+.footer_div_4_p2:hover{text-decoration: underline;}
+.copyRight{background-color: rgb(19, 26, 34);
+padding-left: 200px;
+padding-right: 200px;
+display: flex;flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.copy1{color:rgb(221, 221, 221);cursor: pointer;font-size: 12px;
+line-height: 18px;font-family: Roboto;
+}
+.copy2{color:rgb(221, 221, 221);cursor: pointer;font-size: 12px;
+line-height: 18px;font-family: Roboto;margin-top: -10px;padding-bottom:20px;
+}
+.span_copy:hover{text-decoration: underline;margin-right: 10px;}
+.span_copy{margin-right: 10px;}

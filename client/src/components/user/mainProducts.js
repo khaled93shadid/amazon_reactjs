@@ -3,6 +3,7 @@ import MainProductsNav from './navBar'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react'
+import Footer from "../footer"
 
 
 
@@ -91,6 +92,8 @@ return(
 ))}
 
 </div>
+
+<Footer />
 </>
 )
 
