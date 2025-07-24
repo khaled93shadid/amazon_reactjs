@@ -66,6 +66,8 @@ const [productData,setproductData]=useState([])
   const [updatedquantity,setupdatedquantity]=useState('')
   const [updatedcategory,setupdatedcategory]=useState('')
   const[updatedId,setUpdatedId]=useState('')
+  const[updatedimage,setupdatedimage]=useState('')
+
 const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -129,21 +131,20 @@ return(
               <TableCell ><p className='product-name'>{row.name}</p></TableCell>
               <TableCell >{row.price}</TableCell>
               <TableCell >{row.category}</TableCell>
+              
               <TableCell ><button className="button1" onClick={async()=>{
  if(window.confirm("are you sure you want to delete this product")){
-
-await axios.delete(`http://127.0.0.1:5000/api/users/deleteProduct/${row._id}`,{headers:{
+const token = localStorage.getItem('token')
+const res= await axios.delete(`http://127.0.0.1:5000/api/users/deleteProduct/${row._id}`,{headers:{
 'Content-Type':'application/json',
-"Authorization":`${localStorage.getItem('token')}` }})
+"Authorization":`${token}`  }  })
+
+
 //window.location.reload();
 setproductData(productData.filter(r=>r._id!==row._id))
-
-
+console.log(res.data)
  }//end if (delete)
-
-
-
-              }} >Delete</button> 
+}} >Delete</button> 
               
               <button className='button1'  onClick={()=>{handleOpen();
                 setUpdatedId(row._id)
@@ -172,7 +173,6 @@ const token=localStorage.getItem('token')
 const res = await axios.post("http://127.0.0.1:5000/api/users/createProduct",newProduct1,{ headers:{
 //'Content-Type':'application/json',
 "Authorization":`${token}`
-
 
 }})
 alert('product added successfully')
@@ -230,6 +230,8 @@ catch(error){return console.log(error)}
 </form>
 
 
+  
+  
   <div>
             <Modal
         open={open}
@@ -245,23 +247,30 @@ catch(error){return console.log(error)}
 e.preventDefault();
 try{ 
   
-const token=localStorage.getItem('token')
-const updatedproduct={updatedname,updatedprice,updateddis,updatedquantity,updatedcategory}
-const res = await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${updatedId}`,{updatedproduct},{headers:{
-  'Content-Type':'application/json',
-  "Authorization":`${token}`
+const token=localStorage.getItem('token') 
+const updatedproduct={name:updatedname,price:updatedprice,dis:updateddis,image:updatedimage,quantity:updatedquantity,category:updatedcategory}
+const res = await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${updatedId}`,{product1:updatedproduct},{headers:{
+  'Content-Type':'application/json',  
+  Authorization:token
 }})
+
+setproductData(productData.map(item=>item.id===updatedId?{...item,updatedproduct}:item))
+console.log(res.data)
+console.log(productData)
 alert('product updated successfully')
 }
+
 catch(error){return console.log(error)}
 }}>
-<input class='input11' type='text' placeholder='product name' value={updatedname} onChange={(e)=>setupdatedname(e.target.value)} />
+<input className='input11' type='text' placeholder='product name' value={updatedname} onChange={(e)=>setupdatedname(e.target.value)} />
 <br/>
-<input class='input11'  type='text' placeholder='product price' value={updatedprice}  onChange={(e)=>setupdatedprice(e.target.value)} />
+<input className='input11'  type='text' placeholder='product price' value={updatedprice}  onChange={(e)=>setupdatedprice(e.target.value)} />
 <br/>
-<input class='input11' type='text' placeholder='product discription' value={updateddis}  onChange={(e)=>setupdateddis(e.target.value)} />
+<input className='input11' type='text' placeholder='product discription' value={updateddis}  onChange={(e)=>setupdateddis(e.target.value)} />
 <br/>
-<input class='input11' type='text' placeholder='product quantity' value={updatedquantity}  onChange={(e)=>setupdatedquantity(e.target.value)} />
+<input className='input11' type='text' placeholder='product image' value={updatedimage}  onChange={(e)=>setupdatedimage(e.target.value)} />
+<br/>
+<input className='input11' type='text' placeholder='product quantity' value={updatedquantity}  onChange={(e)=>setupdatedquantity(e.target.value)} />
 <br/>
 
 <Box sx={{ minWidth: 120 }}>

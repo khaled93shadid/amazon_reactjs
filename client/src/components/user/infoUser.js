@@ -27,12 +27,20 @@ export default function InfoUser(){
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-const [profileData,setprofileData]=useState([])
+  const [open1, setOpen1] = React.useState(false);
+  const handleOpen1 = () => setOpen1(true);
+  const handleClose1 = () => setOpen1(false);
+  const [oldpassword,setoldpassword]=useState('')   
+  const [newpassword,setnewpassword]=useState('')   
+
+
+const [profileData,setprofileData]=useState(null)
+
 let data =[]
-const[fullname,fullsetname]=useState(data.fullname||'')
-const[email,setemail]=useState(data.email||'')
-const[phone,setphone]=useState(data.phone||'')
-const[address,setaddress]=useState(data.address||'')
+//const[fullname,fullsetname]=useState('')
+//const[email,setemail]=useState('')
+//const[phone,setphone]=useState('')
+//const[address,setaddress]=useState('')
 
 const[fullname1,fullsetname1]=useState('')
 const[email1,setemail1]=useState('')
@@ -40,24 +48,26 @@ const[phone1,setphone1]=useState('')
 const[address1,setaddress1]=useState('')
 
 useEffect(()=>{
-try{
-const token = localStorage.getItem('token');  
-const fetch=async()=>{
-const res=await axios.get("http://127.0.0.1:5000/api/users/getprofile",
-   {headers: {Authorization:localStorage.getItem('token')}   })
-//console.log(res.data)
-setprofileData(res.data)
-data=res.data
- console.log("profileData:",data) 
-return
- 
 
+  
+const fetchProfile=async()=>{
+  try{
+const token = localStorage.getItem('token');
+const res=await axios.get("http://127.0.0.1:5000/api/users/getprofile",
+   {headers: {Authorization:token}   })
+console.log(res.data.phone)
+setprofileData(res.data||'')
+setaddress1(res.data.address||'')
+setemail1(res.data.email||'')
+setphone1(res.data.phone||'')
+fullsetname1(res.data.fullname||'')
+ }//try
+catch(error){console.log(error)}
 }  
    
-fetch();
+fetchProfile();
 
-}
-catch(error){console.log(error)}
+
 
 },[])
 
@@ -72,7 +82,7 @@ return(
 
    
 
- <div  className='item_info_border'>
+{profileData?(<div   className='item_info_border'>
         <div className='item_info'>
              <div>
                 <p className='item_info_p1'>Name</p>
@@ -122,15 +132,18 @@ return(
         <div className='item_info'>
              <div>
                 <p className='item_info_p1'>password</p>
-                <p className='item_info_p2'>{profileData.password} </p>
+                <p className='item_info_p2'>************** </p>
              </div>
             <div>
-                <button onClick={handleOpen} className='item_info_B'>Edit</button>   
+                <button onClick={handleOpen1} className='item_info_B'>Edit</button>   
             </div>
         </div>
        
-    </div>
+    </div>):(<h1>loading profile</h1>)}
 
+
+
+ 
 
 
 </div>
@@ -148,24 +161,18 @@ return(
         <form onSubmit={async(e)=>{
          e.preventDefault();
          try{
-          const user1={fullname1,email1,address1,phone1}
-            try{
-              const res = await axios.put("http://127.0.0.1:5000/api/users/updateUser", {user1},{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
+          const user1={fullname:fullname1,email:email1,address:address1,phone:phone1}
+          
+              const res = await axios.put("http://127.0.0.1:5000/api/users/updateUser", user1,{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
                
           
-               console.log(res.data)
+               
+               setprofileData(prev => ({ ...prev, ...user1 }));//refresh profiledata
                 alert("updated successfuly")
                 handleClose();
 
-         
-            }
-         
-            catch(error){console.log(error)}
-          
-         
-           
-         }
-         catch(error){console.log(console.log(error))}
+         }//try
+         catch(error){console.log(error); alert("Update failed. Please try again.");}
 
         }}>
           
@@ -177,6 +184,49 @@ return(
           <br/>
           <input className='info_input' type="text" placeholder="Address" value={address1} onChange={(e)=>setaddress1(e.target.value)} />
           <br/>
+          <button type="submit">Save</button>
+          <br/>
+          </form>  
+          
+      </Box>
+      </Modal>
+
+
+
+
+      <Modal
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">Update password</Typography>
+        
+        
+        <form onSubmit={async(e)=>{
+         e.preventDefault();
+         try{
+          const user1={oldpassword,newpassword}
+          
+              const res = await axios.post("http://127.0.0.1:5000/api/users/changepassword", {oldpassword,newpassword},{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
+               
+          
+               
+               setprofileData(prev => ({ ...prev, ...user1 }));//refresh profiledata
+               console.log(profileData)
+                alert("change password successfuly")
+                handleClose1();
+
+         }//try
+         catch(error){console.log(error); alert("change password failed. Please try again.");}
+
+        }}>
+          
+          <input className='info_input' type="text" placeholder="oldPassword" value={oldpassword} onChange={(e)=>setoldpassword(e.target.value)} />
+          <br/>
+          <input className='info_input' type="text" placeholder="newPassword" value={newpassword} onChange={(e)=>setnewpassword(e.target.value)} />
+          <br/> 
           <button type="submit">Save</button>
           <br/>
           </form>  

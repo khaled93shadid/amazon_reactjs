@@ -55,13 +55,13 @@ transition:border 0.15s;
 .header-right-div2:hover{border:solid white 1px ;}
 .header-right-div2-img{width: 40px;}
 
-.header-right-div1{position: relative;margin-right: 10px;cursor: pointer;transition:border 0.15s;height: 30px;padding: 5px;}
-.header-right-div1:hover{border:solid white 1px ;}
+.header-right-div1{position: relative;margin-right: 10px;cursor: pointer;transition:border 0.15s;height:0px;padding: 5px;}
+header-right-div1:hover{border:solid white 1px ;width: 100%;height: 100%;}
 .header-right-div1-p1{position: absolute;top:-10px;left:5px;font-size: 13px;color: white;}
 .header-right-div1-p2{font-size: 13px;font-weight: bold;color: white;}
 
 .header-right-div2-img-p{position:relative;}
-.cart-quantity{position: absolute;left: 18px;top:-10px;color: rgb(240, 136, 4);font-weight: bold;font-size: 11px;}
+.cart-quantity{position: absolute;left: 18px;top:-3px;color: rgb(240, 136, 4);font-weight: bold;font-size: 11px;}
 .header-right-div2-p{font-weight: bold;font-size: 15px;}
 
 

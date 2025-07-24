@@ -39,10 +39,10 @@ catch(error){res.status(500).json({message:error.message})}
 exports.updateproduct = async(req,res)=>{
     console.log('you are in updateProduct function')
 const {id} = req.params
-const {name,price,dis,quantity,category}=req.body
+const {name,price,dis,image,quantity,category}=req.body
 
 try{
-const product1 = await Product.findByIdAndUpdate(id,{name,price,dis,quantity,category})
+const product1 = await Product.findByIdAndUpdate(id,{name,price,dis,image,quantity,category})
 if(!product1){res.status(404).json({message:'product not found'})}
 res.status(200).json({message:'product updated successfully',product1})
 

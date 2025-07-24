@@ -9,6 +9,7 @@ import MainProductsNav from './components/user/navBar'
 import ProfileUser from './components/user/profileUser'
 import InfoUser from './components/user/infoUser'
 import Footer from './components/footer'
+import Main from './components/main'
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
                  <Route path="/ProfileUser"  element={<ProfileUser/>}/> 
                  <Route path="/InfoUser"  element={<InfoUser/>}/> 
                  <Route path="/Footer"  element={<Footer/>}/> 
+                 <Route path="/main"  element={<Main/>}/> 
                  
          
        </Routes>
