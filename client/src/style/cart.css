@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.bodycart{padding-top:20px;padding-left: 270px;padding-right: 270px;margin-top: 0px;}
+
+.header-container{display:flex;flex-direction:row;
+justify-content: space-between;align-items:center;position: fixed;
+left: 0px;right: 0px;top: 0px;height:60px;background-color: white;
+z-index:200;
+}
+
+.left_section{display: flex;align-items: center;flex:1;justify-content: center;}  
+.left_section_logo{flex:1;max-width: 95px;cursor: pointer;}
+
+.middle_section{display: flex;align-items: center;justify-content: center;}
+.middle_section_p{color:rgb(33, 33, 33);font-family: Roboto;font-size: 23px;font-weight:500;}
+.middle_section_span{color: rgb(0, 113, 133);font-family: Roboto;cursor: pointer;}
+
+.right_section{display: flex;align-items: center;justify-content: center;flex: 1;}
+
+.Review_your_order_p{font-family: Roboto;font-size:23px;
+font-weight: bold;color:rgb(33, 33, 33)}
+
+.checkout-continer{display: grid;grid-template-columns:1fr 300PX;}
+
+.checkout-left{display: grid;grid-template-columns:350px 1fr;margin-bottom:15px;column-gap: 15px;}
+
+.div_for_checkout_left{border: solid rgb(222, 222, 222) 1px;height:300px;padding: 10px;margin-bottom:15px;padding-left: 50px;}
+
+.checkout-left-1-Delivery-date{color:rgb(0, 118, 0);font-weight: bold;font-size: 19px;font-family:Roboto;}
+.checkout-left-1-horizontal{display: grid;grid-template-columns:100px 1fr;column-gap: 15px;}
+.checkout-left-1-horizontal-img{width: 95px;margin-top: 15px;}
+.checkout-left-1-horizontal-div{}
+.checkout-left-1-horizontal-name{font-family: Roboto;font-weight: bold;color: rgb(33, 33, 33);font-size: 16px;}
+.checkout-left-2{width: 200px;}
+.checkout-left-2-horizontal-name{font-family: Roboto;font-weight: bold;color: rgb(33, 33, 33);font-size: 16px;}
+.checkout-left-1-horizontal-price{font-family: Roboto;font-weight: bold;color:rgb(177, 39, 4);font-size: 16px;}
+.checkout-left-1-horizontal-quantity{font-size: 17px;font-family: Roboto;}
+
+.checkout-left-1-horizontal-button-delete{border:none;font-family: Roboto;font-size: 17px;color: rgb(1, 124, 182);cursor: pointer;transition: 'color' 1.25s;}
+.checkout-left-1-horizontal-button-delete:hover{color:rgb(177, 39, 4);}
+.checkout-left-1-horizontal-button-update{border:none;font-family: Roboto;font-size: 17px;color: rgb(1, 124, 182);cursor: pointer;transition: 'color' 1.25s;}
+.checkout-left-1-horizontal-button-update:hover{color:rgb(177, 39, 4);}
+
+.radio_button_horizontail{display: grid;grid-template-columns:30px 1fr;height:100px;margin-top: -20px;}
+.radioButton{width: 18px;}
+.checkout-left-2-horizontal-date{color: rgb(0, 118, 0);font-family: Roboto;font-weight: bolder;font-size: 15px;}
+.checkout-left-2-horizontal-shipping{font-family: Roboto;color:rgb(120, 120, 120);font-size: 15px;margin-top: -12px;}
+
+.checkout-right{margin-left: 15px;border: solid rgb(222, 222, 222) 1px;height: 290px;padding:15px ;width: 290px;}
+.checkout-right-horizontal{display: grid;grid-template-columns: 1fr 1fr;column-gap: 80px;}
+
+.checkout-right-p{font-family: Roboto;font-weight: bold;color:rgb(33, 33, 33);font-size: 18px;}
+.checkout-right-summary{font-family: Roboto;color:rgb(33, 33, 33);height:20px;width:150px}
+.checkout-right-horizontal_2_p{font-family: Roboto;color:rgb(33, 33, 33);height:20px;}
+.ordertotal{font-family: Roboto;color:rgb(177, 39, 4);height:20px;font-weight: bold;font-size: 18px;}
+.place_your_order{border: none;background-color: rgb(255, 216, 20);border-radius:10px;width:270px;height:40px;cursor: pointer;margin-left:10px ;}

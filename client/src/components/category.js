@@ -82,7 +82,7 @@ return(
            <TableCell >{category._id}</TableCell>
            <TableCell >{category.name}</TableCell>
            <TableCell >
-              <button onClick={async()=>{
+              <button className="button1" onClick={async()=>{
                               if (window.confirm('are you sure you want to delete this category'))
                                 {//if
                                  const res = await axios.delete(`http://127.0.0.1:5000/api/users/deleteCategory/${category._id}`,
@@ -93,7 +93,7 @@ return(
               }}>Delete</button>
 
 
-              <button onClick={ ()=>{handleOpen();setupdatedId(category._id)}  }>Update</button>
+              <button className="button1" onClick={ ()=>{handleOpen();setupdatedId(category._id)}  }>Update</button>
            </TableCell>
           
            </TableRow>

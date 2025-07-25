@@ -39,19 +39,21 @@ setcategoryData(categoryResponse.data)
  fetchdata();
 
   },[])
+const addToCart =(productId)=>{
+  console.log('addToCart',productId)
+  const token=localStorage.getItem('token')
+  axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity:1},
+    { headers:
+      {'Authorization':`${token}`,'Content-Type':'application/json'} }).then(()=>{alert('added to cart')}).catch(err=>{alert(err)})
 
-
-  console.log(productData)
+}
+//console.log(productData)
 return(
 
 <>
 <MainProductsNav/>
 <div className="all-products-container">
 {productData.map((product)=>(
-
-  
-
-
 
 
 <div key={product._id} className="product-container">
@@ -80,7 +82,7 @@ return(
         <option  value="10">10</option>
     </select>
     <br/>
-    <button className="button-add-to-cart">Add to Cart</button>
+    <button className="button-add-to-cart" onClick={()=>addToCart(product._id)}>Add to Cart</button>
   </div>
   </div>         
 

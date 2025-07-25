@@ -28,18 +28,20 @@ return(
   </div>
 
   <div className="header-right"> 
-    <div className="header-right-login"> <a href='/'>login</a> </div>
+    <div className="header-right-login"> <a href='/login'>login</a> </div>
       <div className="header-right-div1">
         <p className="header-right-div1-p1">Returns</p> 
         <p className="header-right-div1-p2">& Orders</p> 
       </div>  
       <a href="/checkout.html"  >   
       <div className="header-right-div2">
-            <div className="header-right-div2-img-p">
-            <img className="header-right-div2-img" src={cart}/> 
+           <a href='/cart' > 
+             <div className="header-right-div2-img-p">
+                  <img className="header-right-div2-img" src={cart}/> 
                  <p className="cart-quantity cart-quantity-js">0</p>
-           </div> 
-          <p className="header-right-div2-p">cart</p> 
+            </div>
+           </a> 
+        <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>
       </div>
        </a>
 

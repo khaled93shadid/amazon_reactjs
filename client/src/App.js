@@ -10,11 +10,12 @@ import ProfileUser from './components/user/profileUser'
 import InfoUser from './components/user/infoUser'
 import Footer from './components/footer'
 import Main from './components/main'
+import Cart from './components/user/cart'
 function App() {
   return (
     <Router>
        <Routes>
-                 <Route path="/"  element={<Login/>}/> 
+                 <Route path="/login"  element={<Login/>}/> 
                  <Route path="/dash"  element={<DashboardLayoutSlots/>}/> 
                  <Route path="/register"  element={<Register/>}/> 
                  <Route path="/product"  element={<Product/>}/> 
@@ -23,7 +24,8 @@ function App() {
                  <Route path="/ProfileUser"  element={<ProfileUser/>}/> 
                  <Route path="/InfoUser"  element={<InfoUser/>}/> 
                  <Route path="/Footer"  element={<Footer/>}/> 
-                 <Route path="/main"  element={<Main/>}/> 
+                 <Route path="/"  element={<Main/>}/> 
+                 <Route path="/cart"  element={<Cart/>}/> 
                  
          
        </Routes>

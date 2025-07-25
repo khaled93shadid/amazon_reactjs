@@ -1,6 +1,8 @@
 const userRouter = require('./router/userRouter')
 const productRouter = require('./router/productRouter')
 const categoryRouter = require('./router/categoryRouter')
+const cartRouter=require('./router/cartRouter')
+const orderRouter=require('./router/orderRouter')
 const connectdb = require('./config/db')
 const express = require('express')
 const dotenv = require ('dotenv')
@@ -13,8 +15,10 @@ app.use(express.json())
 app.use(cors());
 app.use('/uploads',express.static('uploads'))
 app.use('/api/users',userRouter)
-app.use('/api/users',productRouter)
-app.use('/api/users',categoryRouter)
+app.use('/api/users',productRouter)//api/product
+app.use('/api/users',categoryRouter)//api/categories
+app.use('/api/users',cartRouter)//api/cart
+app.use('/api/users',orderRouter)//api/cart
 
 
 
