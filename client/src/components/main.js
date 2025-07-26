@@ -296,16 +296,19 @@ return(
 </div>{/* container row2 end second 4 cards*/}
 
 
-
- <div className="App">  {/* slider start */}
+<div className='relative_for_slider_row2'>{/* relativeSlider start */}
+   <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images2.map((image, index) => {
           return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
         })}
       </CustomSlider2>
      
-    </div>{/* slider end */}
+   </div>{/* slider end */}
+   <p className='relative_for_slider_p'>Popular products in Wireless internationally</p>
+</div>{/* relativeSlider end */}
 
+<div className='relative_for_slider_row2'>{/* relativeSlider start */}
  <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images3.map((image, index) => {
@@ -314,7 +317,8 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
-
+    <p className='relative_for_slider_p'>Best Sellers in Sports & Outdoors</p>
+</div>{/* relativeSlider end */}
 
 <div className='container_row22'>{/* container row2 start first 4 cards*/}
 
@@ -460,7 +464,7 @@ return(
 </div>{/* container row2 end second 4 cards*/}
 
 
-
+<div className='relative_for_slider_row2'>{/* relativeSlider start */}
 <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images4.map((image, index) => {
@@ -469,7 +473,10 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
+     <p className='relative_for_slider_p'>International Top Sellers for you</p>
+</div>{/* relativeSlider end */}
 
+<div className='relative_for_slider_row2'>{/* relativeSlider start */}
  <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images5.map((image, index) => {
@@ -478,7 +485,8 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
-
+     <p className='relative_for_slider_p'>Best Sellers in Clothing, Shoes & Jewelry</p>
+</div>{/* relativeSlider end */}
 
 
 <div className='container_row22'>{/* container row2 start first 4 cards*/}
