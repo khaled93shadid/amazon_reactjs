@@ -50,8 +50,7 @@ margin-left: 10px;
 height: 390px;}
 
 .container_row1_1_p{color:rgb(15, 17, 17);
-font-family: Roboto;font-size: 21px;font-weight: 700;;margin-bottom: 5px;
-
+font-family: Roboto;font-size: 21px;font-weight: 700;;margin-bottom: 5px; 
 
 }
 
@@ -84,7 +83,9 @@ font-weight: Roboto;font-size: 13px;line-height: 16.90px;
 
 .main_body{background-color: rgb(235, 227, 227);}
 
-.relative_for_slider_row2{position: relative;}
+.relative_for_slider_row2{position: relative;padding-top:70px;background-color: white;
+margin-top: 20px;
+}
 .relative_for_slider_p{color:rgb(15, 17, 17);position: absolute;
 top:20px;left:20px;font-family: Roboto;
 font-size: 21px;font-weight: 700;}
