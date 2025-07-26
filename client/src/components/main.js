@@ -14,9 +14,13 @@ import CustomSlider2 from'./slider/custom.slider2.js'
 
 export default function Main(){
 
+
+
 return(
 <>
 <MainProductsNav/>
+
+
 <div className='positionRelative'>{/* position relative start for slider container1  */}
 
 

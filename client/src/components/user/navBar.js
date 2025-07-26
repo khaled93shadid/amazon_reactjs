@@ -4,10 +4,150 @@ import cart from '../icons/cart-icon.png'
 import search from '../icons/search-icon.png'
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+/* sidebar drawer */
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CloseIcon from '@mui/icons-material/Close';
+/* sidebar drawer end */
+
+
+
+
+
 export default function MainProductsNav(){
+
+/* sidebar drawer */
+ const [open, setOpen] = React.useState(false);
+const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+};
+  const DrawerList = (
+    <Box sx={{ width:360 }} role="presentation" onClick={toggleDrawer(false)}>
+      
+    <div className='sideBar_hello'>
+    
+         <AccountCircleIcon className='sideBar_hello_icon' sx={{ color: 'white'}}   />
+       <a href='/ProfileUser' >    <p className='sideBar_hello_p'>Hello,khaled</p></a>
+       <div className='closeIcon' onClick={toggleDrawer(false)}> <CloseIcon sx={{ color: 'white'}}/> </div>
+      
+      </div> 
+ 
+
+      <List>
+        <p className='sideBar_header'>Digital Content & Devices</p>
+        {['Prime Video', 'Amazon Music', 'Kindle E-readers & Books',
+         'Amazon Appstore'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              
+              <ListItemText primary={text} />
+              
+              <ListItemIcon >
+                {index % 2 === 0 ? <ArrowForwardIosIcon className='arrow' /> : <ArrowForwardIosIcon className='arrow' />}
+              </ListItemIcon>
+             
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <p className='sideBar_header'>Shop by Department</p>
+        {['Electronics', 'Computers', 'Smart Home',
+         'Arts & Crafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+               <ListItemText primary={text} />
+              
+              <ListItemIcon >
+                {index % 2 === 0 ? <ArrowForwardIosIcon className='arrow' /> : <ArrowForwardIosIcon className='arrow'/>}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+       <Divider />
+       <List>
+        {['Automotive', 'Baby', 'Beauty and Personal Care',
+         "Women's Fashion",
+         "Women's Fashion",
+         "Girls' Fashion","Boys' Fashion","Health and Household",
+        "Home and Kitchen","Industrial and Scientific","Luggage",
+      "Movies & Television","Pet supplies","Software",
+    "Sports and Outdoors","Tools & Home Improvement","Toys and Games",
+  "Video Games"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+               <ListItemText primary={text} />
+              
+              <ListItemIcon >
+                {index % 2 === 0 ? <ArrowForwardIosIcon  className='arrow'/> : <ArrowForwardIosIcon className='arrow' />}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+       <Divider />
+       <List>
+        <p className='sideBar_header'>Programs & Features</p>
+        {['Gift Cards', 'Shop By Interest', 'Amazon Live',
+         'International Shopping','Amazon Second Chance'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={text} />
+              
+              <ListItemIcon >
+                {index % 2 === 0 ? <ArrowForwardIosIcon className='arrow' /> : <ArrowForwardIosIcon className='arrow' />}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+       <Divider />
+       <List>
+        <p className='sideBar_header'>Help & Settings</p>
+        {['Your Account', 'English', 'Customer Service',
+         'Sign Out'].map((text, index) => (
+          <ListItem className='ListItemText1' key={text} disablePadding>
+            <ListItemButton>
+            <ListItemText primary={text} /> 
+              
+              <ListItemIcon >
+                {index % 2 === 0 ? <ArrowForwardIosIcon  className='arrow'/> : <ArrowForwardIosIcon className='arrow' />}
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+/* sidebar drawer end */
+
 
 return(
 <>
+
+{/* sidebar drawer  */}
+ <div>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        {DrawerList}
+      </Drawer>
+    </div>
+{/* sidebar drawer end */}
+
 <div className="header-main"> 
 
      <div className="header-left"><a href="/productuser"><img className="header-logo"  src={logo} /></a> 
@@ -56,8 +196,8 @@ return(
 
 <div className='navbar_container'>
    <div className='icon_div'>
-    <DensityMediumIcon   sx={{ color: 'white' }}  />
-    <p className='all_p'>ALL</p>
+    <DensityMediumIcon className='DensityMediumIcon' onClick={toggleDrawer(true)}   sx={{ color: 'white' }}  />
+   <button className='all_p_button' onClick={toggleDrawer(true)}> <p className='all_p'>ALL</p> </button>
    </div>
 
     <div className='rufus'>

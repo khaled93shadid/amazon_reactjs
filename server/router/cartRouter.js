@@ -6,6 +6,6 @@ const {auth,adminAuth}=require('../middleware/authmiddleware')
 
 router.post('/addtocart',auth,cartController.addToCart)
 router.get('/getcart',auth,cartController.getCart)
-router.delete('/removefromcart/:id',auth,cartController.removeFromCart)
+router.delete('/removefromcart/:productId',auth,cartController.removeFromCart)
 
 module.exports=router;

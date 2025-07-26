@@ -71,7 +71,7 @@ display:flex;justify-content: left;margin-top:50px ;
 }
 .icon_div{display: flex;align-items: center;padding-left:5px ;}
 .all_p{color: white;font-size: 14px;
-cursor: pointer;font-weight: 700;margin-left:5px;}
+cursor: pointer;font-weight: 700;}
 
 .rufus{background-color: white;
 border-radius: 30px;
@@ -124,3 +124,14 @@ nav_p_div:hover{border:solid white 1px;
 .nav_p_div_container{display: flex;align-items: center;
 justify-content: space-between
 }
+
+.all_p_button{background-color: transparent;border: none;}
+.DensityMediumIcon{cursor: pointer;}
+
+.sideBar_header{color: rgb(17, 17, 17);font-family: Roboto;font-size: 18px;font-weight: 700;}
+.sideBar_hello{display:flex;align-items: center;background-color:rgb(29, 39, 53);position: relative;}
+.sideBar_hello_p{color: rgb(255, 255, 255);cursor: pointer;font-family: Roboto;font-size: 19px;font-weight: 700;}
+.sideBar_hello_icon{cursor: pointer;margin-right: 10px;margin-left:2px;height: max-content;}
+.arrow{margin-left: 100px;}
+.ListItemText1{color:rgb(17, 17, 17);cursor: pointer;font-size: 14px;font-family: Roboto;}
+.closeIcon{position: absolute;right:1px;top:1px;border: solid white 1px;padding: 2px;}
