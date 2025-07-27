@@ -11,6 +11,7 @@ import InfoUser from './components/user/infoUser'
 import Footer from './components/footer'
 import Main from './components/main'
 import Cart from './components/user/cart'
+import Order from './components/order'
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
                  <Route path="/Footer"  element={<Footer/>}/> 
                  <Route path="/"  element={<Main/>}/> 
                  <Route path="/cart"  element={<Cart/>}/> 
+                 <Route path="/order"  element={<Order/>}/> 
                  
          
        </Routes>

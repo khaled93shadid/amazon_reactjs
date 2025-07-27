@@ -47,7 +47,7 @@ border-bottom-right-radius:2px; cursor: pointer;}
 
 .header-right-login{margin-right: 20px;cursor: pointer;transition:border 0.15s;height: 25px;padding: 5px;}
 .header-right-login:hover{border:solid white 1px ;}
-.header-right{display: flex;flex-direction: row;align-items: center;width:250px}
+.header-right{display: flex;flex-direction: row;align-items: center;width:300px}
 .header-right-div2{display: flex;align-items: center;justify-content: space-between;cursor: pointer;height: 30px;
   padding:5px;
 transition:border 0.15s;
@@ -67,6 +67,9 @@ transition:border 0.15s;
 
 .navbar_container{background-color:rgb(29, 39, 53);
 display:flex;justify-content: left;margin-top:50px ;
+
+
+
 
 }
 .icon_div{display: flex;align-items: center;padding-left:5px ;}
@@ -134,4 +137,5 @@ justify-content: space-between
 .sideBar_hello_icon{cursor: pointer;margin-right: 10px;margin-left:2px;height: max-content;}
 .arrow{margin-left: 100px;}
 .ListItemText1{color:rgb(17, 17, 17);cursor: pointer;font-size: 14px;font-family: Roboto;}
-.closeIcon{position: absolute;right:1px;top:1px;border: solid white 1px;padding: 2px;}
+.closeIcon{position: absolute;right:1px;top:1px;border: solid white 1px;padding: 2px;cursor: pointer;}
+.header-right-login_flag{width:20px;margin-right: 6px;}

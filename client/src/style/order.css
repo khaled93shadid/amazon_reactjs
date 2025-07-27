@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.order_nav{background-color: rgb(19, 25, 33);display: flex;justify-content: space-between;align-items: center;height: 60px;}
+.order_logo{width: 105px;}
+.order_nav_bottom{font-size: 28px;font-weight: 400;font-family: Roboto;color: white;}
+.right_header_order{display: flex;align-items: center;margin-right:20px;padding:5px;transition: border 0.15s;}
+.right_header_order:hover{border: solid white 1px;}
+.header-right-div2-p1{font-size: 14px;font-weight: 700;font-family: Roboto;}
+.image_div_order{padding: 5px;margin-left: 20px;padding-top: 10px;transition: border 0.15s; }
+.image_div_order:hover{border: solid white 1px;}

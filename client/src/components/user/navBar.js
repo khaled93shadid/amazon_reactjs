@@ -40,7 +40,7 @@ const toggleDrawer = (newOpen) => () => {
     <div className='sideBar_hello'>
     
          <AccountCircleIcon className='sideBar_hello_icon' sx={{ color: 'white'}}   />
-       <a href='/ProfileUser' >    <p className='sideBar_hello_p'>Hello,khaled</p></a>
+       <a href='/ProfileUser' >    <p className='sideBar_hello_p'>Hello , Khaled Shadid</p></a>
        <div className='closeIcon' onClick={toggleDrawer(false)}> <CloseIcon sx={{ color: 'white'}}/> </div>
       
       </div> 
@@ -148,6 +148,8 @@ return(
     </div>
 {/* sidebar drawer end */}
 
+
+{/* first navbar  */}
 <div className="header-main"> 
 
      <div className="header-left"><a href="/productuser"><img className="header-logo"  src={logo} /></a> 
@@ -168,6 +170,7 @@ return(
   </div>
 
   <div className="header-right"> 
+    <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src='https://th.bing.com/th/id/R.116a21ea40b3f9ab2bf3678c1132be83?rik=DzsEnLMC%2f5lIfw&pid=ImgRaw&r=0' />AR</a> </div>
     <div className="header-right-login"> <a href='/login'>login</a> </div>
       <div className="header-right-div1">
         <p className="header-right-div1-p1">Returns</p> 
@@ -191,9 +194,10 @@ return(
 
 
 </div>
+{/* end first navbar */}
 
 
-
+{/* second navbar  */}
 <div className='navbar_container'>
    <div className='icon_div'>
     <DensityMediumIcon className='DensityMediumIcon' onClick={toggleDrawer(true)}   sx={{ color: 'white' }}  />
@@ -212,7 +216,7 @@ return(
    <div className='nav_p_div'> <p className='nav_p'>Gift Cards</p> </div>
    <div className='nav_p_div'> <p className='nav_p'>sell</p> </div>
 </div>
-
+{/* end second navbar  */}
 
 </>
 )
