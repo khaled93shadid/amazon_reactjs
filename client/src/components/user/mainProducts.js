@@ -39,13 +39,14 @@ setcategoryData(categoryResponse.data)
  fetchdata();
 
   },[])
-const addToCart =(productId)=>{
+const addToCart =async(productId)=>{
   console.log('addToCart',productId)
   const token=localStorage.getItem('token')
-  axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity:1},
+ await axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity:1},
     { headers:
       {'Authorization':`${token}`,'Content-Type':'application/json'} }).then(()=>{alert('added to cart')}).catch(err=>{alert(err)})
 
+      window.dispatchEvent(new Event('cartUpdated'));
 }
 //console.log(productData)
 return(

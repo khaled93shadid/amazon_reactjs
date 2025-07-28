@@ -14,16 +14,28 @@ useEffect(()=>{
 
 axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`,'Content-Type':'application/json'} }
 
-).then(res=>setcart(res.data.items)).catch(err=>alert(err))
+).then(res=> setcart(res.data.items)).catch(err=>alert(err))
 console.log(cart)
 },[])
 
 
 
 const removeCart=(productId)=>{
-axios.delete(`http://127.0.0.1:5000/api/users/removefromcart/${productId}`,{ headers:{'Authorization':`${token}`,'Content-Type':'application/json'} }
+try{ const res= axios.delete(`http://127.0.0.1:5000/api/users/removefromcart2/${productId}`,
+      { headers:{'Authorization':`${token}`,'Content-Type':'application/json'} })
 
-).then(()=>setcart(cart.filter(item=>item.product._id!==productId))).catch(err=>alert(err))
+      /*
+const updatedCart = res.data.cart;
+console.log(updatedCart)
+setcart(updatedCart)
+*/
+ setcart(prevCart => prevCart.filter(item => item.product._id !== productId));
+window.dispatchEvent(new Event('cartUpdated'));
+window.location.reload()
+console.log('Item removed successfully', /*updatedCart*/ );
+alert('Item removed successfully');
+}//try
+catch(error){return error}
 }
 
 

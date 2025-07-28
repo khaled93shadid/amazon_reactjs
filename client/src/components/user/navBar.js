@@ -4,7 +4,9 @@ import cart from '../icons/cart-icon.png'
 import search from '../icons/search-icon.png'
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import axios from 'axios';
+import { useEffect,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 /* sidebar drawer */
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -28,6 +30,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 export default function MainProductsNav(){
+
 
 /* sidebar drawer */
  const [open, setOpen] = React.useState(false);
@@ -136,6 +139,29 @@ const toggleDrawer = (newOpen) => () => {
   );
 /* sidebar drawer end */
 
+const [cartQuantity,setCartQuantity]= useState(0)
+useEffect(()=>{
+
+  const fetchCartQuantity=async()=>{
+    try{
+      const res = axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{
+      "Authorization":`${localStorage.getItem('token')}` 
+    }})  //res end
+    
+    setCartQuantity(Number(res.data||0))     
+    console.log(cartQuantity)
+    }//try
+catch(error){console.log(error)}     
+  }//fetch cart one time
+  fetchCartQuantity()
+//to update cart 
+  const handelCartUpdate=()=>{fetchCartQuantity() }
+window.addEventListener('cartUpdated',handelCartUpdate)
+
+return () => { window.removeEventListener('cartUpdated',handelCartUpdate);};
+
+
+},[])
 
 return(
 <>
@@ -157,7 +183,7 @@ return(
       <div className='marginLogo'>   <LocationOnIcon className='location_logo'  sx={{ color: 'white' }} /> </div>
          <div>
          <div> <a className='location-a1'>Deliver to</a> </div>
-         <div> <a className='location-a2'>Jordan</a></div>
+         <div> <a className='location-a2'>Gaza</a></div>
          </div>
      </div>
   
@@ -181,7 +207,7 @@ return(
            <a href='/cart' > 
              <div className="header-right-div2-img-p">
                   <img className="header-right-div2-img" src={cart}/> 
-                 <p className="cart-quantity cart-quantity-js">0</p>
+                 <p className="cart-quantity cart-quantity-js">{cartQuantity}</p>
             </div>
            </a> 
         <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>
