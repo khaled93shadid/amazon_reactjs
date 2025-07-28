@@ -15,9 +15,9 @@ useEffect(()=>{
 axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`,'Content-Type':'application/json'} }
 
 ).then(res=> setcart(res.data.items)).catch(err=>alert(err))
-console.log(cart)
-},[])
 
+},[])
+console.log(cart)
 
 
 const removeCart=(productId)=>{

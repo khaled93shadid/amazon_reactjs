@@ -140,29 +140,35 @@ const toggleDrawer = (newOpen) => () => {
 /* sidebar drawer end */
 
 const [cartQuantity,setCartQuantity]= useState(0)
+const [user,setUser]= useState([])
 useEffect(()=>{
-
+   const abortController = new AbortController();
   const fetchCartQuantity=async()=>{
-    try{
-      const res = axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{
-      "Authorization":`${localStorage.getItem('token')}` 
-    }})  //res end
     
-    setCartQuantity(Number(res.data||0))     
-    console.log(cartQuantity)
-    }//try
-catch(error){console.log(error)}     
+   const fetchCartQuantity= await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${localStorage.getItem('token')}` 
+    }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
+    //then end 
+   const fetchUser= await axios.get("http://127.0.0.1:5000/api/users/getprofile",{headers:{"Authorization":`${localStorage.getItem('token')}`,
+   'Content-Type':'application/json' }}).then(res=>setUser(res.data)).catch(error=>console.log(error))
+    //then end
+
   }//fetch cart one time
   fetchCartQuantity()
 //to update cart 
   const handelCartUpdate=()=>{fetchCartQuantity() }
 window.addEventListener('cartUpdated',handelCartUpdate)
 
-return () => { window.removeEventListener('cartUpdated',handelCartUpdate);};
+return () => { abortController.abort(); ;window.removeEventListener('cartUpdated',handelCartUpdate);};
 
 
 },[])
+useEffect(() => {
+  console.log("Cart quantity updated:", cartQuantity);
+}, [cartQuantity]);
 
+useEffect(() => {
+  console.log("User data updated:", user);
+}, [user]);
 return(
 <>
 
@@ -197,7 +203,7 @@ return(
 
   <div className="header-right"> 
     <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src='https://th.bing.com/th/id/R.116a21ea40b3f9ab2bf3678c1132be83?rik=DzsEnLMC%2f5lIfw&pid=ImgRaw&r=0' />AR</a> </div>
-    <div className="header-right-login"> <a href='/login'>login</a> </div>
+    <div className="header-right-login"> <a href='/login'>{user.username1?`welcome${user.username}`:"login"}</a> </div>
       <div className="header-right-div1">
         <p className="header-right-div1-p1">Returns</p> 
         <p className="header-right-div1-p2">& Orders</p> 
