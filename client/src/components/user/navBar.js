@@ -30,6 +30,39 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 export default function MainProductsNav(){
+const [cartQuantity,setCartQuantity]= useState()
+const [user,setUser]= useState([])
+let cartQ=cartQuantity;
+
+
+useEffect(()=>{
+  const token=localStorage.getItem('token')
+   const abortController = new AbortController();
+  const fetchCartQuantity=async()=>{
+     
+    await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
+    }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
+    // end fetch cart quantity
+   await axios.get("http://127.0.0.1:5000/api/users/getprofile",{headers:{"Authorization":`${token}`,}}).then(res=>setUser(res.data)).catch(error=>console.log(error))
+    //end fetch user information
+
+  }//fetch cart one time
+  fetchCartQuantity()
+//to update cart 
+  const handelCartUpdate=()=>{fetchCartQuantity() }
+window.addEventListener('cartUpdated', handelCartUpdate)
+
+return () => { abortController.abort(); window.removeEventListener('cartUpdated', handelCartUpdate);};
+
+
+},[])
+useEffect(() => {
+  console.log("Cart quantity updated:", cartQuantity);
+}, [cartQuantity]);
+
+useEffect(() => {
+  console.log("User data updated:", user);
+}, [user]);
 
 
 /* sidebar drawer */
@@ -43,7 +76,7 @@ const toggleDrawer = (newOpen) => () => {
     <div className='sideBar_hello'>
     
          <AccountCircleIcon className='sideBar_hello_icon' sx={{ color: 'white'}}   />
-       <a href='/ProfileUser' >    <p className='sideBar_hello_p'>Hello , Khaled Shadid</p></a>
+       <a href='/ProfileUser' >    <p className='sideBar_hello_p'>Hello , {user.fullname}</p></a>
        <div className='closeIcon' onClick={toggleDrawer(false)}> <CloseIcon sx={{ color: 'white'}}/> </div>
       
       </div> 
@@ -139,36 +172,7 @@ const toggleDrawer = (newOpen) => () => {
   );
 /* sidebar drawer end */
 
-const [cartQuantity,setCartQuantity]= useState(0)
-const [user,setUser]= useState([])
-useEffect(()=>{
-   const abortController = new AbortController();
-  const fetchCartQuantity=async()=>{
-    
-   const fetchCartQuantity= await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${localStorage.getItem('token')}` 
-    }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
-    //then end 
-   const fetchUser= await axios.get("http://127.0.0.1:5000/api/users/getprofile",{headers:{"Authorization":`${localStorage.getItem('token')}`,
-   'Content-Type':'application/json' }}).then(res=>setUser(res.data)).catch(error=>console.log(error))
-    //then end
 
-  }//fetch cart one time
-  fetchCartQuantity()
-//to update cart 
-  const handelCartUpdate=()=>{fetchCartQuantity() }
-window.addEventListener('cartUpdated',handelCartUpdate)
-
-return () => { abortController.abort(); ;window.removeEventListener('cartUpdated',handelCartUpdate);};
-
-
-},[])
-useEffect(() => {
-  console.log("Cart quantity updated:", cartQuantity);
-}, [cartQuantity]);
-
-useEffect(() => {
-  console.log("User data updated:", user);
-}, [user]);
 return(
 <>
 
@@ -205,15 +209,16 @@ return(
     <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src='https://th.bing.com/th/id/R.116a21ea40b3f9ab2bf3678c1132be83?rik=DzsEnLMC%2f5lIfw&pid=ImgRaw&r=0' />AR</a> </div>
     <div className="header-right-login"> <a href='/login'>{user.username1?`welcome${user.username}`:"login"}</a> </div>
       <div className="header-right-div1">
-        <p className="header-right-div1-p1">Returns</p> 
-        <p className="header-right-div1-p2">& Orders</p> 
+         <a href='Returns_order'>  <p className="header-right-div1-p1">Returns</p> </a>
+    
+         <a href='Returns_order'>  <p className="header-right-div1-p2">& Orders</p> </a>
       </div>  
       <a href="/checkout.html"  >   
       <div className="header-right-div2">
            <a href='/cart' > 
              <div className="header-right-div2-img-p">
                   <img className="header-right-div2-img" src={cart}/> 
-                 <p className="cart-quantity cart-quantity-js">{cartQuantity}</p>
+                 <p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
             </div>
            </a> 
         <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>

@@ -4,45 +4,72 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react'
 import Footer from "../footer"
+import logo from '../icons/amazon-checkout -logo.png'
+import lock from '../icons/checkout-lock-icon.png'
 
 
 
 export default function Cart(){
 const[cart,setcart]=useState([])
+const[cartQuantity,setCartQuantity]=useState()
 const token=localStorage.getItem('token')
 useEffect(()=>{
+ const abortController = new AbortController();
+ const fetchCart=async()=>{
+await axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`} }
+      ).then(res=> setcart(res.data.items)).catch(err=>alert(err))
+ 
+await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
+    }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
+    // end fetch cart quantity
+      
+ }//fetchCart 
 
-axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`,'Content-Type':'application/json'} }
+ fetchCart()
 
-).then(res=> setcart(res.data.items)).catch(err=>alert(err))
+const handelCartUpdate=()=>{fetchCart() }
+window.addEventListener('cartUpdated', handelCartUpdate)
+
+return () => { abortController.abort(); window.removeEventListener('cartUpdated', handelCartUpdate);};
+
+
 
 },[])
-console.log(cart)
+
+useEffect(() => {
+  console.log("Cart from cart.js:", cart);
+}, [cart]);
 
 
-const removeCart=(productId)=>{
-try{ const res= axios.delete(`http://127.0.0.1:5000/api/users/removefromcart2/${productId}`,
-      { headers:{'Authorization':`${token}`,'Content-Type':'application/json'} })
 
-      /*
-const updatedCart = res.data.cart;
-console.log(updatedCart)
-setcart(updatedCart)
-*/
- setcart(prevCart => prevCart.filter(item => item.product._id !== productId));
-window.dispatchEvent(new Event('cartUpdated'));
-window.location.reload()
-console.log('Item removed successfully', /*updatedCart*/ );
-alert('Item removed successfully');
-}//try
-catch(error){return error}
+
+const removeCart=async(productId)=>{
+const fetchCart=async()=>{
+      await axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`} }
+      ).then(res=> setcart(res.data.items)).catch(err=>alert(err))
+       }//fetchCart 
+       
+ await axios.delete(`http://127.0.0.1:5000/api/users/removefromcart2/${productId}`, { headers:{'Authorization':`${token}`} }
+ ).then(window.dispatchEvent(new Event('cartUpdated')),fetchCart() ).catch(err=>console.log(err))
+
+//alert('Item removed successfully');
+
 }
 
 
 
 return(
 <>
-<MainProductsNav/>
+
+<div class="header-container">{/*--navbar start */}
+    <div class="left_section"><a href="/productuser"><img class="left_section_logo" src={logo} /></a> </div>
+    <div class="middle_section"><p class="middle_section_p">Checkout (<span class=" middle_section_span">{cartQuantity} items </span>)</p></div>
+    <div class="right_section"><img class="right_section_img" src={lock} /> </div>
+
+  </div>
+  {/*--navbar finish */}
+
+
 <div className='bodycart'>
 <p className="Review_your_order_p">Review your order</p>
 
@@ -101,7 +128,7 @@ Saturday, July 26</p> <p className="checkout-left-2-horizontal-shipping">9.99 -S
       <p className="checkout-right-p">Order Summary</p>    
       <div className="checkout-right-horizontal">
             <div className="checkout-right-horizontal_1">
-                  <p className="checkout-right-summary">items(1):</p>
+                  <p className="checkout-right-summary">items({cartQuantity}):</p>
                   <p className="checkout-right-summary">shipping&handling:</p>
                   <p className="checkout-right-summary">total before tax:</p>
                   <p className="checkout-right-summary">estimated tax(10%):</p>
@@ -114,7 +141,7 @@ Saturday, July 26</p> <p className="checkout-left-2-horizontal-shipping">9.99 -S
             </div>
       </div>    
       
-      <button className="place_your_order">place your order</button>    
+   <a href='/order'> <button className="place_your_order">place your order</button> </a>
 
          
    </div>{/*-checkout-right end */}

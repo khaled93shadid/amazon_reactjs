@@ -14,18 +14,19 @@ const [categoryData,setcategoryData]=useState([])
   
 useEffect(()=>{
 const token = localStorage.getItem('token')
+const abortController=new AbortController();
   const fetchdata = async ()=>{
-
+ 
 try
 {
-const res= await axios.get("http://127.0.0.1:5000/api/users/getAllProducts",  { headers:   {Authorization:`${token}`}   }  )
-//console.log(res.data)
-setproductData(res.data)
+await axios.get("http://127.0.0.1:5000/api/users/getAllProducts",  { headers:   {Authorization:`${token}`}   } 
+
+).then(res=>setproductData(res.data))
 
 
-const categoryResponse = await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers:   {Authorization:`${token}`}   })
-//console.log(categoryResponse.data)
-setcategoryData(categoryResponse.data)
+await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers:   {Authorization:`${token}`}   } 
+).then(res=>setcategoryData(res.data))
+
 
 
   }
@@ -37,18 +38,18 @@ setcategoryData(categoryResponse.data)
     
  
  fetchdata();
+ return ()=>{ abortController.abort()}
 
   },[])
+
 const addToCart =async(productId)=>{
-  console.log('addToCart',productId)
   const token=localStorage.getItem('token')
  await axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity:1},
-    { headers:
-      {'Authorization':`${token}`,'Content-Type':'application/json'} }).then(()=>{alert('added to cart')}).catch(err=>{alert(err)})
+    { headers:{'Authorization':`${token}`} }).then( window.dispatchEvent(new Event('cartUpdated'))).catch(err=>console.log(err))
 
-      window.dispatchEvent(new Event('cartUpdated'));
-}
-//console.log(productData)
+      
+} //add to cart
+
 return(
 
 <>
