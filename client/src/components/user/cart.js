@@ -10,7 +10,9 @@ import lock from '../icons/checkout-lock-icon.png'
 
 
 export default function Cart(){
+const navigate= useNavigate();      
 const[cart,setcart]=useState([])
+const[cartMoney,setCartMoney]=useState({})
 const[cartQuantity,setCartQuantity]=useState()
 const token=localStorage.getItem('token')
 useEffect(()=>{
@@ -18,7 +20,11 @@ useEffect(()=>{
  const fetchCart=async()=>{
 await axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`} }
       ).then(res=> setcart(res.data.items)).catch(err=>alert(err))
+
+await axios.get('http://127.0.0.1:5000/api/users/cartMoney',{ headers:{'Authorization':`${token}`} }
+      ).then(res=> setCartMoney(res.data)).catch(err=>alert(err))
  
+
 await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
     }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
     // end fetch cart quantity
@@ -39,8 +45,20 @@ return () => { abortController.abort(); window.removeEventListener('cartUpdated'
 useEffect(() => {
   console.log("Cart from cart.js:", cart);
 }, [cart]);
+useEffect(() => {
+  console.log("Cart from cart.js:", cartMoney);
+}, [cartMoney]);
 
 
+const place_order=async()=>{
+  await axios.post('http://127.0.0.1:5000/api/users/placeOrder',{},{ headers:{'Authorization':`${token}`} }
+      ).catch(err=>alert(err))
+      alert('order added successfuly')
+      navigate('/order')
+      
+
+ 
+}
 
 
 const removeCart=async(productId)=>{
@@ -137,11 +155,15 @@ Saturday, July 26</p> <p className="checkout-left-2-horizontal-shipping">9.99 -S
             </div>
             
             <div className="checkout-right-horizontal_2">
-             
+               <p class="checkout-right-horizontal_2_p">${cartMoney.totalCents}</p>
+                  <p class="checkout-right-horizontal_2_p">$0</p>
+                  <p class="checkout-right-horizontal_2_p">${cartMoney.totalCents}</p>
+                  <p class="checkout-right-horizontal_2_p">${cartMoney.estimatedTax}</p>
+                  <p class="ordertotal">${cartMoney.totalTax}</p>
             </div>
       </div>    
       
-   <a href='/order'> <button className="place_your_order">place your order</button> </a>
+    <button  onClick={()=>place_order()}  className="place_your_order">place your order</button> 
 
          
    </div>{/*-checkout-right end */}

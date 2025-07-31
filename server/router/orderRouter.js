@@ -4,7 +4,7 @@ const orderController = require('../controller/orderController')
 const {auth,adminAuth}=require('../middleware/authmiddleware')
 
 
-router.post('placeOrder',auth,orderController.placeOrder)
+router.post('/placeOrder',auth,orderController.placeOrder)
 router.get('getAllOrders',auth,orderController.getAllOrders)
 
 

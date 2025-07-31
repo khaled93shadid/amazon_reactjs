@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+.order2_p1{color: rgb(33, 33, 33);font-family: Roboto;font-size: 26px;
+font-weight: 700;}
+
+.order2_body{padding-left: 200px;padding-right: 200px;padding-top: 5px;}
+.order2_container_top{display:grid;grid-template-columns:25% 25% 50%;background-color: rgb(240, 242, 242);}
+.order2_container_top1{color:rgb(33, 33, 33);
+font-weight: 500;font-family: Roboto;margin-left: 20px;
+}
+.order2_container_top2{color:rgb(33, 33, 33);margin-left: 20px;
+font-weight: 420;font-family: Roboto;margin-top: -15px;}
+.order2_container{border: solid rgb(213, 217, 217) 1px;border-radius:5px;}
+
+.order2_container_bottom{display: grid;grid-template-columns:75% 25%;padding-bottom: 50px;padding-top: 30px;}
+.order2_container_bottom_l{display: grid;grid-template-columns:25% 75%;}
+.order2_container_bottom_l_img{width: 110px;margin-left: 20px;margin-top: 20px;}
+.order2_container_bottom_l_p1{color:rgb(33, 33, 33);font-weight: 700;
+font-family: Roboto;
+}
+.order2_container_bottom_l_p2{
+color:rgb(33, 33, 33);font-weight: 400;
+font-family: Roboto;
+
+}
+.order2_b1_img{width:28px;}
+.order2_b1{background-color: rgb(255, 216, 20);font-family: Roboto;border:solid rgb(252, 210, 0) 1px;
+cursor: pointer;border-radius: 8px;color: rgb(33, 33, 33);
+width:150px;height:38px ;padding: 5px;
+}
+.order2_span1{color: rgb(33, 33, 33);font-family: Roboto;
+font-size: 15px;margin-left: 20px;font-weight: 700px;
+}
+.order2_flex{display: flex;align-items: center;}
+.track_B{background-color: white;border:solid rgb(213, 217, 217) 1px;
+border-radius: 8px;width: 200px;height: 35px;font-family: Roboto;font-size: 14px;
+margin-top:10px ;cursor: pointer;transition: background-color 0.15s;}
+.track_B:hover{background-color: rgb(243, 243, 243);}

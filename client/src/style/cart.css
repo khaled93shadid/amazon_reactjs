@@ -53,3 +53,4 @@ font-weight: bold;color:rgb(33, 33, 33)}
 .checkout-right-horizontal_2_p{font-family: Roboto;color:rgb(33, 33, 33);height:20px;}
 .ordertotal{font-family: Roboto;color:rgb(177, 39, 4);height:20px;font-weight: bold;font-size: 18px;}
 .place_your_order{border: none;background-color: rgb(255, 216, 20);border-radius:10px;width:270px;height:40px;cursor: pointer;margin-left:10px ;}
+.lcheckout-right-horizontal_1{display: grid;grid-template-columns: 75% 25%;}

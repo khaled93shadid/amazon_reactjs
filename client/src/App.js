@@ -13,6 +13,7 @@ import Main from './components/main'
 import Cart from './components/user/cart'
 import Order from './components/order'
 import Returns_order from './components/returns_order'
+import Order2 from './components/order2'
 function App() {
   return (
     <Router>
@@ -30,6 +31,7 @@ function App() {
                  <Route path="/cart"  element={<Cart/>}/> 
                  <Route path="/order"  element={<Order/>}/> 
                  <Route path="/Returns_order"  element={<Returns_order/>}/> 
+                 <Route path="/Order2"  element={<Order2/>}/> 
                  
          
        </Routes>

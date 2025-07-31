@@ -69,7 +69,26 @@ const cart= await Cart.findOne({user:req.user}).populate('items.product')
 if(!cart){return res.status(404).json({message:'cart not found'})}
 //##########################
 const Quantity= cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+const total =cart?.items.reduce((sum,item)=>sum+item.product.price*item.quantity,0)||0;
+const money={Quantity,total}
 res.status(200).json(Quantity)
+}
+catch(error){return res.status(500).json({message:'server error',error:error.message})}
+
+
+}
+exports.cartMoney=async (req,res)=>{
+try{
+const cart= await Cart.findOne({user:req.user}).populate('items.product')
+if(!cart){return res.status(404).json({message:'cart not found'})}
+//##########################
+
+const total =cart?.items.reduce((sum,item)=>sum+item.product.price*item.quantity,0)||0;
+const totalCents=(Math.round(total))
+const estimatedTax=((Math.round(total))/10)
+const totalTax=totalCents+estimatedTax
+const money={total,totalCents,estimatedTax,totalTax}
+res.status(200).json(money)
 }
 catch(error){return res.status(500).json({message:'server error',error:error.message})}
 
