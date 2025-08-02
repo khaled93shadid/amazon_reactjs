@@ -5,7 +5,20 @@ import Footer from './footer.js'
 import '../style/footer.css'
 import logo from './icons/logo.png'
 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
+
+
+
+
 export default function Order(){
+const [open, setOpen] = React.useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
 
 return(
 <>
@@ -30,7 +43,7 @@ return(
     <div className='order_container_left'>
       <div className='margin_div_order'>   
          <p className='order_container_left_p1'> Add delivery address</p>
-         <button className='order_container_left_B1'>Add a new delivery address</button>
+         <button onClick={handleOpen} className='order_container_left_B1'>Add a new delivery address</button>
          </div>
           <div className='margin_div_order'> 
          <p className='order_container_left_p1'>Payment method</p>
@@ -92,6 +105,82 @@ return(
 </div>
 
 
+
+{/*modal start */}
+  <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className='modalBox'   >
+            <div className='modalBox_Row1'>
+                
+                <p className='modalBox_R1_p1'>Add an address</p>
+                <CloseIcon className='modalBox_R1_icon' />
+                
+            </div>
+            <div className='modalBody'>{/*modal body start */}
+            <div className='modalBox_Row2'>
+                
+                <p className='modalBox_R2_p1'>Enter a new shipping address</p>
+                <div className='modalBox_R2_horizontal'>
+                   <p className='modalBox_R2_p2'>Save time. Autofill your current location.</p>
+                   <button className='Autofill_button'>Autofill</button> 
+                </div>
+                <form className='order_form'>
+                   <label className='order_label_1'>Country/Region</label>
+                   <select className='select_order'>
+                  <option>Jordan</option>
+                    </select> 
+                    <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>Full name (First and Last name)</label>
+                        <input className='order_input_1' type='text'/>
+                    </div> {/*label repetation form end */}
+                    <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>Mobile phone for delivery</label>
+                        <input className='order_input_1' type='text'/>
+                        <p className='delivery_p'>May be used to assist delivery</p>
+                    </div> {/*label repetation form end */}
+                    <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>Address line 1</label>
+                        <input className='order_input_1' type='text' placeholder='Street address P.O.box, company name c/o'/>
+                        <input className='order_input_2' type='text' placeholder='Apartment,suite,unit,building,floor,etc.'/>
+                    </div> {/*label repetation form end */}
+                      <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>City</label>
+                        <input className='order_input_1' type='text'/>
+                    </div> {/*label repetation form end */}
+                    
+                      <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>State/Province/Region (optional)</label>
+                        <input className='order_input_1' type='text'/>
+                    </div> {/*label repetation form end */}
+                    
+                      <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>Area</label>
+                        <input className='order_input_1' type='text'/>
+                    </div> {/*label repetation form end */}
+                    
+                      <div className='form_repetition'>{/*label repetation form start */}
+                        <label className='order_label_1'>Postal code</label>
+                        <input className='order_input_1' type='text'/>
+                    </div> {/*label repetation form end */}
+                    <br/>
+                    <input type="checkbox"/> 
+                    <label className='label_checkBox'>Make this my default address</label>
+                    <br/>
+                    <br/>
+        
+                 <button className='order_form_b1'>Use this address</button>
+                </form>
+                
+            </div>
+          </div>{/*modal body end */}
+        </Box>
+  </Modal>
+
+{/*modal End */}
 
 </>
 )

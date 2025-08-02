@@ -193,7 +193,7 @@ return(
       <div className='marginLogo'>   <LocationOnIcon className='location_logo'  sx={{ color: 'white' }} /> </div>
          <div>
          <div> <a className='location-a1'>Deliver to</a> </div>
-         <div> <a className='location-a2'>Gaza</a></div>
+         <div> <a className='location-a2'>Jordan</a></div>
          </div>
      </div>
   

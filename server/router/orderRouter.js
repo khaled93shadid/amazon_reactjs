@@ -5,7 +5,7 @@ const {auth,adminAuth}=require('../middleware/authmiddleware')
 
 
 router.post('/placeOrder',auth,orderController.placeOrder)
-router.get('getAllOrders',auth,orderController.getAllOrders)
+router.get('/getAllOrders',auth,orderController.getAllOrders)
 
 
 module.exports=router;

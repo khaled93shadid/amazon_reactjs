@@ -11,13 +11,13 @@
 }
 .App2 {
   font-family: Arial, Helvetica, sans-serif;
- width: inherit;
-height: 200px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 
 .container_row1{display: grid;grid-template-columns:1fr 1fr 1fr 1fr ;
 background-color:transparent;
@@ -84,7 +84,7 @@ font-weight: Roboto;font-size: 13px;line-height: 16.90px;
 .main_body{background-color: rgb(235, 227, 227);}
 
 .relative_for_slider_row2{position: relative;padding-top:70px;background-color: white;
-margin-top: 20px;
+margin-top: 20px;width: 97.5%;margin-left: 20px;
 }
 .relative_for_slider_p{color:rgb(15, 17, 17);position: absolute;
 top:20px;left:20px;font-family: Roboto;

@@ -3,6 +3,7 @@
 font-weight: 700;}
 
 .order2_body{padding-left: 200px;padding-right: 200px;padding-top: 5px;}
+.order2_container{margin-bottom: 50px;}
 .order2_container_top{display:grid;grid-template-columns:25% 25% 50%;background-color: rgb(240, 242, 242);}
 .order2_container_top1{color:rgb(33, 33, 33);
 font-weight: 500;font-family: Roboto;margin-left: 20px;
@@ -11,9 +12,12 @@ font-weight: 500;font-family: Roboto;margin-left: 20px;
 font-weight: 420;font-family: Roboto;margin-top: -15px;}
 .order2_container{border: solid rgb(213, 217, 217) 1px;border-radius:5px;}
 
-.order2_container_bottom{display: grid;grid-template-columns:75% 25%;padding-bottom: 50px;padding-top: 30px;}
+.order2_container_bottom{display: grid;grid-template-columns:75% 25%;padding-bottom: 50px;padding-top: 30px;
+height: 100px;
+
+}
 .order2_container_bottom_l{display: grid;grid-template-columns:25% 75%;}
-.order2_container_bottom_l_img{width: 110px;margin-left: 20px;margin-top: 20px;}
+.order2_container_bottom_l_img{width: 90px;margin-left: 20px;margin-top: 20px;}
 .order2_container_bottom_l_p1{color:rgb(33, 33, 33);font-weight: 700;
 font-family: Roboto;
 }

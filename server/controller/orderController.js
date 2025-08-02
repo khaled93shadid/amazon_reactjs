@@ -17,7 +17,7 @@ const estimatedTax=total/100
 const order = new Orders({
 user:req.user,
 items:cart.items.map(item=>({product:item.product._id,quantity:item.quantity})),
-total,
+total:Math.round(total),
 totalCents,
 estimatedTax,
 status:'completed'
@@ -40,6 +40,6 @@ catch(error){res.status(500).json({message:error.message})}
 
 exports.getAllOrders=async(req,res)=>{
 const orders = await Orders.find({user:req.user}).populate('items.product');
-res.status(200).json(orders)
+res.json(orders)
 
 }
