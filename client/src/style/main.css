@@ -26,9 +26,8 @@ column-gap: 0px;
 top:300px;
 position: absolute;
 margin-left: 8px;
-
-
 }
+
 .container_row2{display: grid;grid-template-columns:310px 310px 310px 310px ;
 background-color:transparent;
 column-gap: 24px;

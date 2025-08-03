@@ -11,6 +11,9 @@ column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
 padding-bottom: 50px;
 
 }
+@media(width<900px){.container_div{display: grid;grid-template-columns:340px ;padding-left: 100px;padding-right:100px ;
+column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
+padding-bottom: 50px;}}
 .item-continer{border: solid rgb(213, 217, 217)1px;border-radius:8px;
 width: 310px;height:95px;padding: 12px;cursor: pointer;transition: background-color 0.15s;
 }

@@ -4,7 +4,7 @@ p{color: white;font-family: Roboto;}
 a{text-decoration: none;font-family: Roboto;color: white;}
 .all-products-container{margin-top:0px;display: grid;grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr ;
 }
-
+@media(max-width:800px){.all-products-container{margin-top:0px;display: grid;grid-template-columns:1fr 1fr 1fr ;}}
 .product-container{border: solid rgb(231, 231, 231) 1px;padding: 15px;}
 .product-img{width:150px;height:150px;margin-left:10px ;object-fit: contain;}
 .product-name{color: black;font-size:14px;height:30px ;}
