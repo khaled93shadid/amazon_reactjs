@@ -11,6 +11,7 @@ export default function MainProducts(){
 const navigate= useNavigate();
 const [productData,setproductData]=useState([])
 const [categoryData,setcategoryData]=useState([])
+const [addedToCart,setAddedToCart]=useState({})
   
 useEffect(()=>{
 const token = localStorage.getItem('token')
@@ -42,11 +43,15 @@ await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers:   {
 
   },[])
 
+const handleAddedToCart=(productId)=>{ setAddedToCart(prev=>({...prev,[productId]:true}));
+  
+  setTimeout(() =>  setAddedToCart(prev=>({...prev,[productId]:false})), 3000); }  
+
 const addToCart =async(productId)=>{
   const token=localStorage.getItem('token')
  await axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity:1},
-    { headers:{'Authorization':`${token}`} }).then( window.dispatchEvent(new Event('cartUpdated'))).catch(err=>console.log(err))
-
+    { headers:{'Authorization':`${token}`} }).then(res=>window.dispatchEvent(new Event('cartUpdated'))).catch(err=>console.log(err));
+    
       
 } //add to cart
 
@@ -82,9 +87,13 @@ return(
         <option  value="8">8</option>
         <option  value="9">9</option>
         <option  value="10">10</option>
-    </select>
+    </select> 
     <br/>
-    <button className="button-add-to-cart" onClick={()=>addToCart(product._id)}>Add to Cart</button>
+    <div className='aadedToCart_div'>
+    {addedToCart[product._id] && (  <div className='added_to_cart_div'> <img className='added_to_cart_img' src="https://supersimple.dev/projects/amazon/images/icons/checkmark.png"/> 
+    <p className='added_to_cart_p'>added to cart</p> </div>)}
+  </div>  
+    <button className="button-add-to-cart" onClick={()=>{addToCart(product._id);handleAddedToCart(product._id)} }>Add to Cart</button>
   </div>
   </div>         
 

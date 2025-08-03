@@ -7,8 +7,18 @@ import Footer from "../footer"
 import logo from '../icons/amazon-checkout -logo.png'
 import lock from '../icons/checkout-lock-icon.png'
 
-
-
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+import RadioGroup from '@mui/material/RadioGroup'
+{/*DATE START */}
+const today =dayjs();
+const deliveryDate1=today.add(9,'days')
+const deliveryDate1String=deliveryDate1.format('dddd,MMMM D')
+const deliveryDate2=today.add(3,'days')
+const deliveryDate2String=deliveryDate2.format('dddd,MMMM D')
+const deliveryDate3=today.add(1,'days')
+const deliveryDate3String=deliveryDate3.format('dddd,MMMM D')
+console.log(deliveryDate1String,deliveryDate2String,deliveryDate3String)
+{/*DATE END */}
 export default function Cart(){
 const navigate= useNavigate();      
 const[cart,setcart]=useState([])
@@ -98,7 +108,7 @@ return(
   <div className='forIterationProduct'> {/*div for iteration product start  */}
 {cart.map((item)=>(
 <div key={item._id} className="div_for_checkout_left ">{/*<!--div for checkout-left start -->*/}
-             <p className="checkout-left-1-Delivery-date">Delivery date:Friday, August 1</p> 
+             <p className="checkout-left-1-Delivery-date">Delivery date:{deliveryDate1String}</p> 
     <div className="checkout-left ">{/*!--checkout-left start -->*/}
              
          <div className="checkout-left-1">
@@ -116,18 +126,19 @@ return(
          <div className="checkout-left-2">
           <p className="checkout-left-2-horizontal-name">Choose a delivery option:</p>
           <div className="radio_button_horizontail">  
+           
             <input  className="radioButton js-radio-buttons" type="radio"   ></input>
-   <div><p className="checkout-left-2-horizontal-date">Friday, August 1</p> <p className="checkout-left-2-horizontal-shipping">FREE Shipping</p> </div>
+   <div><p className="checkout-left-2-horizontal-date">{deliveryDate1String}</p> <p className="checkout-left-2-horizontal-shipping">FREE Shipping</p> </div>
  
             <input  className="radioButton js-radio-buttons" type="radio"   ></input>
    <div><p className="checkout-left-2-horizontal-date"> 
-Monday, July 28</p> <p className="checkout-left-2-horizontal-shipping">4.99 -Shipping</p> </div>
+{deliveryDate2String}</p> <p className="checkout-left-2-horizontal-shipping">4.99 -Shipping</p> </div>
  
             <input  className="radioButton js-radio-buttons" type="radio"   ></input>
    <div><p className="checkout-left-2-horizontal-date">
-Saturday, July 26</p> <p className="checkout-left-2-horizontal-shipping">9.99 -Shipping</p> </div>
+{deliveryDate3String}</p> <p className="checkout-left-2-horizontal-shipping">9.99 -Shipping</p> </div>
  
-                    
+                
           </div>       
       
          </div>

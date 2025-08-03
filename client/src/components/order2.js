@@ -8,6 +8,14 @@ import axios from 'axios'
 
 export default function Order2(){
 const [orders,setOrders]=useState([])
+const [buyAgain,setBuyAgain]=useState({})
+
+const handleBuyAgain=(productId)=>{
+  setBuyAgain(prev =>({...prev,[productId]:true}) )
+   setTimeout(() =>setBuyAgain(prev =>({...prev,[productId]:false}) ), 2000);
+   
+}
+
 useEffect(()=>{
    const token = localStorage.getItem('token') 
    const fetchOrders=async()=>{
@@ -57,7 +65,7 @@ return(
                          <p className='order2_container_bottom_l_p1'>{item.product.name}</p>                     
                          <p className='order2_container_bottom_l_p2'>Arriving on: August 11</p>                     
                          <p className='order2_container_bottom_l_p2'>Quantity: {item.quantity}</p> 
-                         <button className='order2_b1'><div className='order2_flex'><img className='order2_b1_img' src='	https://supersimple.dev/projects/amazon/images/icons/buy-again.png'/>  <span className='order2_span1'> Buy it again</span></div>  </button>                    
+                         <button onClick={()=>handleBuyAgain(item.product._id)} className='order2_b1'><div className='order2_flex'><img className='order2_b1_img' src='	https://supersimple.dev/projects/amazon/images/icons/buy-again.png'/>  <span className='order2_span1'> {buyAgain[item.product._id]?'Added':'Buy it again'}</span></div>  </button>                    
                       </div> 
 
                   </div>

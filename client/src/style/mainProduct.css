@@ -139,3 +139,9 @@ justify-content: space-between
 .ListItemText1{color:rgb(17, 17, 17);cursor: pointer;font-size: 14px;font-family: Roboto;}
 .closeIcon{position: absolute;right:1px;top:1px;border: solid white 1px;padding: 2px;cursor: pointer;}
 .header-right-login_flag{width:20px;margin-right: 6px;}
+
+.added_to_cart_p{font-family: Roboto;color: rgb(6, 125, 98);
+font-size: 16px;}
+.added_to_cart_img{width: 20px;height: 20px;margin-right: 5px;}
+.added_to_cart_div{display: flex;align-items: center;}
+.aadedToCart_div{height: 30px;}
