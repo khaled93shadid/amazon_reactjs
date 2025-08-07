@@ -8,7 +8,7 @@ try{
 let cart = await Cart.findOne({user:req.user})
 if(!cart){cart=new Cart({user:req.user,items:[]})}
 //##############
-const existedItems = cart.items.find(item=>item.product.toString()===productId)
+const existedItems =await cart.items.find(item=>item.product.toString()===productId)
 
 if(existedItems){existedItems.quantity+=quantity}
 else{cart.items.push({product:productId,quantity})}
@@ -21,6 +21,7 @@ catch(error){res.status(500).json({message:'server error',error:error.message})}
 }
 
 
+
 exports.getCart = async(req,res)=>{
 
   const cart = await Cart.findOne({user:req.user}).populate('items.product')
@@ -28,6 +29,7 @@ exports.getCart = async(req,res)=>{
 
 
 }
+
 
 
 exports.removeFromCart=async (req,res)=>{
@@ -42,6 +44,7 @@ res.status(200).json({message:'item removed from cart successfully',cart})
 }
 catch(error){return res.status(500).json({message:'server error',error:error.message})}
 }
+
 
 exports.removeFromCart2=async (req,res)=>{
 const {productId}=req.params
@@ -77,6 +80,8 @@ catch(error){return res.status(500).json({message:'server error',error:error.mes
 
 
 }
+
+
 exports.cartMoney=async (req,res)=>{
 try{
 const cart= await Cart.findOne({user:req.user}).populate('items.product')

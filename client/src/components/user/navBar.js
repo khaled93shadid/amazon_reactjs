@@ -7,6 +7,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import flag from '../icons/jo-flag.jpg'
 /* sidebar drawer */
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -206,7 +207,7 @@ return(
   </div>
 
   <div className="header-right"> 
-    <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src='https://th.bing.com/th/id/R.116a21ea40b3f9ab2bf3678c1132be83?rik=DzsEnLMC%2f5lIfw&pid=ImgRaw&r=0' />AR</a> </div>
+    <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src={flag} />AR</a> </div>
     <div className="header-right-login"> <a href='/login'>{user.username1?`welcome${user.username}`:"login"}</a> </div>
       <div className="header-right-div1">
          <a href='Returns_order'>  <p className="header-right-div1-p1">Returns</p> </a>
