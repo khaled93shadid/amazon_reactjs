@@ -19,11 +19,15 @@ const deliveryDate3=today.add(1,'days')
 const deliveryDate3String=deliveryDate3.format('dddd,MMMM D')
 console.log(deliveryDate1String,deliveryDate2String,deliveryDate3String)
 {/*DATE END */}
+
+
+
 export default function Cart(){
 const navigate= useNavigate();      
 const[cart,setcart]=useState([])
 const[cartMoney,setCartMoney]=useState({})
 const[cartQuantity,setCartQuantity]=useState()
+const [deliveryOption,setDeliveryOption]=useState({})
 const token=localStorage.getItem('token')
 useEffect(()=>{
  const abortController = new AbortController();
@@ -82,9 +86,15 @@ const fetchCart=async()=>{
 
 //alert('Item removed successfully');
 
+
+}
+const handleDeliveryOption =(deliveryDate,itemId,delivery)=>{
+      
+      setDeliveryOption(prev=>({...prev,[itemId]:deliveryDate}))
+      cartMoney.delivery=delivery 
 }
 
-
+//const selectedDate=deliveryOption||deliveryDate1String
 
 return(
 <>
@@ -107,8 +117,9 @@ return(
 <div className="checkout-continer"> {/*!--checkout-container start -->*/}
   <div className='forIterationProduct'> {/*div for iteration product start  */}
 {cart.map((item)=>(
+      
 <div key={item._id} className="div_for_checkout_left ">{/*<!--div for checkout-left start -->*/}
-             <p className="checkout-left-1-Delivery-date">Delivery date:{deliveryDate1String}</p> 
+             <p className="checkout-left-1-Delivery-date">Delivery date:{deliveryOption[item._id]}</p> 
     <div className="checkout-left ">{/*!--checkout-left start -->*/}
              
          <div className="checkout-left-1">
@@ -127,14 +138,14 @@ return(
           <p className="checkout-left-2-horizontal-name">Choose a delivery option:</p>
           <div className="radio_button_horizontail">  
            
-            <input  className="radioButton js-radio-buttons" type="radio"   ></input>
+            <input onChange={()=>handleDeliveryOption(deliveryDate1String,item._id,0)} name={item._id}   className="radioButton js-radio-buttons" type="radio"   ></input>
    <div><p className="checkout-left-2-horizontal-date">{deliveryDate1String}</p> <p className="checkout-left-2-horizontal-shipping">FREE Shipping</p> </div>
  
-            <input  className="radioButton js-radio-buttons" type="radio"   ></input>
+            <input  onChange={()=>handleDeliveryOption(deliveryDate2String,item._id,4.99)} name={item._id}  className="radioButton js-radio-buttons" type="radio"   ></input>
    <div><p className="checkout-left-2-horizontal-date"> 
 {deliveryDate2String}</p> <p className="checkout-left-2-horizontal-shipping">4.99 -Shipping</p> </div>
  
-            <input  className="radioButton js-radio-buttons" type="radio"   ></input>
+            <input  onChange={()=>handleDeliveryOption(deliveryDate3String,item._id,9.99)} name={item._id}  className="radioButton js-radio-buttons" type="radio"   ></input>
    <div><p className="checkout-left-2-horizontal-date">
 {deliveryDate3String}</p> <p className="checkout-left-2-horizontal-shipping">9.99 -Shipping</p> </div>
  
@@ -167,7 +178,7 @@ return(
             
             <div className="checkout-right-horizontal_2">
                <p class="checkout-right-horizontal_2_p">${cartMoney.totalCents}</p>
-                  <p class="checkout-right-horizontal_2_p">$0</p>
+                  <p class="checkout-right-horizontal_2_p">${cartMoney.delivery}</p>
                   <p class="checkout-right-horizontal_2_p">${cartMoney.totalCents}</p>
                   <p class="checkout-right-horizontal_2_p">${cartMoney.estimatedTax}</p>
                   <p class="ordertotal">${cartMoney.totalTax}</p>
