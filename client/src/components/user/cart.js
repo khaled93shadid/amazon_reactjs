@@ -82,7 +82,7 @@ const fetchCart=async()=>{
        }//fetchCart 
        
  await axios.delete(`http://127.0.0.1:5000/api/users/removefromcart2/${productId}`, { headers:{'Authorization':`${token}`} }
- ).then(window.dispatchEvent(new Event('cartUpdated')),fetchCart() ).catch(err=>console.log(err))
+ ).then(window.dispatchEvent(new Event('cartUpdated')),fetchCart()).catch(err=>console.log(err))
 
 //alert('Item removed successfully');
 
