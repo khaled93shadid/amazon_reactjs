@@ -33,10 +33,10 @@ useEffect(()=>{
  const abortController = new AbortController();
  const fetchCart=async()=>{
 await axios.get('http://127.0.0.1:5000/api/users/getcart',{ headers:{'Authorization':`${token}`} }
-      ).then(res=> setcart(res.data.items)).catch(err=>alert(err))
+      ).then(res=> setcart(res.data.items)).catch(err=>console.log(err))
 
 await axios.get('http://127.0.0.1:5000/api/users/cartMoney',{ headers:{'Authorization':`${token}`} }
-      ).then(res=> setCartMoney(res.data)).catch(err=>alert(err))
+      ).then(res=> setCartMoney(res.data)).catch(err=>console.log(err))
  
 
 await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
@@ -116,7 +116,7 @@ return(
 
 <div className="checkout-continer"> {/*!--checkout-container start -->*/}
   <div className='forIterationProduct'> {/*div for iteration product start  */}
-{cart.map((item)=>(
+{(cart?cart:[]).map((item)=>(
       
 <div key={item._id} className="div_for_checkout_left ">{/*<!--div for checkout-left start -->*/}
              <p className="checkout-left-1-Delivery-date">Delivery date:{deliveryOption[item._id]}</p> 

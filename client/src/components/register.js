@@ -32,7 +32,7 @@ try{
 const res = await axios.post("http://127.0.0.1:5000/api/users/register",userdata);
 console.log("regestration sucsussful",res.data)
 alert('you register sucssufuly')
-navigate('/')
+navigate('/login')
 
 }
 catch(error){console.log(error)}
