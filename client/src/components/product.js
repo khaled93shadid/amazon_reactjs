@@ -108,7 +108,7 @@ useEffect(()=>{
   return (
     <>
 
-      <h1>products</h1>
+      <h1>Products</h1>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
 
         <TableHead>
@@ -135,29 +135,20 @@ useEffect(()=>{
               <TableCell ><button className="button1" onClick={async () => {
                 if (window.confirm("are you sure you want to delete this product")) {
                   const token = localStorage.getItem('token')
-                  const res = await axios.delete(`http://127.0.0.1:5000/api/users/deleteProduct/${row._id}`, {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      "Authorization": `${token}`
-                    }
-                  })
-
-
-                  //window.location.reload();
-                  setproductData(productData.filter(r => r._id !== row._id))
-                  console.log(res.data)
+                  await axios.delete(`http://127.0.0.1:5000/api/users/deleteProduct/${row._id}`, {
+                  headers: {"Authorization": `${token}`}}).then(setproductData(productData.filter(r => r._id !== row._id))
+                  ).catch(err=>console.log(err))
+                  //window.location.reload()    
                 }//end if (delete)
-              }} >Delete</button>
+                }} >Delete</button>
 
-                <button className='button1' onClick={() => {
-                  handleOpen();
-                  setUpdatedId(row._id)
-                }}>Update</button></TableCell>
+                <button className='button1' onClick={() => {handleOpen();setUpdatedId(row._id)}}>Update</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <h1>Add products</h1>
+
+      <h1>Add product</h1>
       <form onSubmit={async (e) => {
         e.preventDefault();
         const newProduct1 = { name, price, dis, image, stars, quantity, category }
@@ -171,29 +162,20 @@ useEffect(()=>{
         newProduct.append('category',category)
         console.log(newProduct)
         */
-        try {
-          const token = localStorage.getItem('token')
+      
+          const token=localStorage.getItem('token')
 
-          const res = await axios.post("http://127.0.0.1:5000/api/users/createProduct", newProduct1, {
-            headers: {
-              //'Content-Type':'application/json',
-              "Authorization": `${token}`
+          await axios.post("http://127.0.0.1:5000/api/users/createProduct", newProduct1, 
+            {headers: {"Authorization": `${token}`}}).then(()=>{
+              alert('product added successfully')
+              setproductData([...productData, newProduct1])
+              setname(''); setprice('');setdis('');setquantity('');
+              setcategory('');setimage('');setstars('') 
+               }).catch(err=>console.log(err))
+          
 
-            }
-          })
-          alert('product added successfully')
-          setproductData([...productData, newProduct1])
-          setname('');
-          setprice('');
-          setdis('');
-          setquantity('');
-          setcategory('');
-          setimage('')//null
-          setstars('')//null
-
-
-        }
-        catch (error) { return console.log(error) }
+        
+        
 
 
       }}>
@@ -251,25 +233,15 @@ useEffect(()=>{
             </Typography>
             <form onSubmit={async (e) => {
               e.preventDefault();
-              try {
+            
 
                 const token = localStorage.getItem('token')
                 const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage, quantity: updatedquantity, category: updatedcategory }
-                const res = await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${updatedId}`, { product1: updatedproduct }, {
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: token
-                  }
-                })
-
-                setproductData(productData.map(item => item.id === updatedId ? { ...item, updatedproduct } : item))
-                console.log(res.data)
-                console.log(productData)
-                alert('product updated successfully')
-              }
-
-              catch (error) { return console.log(error) }
-            }}>
+                await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${updatedId}`,
+                   { product1: updatedproduct }, {headers: {Authorization: token}}
+                  ).then( setproductData(productData.map(item => item.id === updatedId ? { ...item, updatedproduct } : item))).catch(err=>console.log(err))
+                alert('product updated successfully') }}>
+                  
               <input className='input11' type='text' placeholder='product name' value={updatedname} onChange={(e) => setupdatedname(e.target.value)} />
               <br />
               <input className='input11' type='text' placeholder='product price' value={updatedprice} onChange={(e) => setupdatedprice(e.target.value)} />

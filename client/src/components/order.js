@@ -117,8 +117,7 @@ return(
             <div className='modalBox_Row1'>
                 
                 <p className='modalBox_R1_p1'>Add an address</p>
-                <CloseIcon className='modalBox_R1_icon' />
-                
+               <CloseIcon className='modalBox_R1_icon' />             
             </div>
             <div className='modalBody'>{/*modal body start */}
             <div className='modalBox_Row2'>

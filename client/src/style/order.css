@@ -42,8 +42,10 @@ line-height: 25px;width:400px;}
   width:600px;box-Shadow: 24;
 background-color: white;
 border-radius: 8px;
-height: auto;
-padding-top: 320px;
+height: 100vh;
+padding-top: 2px;
+overflow: scroll;
+scrollbar-width: none;
 
 
 }
