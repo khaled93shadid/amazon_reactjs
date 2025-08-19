@@ -66,7 +66,7 @@ export default function Product() {
   const [updateddis, setupdateddis] = useState('')
   const [updatedquantity, setupdatedquantity] = useState('')
   const [updatedcategory, setupdatedcategory] = useState('')
-  const [updatedId, setUpdatedId] = useState('')
+  const [id, setId] = useState({})
   const [updatedimage, setupdatedimage] = useState('')
 
   const [open, setOpen] = React.useState(false);
@@ -142,7 +142,7 @@ useEffect(()=>{
                 }//end if (delete)
                 }} >Delete</button>
 
-                <button className='button1' onClick={() => {handleOpen();setUpdatedId(row._id)}}>Update</button></TableCell>
+                <button className='button1' onClick={() => {handleOpen();setId(row._id)}}>Update</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -228,19 +228,22 @@ useEffect(()=>{
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Update product
-            </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h2"> Update product</Typography>
             <form onSubmit={async (e) => {
               e.preventDefault();
-            
-
-                const token = localStorage.getItem('token')
-                const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage, quantity: updatedquantity, category: updatedcategory }
-                await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${updatedId}`,
-                   { product1: updatedproduct }, {headers: {Authorization: token}}
-                  ).then( setproductData(productData.map(item => item.id === updatedId ? { ...item, updatedproduct } : item))).catch(err=>console.log(err))
-                alert('product updated successfully') }}>
+              const token = localStorage.getItem('token')
+              const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage, quantity: updatedquantity, category: updatedcategory }
+              try{
+                
+              const response= await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${id}`,updatedproduct , {headers: {Authorization: token}})
+              setproductData(prevData=> prevData.map(item => item._id === id ?response.data.product1 : item))  
+              alert('product updated successfully') 
+              handleClose();
+              }//try
+              catch(error){console.log(error)}
+              }}
+              
+              >
                   
               <input className='input11' type='text' placeholder='product name' value={updatedname} onChange={(e) => setupdatedname(e.target.value)} />
               <br />
