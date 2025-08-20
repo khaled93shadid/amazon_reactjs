@@ -17,7 +17,7 @@ exports.getCategorybyiD=async(req,res)=>{
 const {id} = req.params;
 try{
  const category1= await Category.findById({id:id})
-  res.status(200).json(category1)
+  res.status(200).json(category1.name)
 }
 catch(error){res.status(500).json({message:error.message})}
 

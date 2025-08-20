@@ -12,7 +12,7 @@ const navigate= useNavigate();
 const [productData,setproductData]=useState([])
 const [categoryData,setcategoryData]=useState([])
 const [addedToCart,setAddedToCart]=useState({})
-const [quantity,setquantity]=useState({})
+const [quantity,setquantity]=useState(1)
 
 useEffect(()=>{
 const token = localStorage.getItem('token')
@@ -82,7 +82,7 @@ return(
   <div className="vertical-last-div">
     <p className="product-price">{product.price}</p>
    <select  value={quantity} onChange={(e)=>setquantity(Number(e.target.value))}  className="horizontal_select">
-        <option    defaultValue="1">1</option>
+        <option    value="1">1</option>
         <option value="2">2</option>
         <option  value="3">3</option>
         <option  value="4">4</option>

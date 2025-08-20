@@ -83,7 +83,9 @@ export default function Product() {
      
          await axios.get("http://127.0.0.1:5000/api/users/getAllProducts", { headers: { Authorization: token } }).then(res=>setproductData(res.data)).catch(err=>alert(err))
         
-        await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers: { Authorization: token } }).then(res=>setApiCategory(res.data)).catch(err=>alert(err))
+        await axios.get('http://127.0.0.1:5000/api/users/getAllCategory', { headers: { Authorization: localStorage.getItem('token') } }  
+        ).then(res=>setApiCategory(res.data)).catch(err=>console.log(err))
+
 
                                   }
 
@@ -97,12 +99,12 @@ useEffect(()=>{
   console.log(productData)
 
 },[productData])
-
 useEffect(()=>{
- 
+
   console.log(apiCategory)
- 
+
 },[apiCategory])
+
 
 
   return (

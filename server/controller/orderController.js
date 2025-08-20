@@ -1,7 +1,7 @@
 const Orders =require('../model/orders')
 const Cart =require('../model/cart')
 const Product =require('../model/product')
-const orders = require('../model/orders')
+//const orders = require('../model/orders')
 
 
 exports.placeOrder=async(req,res)=>{
