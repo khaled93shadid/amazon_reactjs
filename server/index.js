@@ -3,6 +3,7 @@ const productRouter = require('./router/productRouter')
 const categoryRouter = require('./router/categoryRouter')
 const cartRouter=require('./router/cartRouter')
 const orderRouter=require('./router/orderRouter')
+const addressRouter=require('./router/addressRouter')
 const connectdb = require('./config/db')
 const express = require('express')
 const dotenv = require ('dotenv')
@@ -19,6 +20,7 @@ app.use('/api/users',productRouter)//api/product
 app.use('/api/users',categoryRouter)//api/categories
 app.use('/api/users',cartRouter)//api/cart
 app.use('/api/users',orderRouter)//api/cart
+app.use('/api/users',addressRouter)//api/cart
 
 
 
