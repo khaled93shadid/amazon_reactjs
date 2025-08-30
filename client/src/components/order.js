@@ -143,7 +143,7 @@ return(
                   e.preventDefault();
                   const token = localStorage.getItem('token')
                   const address={fullname,phone,street,apartment,city,state,area,postalCode}
-                  await axios.post('http://127.0.0.1:5000/api/user/createAddress',address,{headers:{'Authorization':`${token}`}}
+                  await axios.post('http://127.0.0.1:5000/api/user/createAddress',{address},{headers:{'Authorization':`${token}`}}
                   ).then(()=>{alert('delivery address added successfuly');navigate('/order2')}).catch(error=>console.log(error))
                 }}>
                    <label className='order_label_1'>Country/Region</label>

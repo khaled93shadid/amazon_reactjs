@@ -8,7 +8,7 @@ const [quantity,setquantity]=useState(1)
 return(
 <>
 
-<div key={product._id} className="product-container">
+<div className="product-container">
 <div className="vertical-first-div">
   <img className="product-img" src={product.image}  alt=''/>
   <p className="product-name">{product.name}

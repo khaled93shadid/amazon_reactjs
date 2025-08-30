@@ -72,7 +72,7 @@ export default function Cart() {
             await axios.post('http://127.0.0.1:5000/api/users/placeOrder', {}, { headers: { 'Authorization': `${token}` } }
             ).catch(err => alert(err))
             alert('order added successfuly')
-            navigate('/order')
+            navigate('/order2')
 
 
 
@@ -186,7 +186,7 @@ export default function Cart() {
                                                 <p class="checkout-right-horizontal_2_p">${cartMoney.delivery}</p>
                                                 <p class="checkout-right-horizontal_2_p">${(cartMoney.totalCents+Math.round(cartMoneyDelivery))||0}</p>
                                                 <p class="checkout-right-horizontal_2_p">${cartMoney.estimatedTax}</p>
-                                                <p class="ordertotal">${cartMoney.totalTax+cartMoneyDelivery||0}</p>
+                                                <p class="ordertotal">${cartMoney.totalTax+Math.round(cartMoneyDelivery)||0}</p>
                                           </div>
                                     </div>
 
