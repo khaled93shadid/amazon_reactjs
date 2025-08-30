@@ -5,7 +5,7 @@ exports.createAddress = async (req, res) => {
 
   const { country, fullname, phone, street, apartment, city, state, area, postalCode } = req.body;
   try{
-    const address = new Address ({country, fullname, phone, street, apartment, city, state, area, postalCode })
+    const address = new Address ({country:'jordan', fullname, phone, street, apartment, city, state, area, postalCode })
     await address.save()
     res.status(200).json('address added successfully')
   }

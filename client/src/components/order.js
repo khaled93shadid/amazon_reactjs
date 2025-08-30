@@ -3,19 +3,33 @@ import cart from './icons/cart-icon.png'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import '../style/footer.css'
 import logo from './icons/logo.png'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
 
 
 
 
 export default function Order(){
+const navigate = useNavigate() 
 const [open, setOpen] = React.useState(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
+/*address data */
+const [fullname,setfullname]=useState('')
+const [phone,setphone]=useState('')
+const [street,setstreet]=useState('')
+const [apartment,setapartment]=useState('')
+const [city,setcity]=useState('')
+const [state,setstate]=useState('')
+const [area,setarea]=useState('')
+const [postalCode,setpostalCode]=useState('')
+/*END address data */
 
 return(
 <>
@@ -84,10 +98,10 @@ return(
 </div>{/*order_container end */}
 
 
-<div className='footer_div_1' ><a> <p className='footer_a1'>Back to top </p> </a> </div>
+<div className='footer_div_1' ><a href='f'> <p className='footer_a1'>Back to top </p> </a> </div>
 <div className='footer_div_3'>
    
-    <div><img className='footer_div_3_logo' src={logo} /> </div>
+    <div><img className='footer_div_3_logo' src={logo} alt=''/> </div>
     <div className='footer_div_3_2'>
         <p className='footer_div_3_p'>English</p>
         <p className='footer_div_3_p'>$ USD-U.S.dOLLAR</p>
@@ -124,43 +138,52 @@ return(
                    <p className='modalBox_R2_p2'>Save time. Autofill your current location.</p>
                    <button className='Autofill_button'>Autofill</button> 
                 </div>
-                <form className='order_form'>
+
+                <form className='order_form' onSubmit={async(e)=>{
+                  e.preventDefault();
+                  const token = localStorage.getItem('token')
+                  const address={fullname,phone,street,apartment,city,state,area,postalCode}
+                  await axios.post('http://127.0.0.1:5000/api/user/createAddress',address,{headers:{'Authorization':`${token}`}}
+                  ).then(()=>{alert('delivery address added successfuly');navigate('/order2')}).catch(error=>console.log(error))
+                }}>
                    <label className='order_label_1'>Country/Region</label>
                    <select className='select_order'>
                   <option>Jordan</option>
                     </select> 
                     <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>Full name (First and Last name)</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text' value={fullname} onChange={(e)=>{setfullname(e.target.value)}}/>
                     </div> {/*label repetation form end */}
                     <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>Mobile phone for delivery</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text'value={phone} onChange={(e)=>{setphone(e.target.value)}}/>
                         <p className='delivery_p'>May be used to assist delivery</p>
                     </div> {/*label repetation form end */}
                     <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>Address line 1</label>
-                        <input className='order_input_1' type='text' placeholder='Street address P.O.box, company name c/o'/>
-                        <input className='order_input_2' type='text' placeholder='Apartment,suite,unit,building,floor,etc.'/>
+                        <input className='order_input_1' type='text' placeholder='Street address P.O.box, company name c/o'
+                        value={street} onChange={(e)=>{setstreet(e.target.value)}}/>
+                        <input className='order_input_2' type='text' placeholder='Apartment,suite,unit,building,floor,etc.'
+                        value={apartment} onChange={(e)=>{setapartment(e.target.value)}}/>
                     </div> {/*label repetation form end */}
                       <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>City</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text' value={city} onChange={(e)=>{setcity(e.target.value)}}/>
                     </div> {/*label repetation form end */}
                     
                       <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>State/Province/Region (optional)</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text' value={state} onChange={(e)=>{setstate(e.target.value)}} />
                     </div> {/*label repetation form end */}
                     
                       <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>Area</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text' value={area} onChange={(e)=>{setarea(e.target.value)}}/>
                     </div> {/*label repetation form end */}
                     
                       <div className='form_repetition'>{/*label repetation form start */}
                         <label className='order_label_1'>Postal code</label>
-                        <input className='order_input_1' type='text'/>
+                        <input className='order_input_1' type='text' value={postalCode} onChange={(e)=>{setpostalCode(e.target.value)}}/>
                     </div> {/*label repetation form end */}
                     <br/>
                     <input type="checkbox"/> 
@@ -168,7 +191,7 @@ return(
                     <br/>
                     <br/>
         
-                 <button className='order_form_b1'>Use this address</button>
+                 <button type='submit' className='order_form_b1'>Use this address</button>
                 </form>
                 
             </div>
