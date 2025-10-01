@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 p{color: white;font-family: Roboto;}
 a{text-decoration: none;font-family: Roboto;color: white;}
@@ -25,13 +25,15 @@ border-radius: 20px;width: 152px;margin-top: 20px;cursor: pointer;color: rgb(53,
 
 
 .header-main{background-color:rgb(19, 25, 33);display:flex;flex-direction:row;justify-content: space-between;align-items: center;height:50px ;
-position: fixed;left: 0px;right: 0px;z-index: 400;top:0px;}
+position: fixed;left: 0px;right: 0px;z-index: 400;top:0px;padding: 3px;}
 
 
 .header-left{width:200px;display: flex;justify-content: space-between;}
 
-.header-logo{width:80px;height:25px; margin-left: 15px; cursor: pointer;height: 30px;padding:5px;transition: border 1s;}
-.header-logo:hover{border: solid white 1px;}
+.header-logo{width:80px;height:25px; margin-left: 15px; cursor: pointer;height: 30px;padding:5px;transition: border 0.15s;
+border: solid rgb(19, 25, 33) 1px;}
+.header-logo:hover{border-color: white;}
+
 
 
 .header-middle{flex:1;display: flex;align-items: center;max-width: 600px;
@@ -45,18 +47,20 @@ border-bottom-right-radius:2px; cursor: pointer;}
 .header-middle-search-button-img{width:15px;padding: 5px;}
 
 
-.header-right-login{margin-right: 20px;cursor: pointer;transition:border 0.15s;height: 25px;padding: 5px;}
-.header-right-login:hover{border:solid white 1px ;}
+.header-right-login{margin-right: 20px;cursor: pointer;transition:border 0.15s;height: 25px;padding: 5px;transition: border 0.15s;
+border: solid rgb(19, 25, 33) 1px;}
+.header-right-login:hover{border-color: white;}
 .header-right{display: flex;flex-direction: row;align-items: center;width:300px}
 .header-right-div2{display: flex;align-items: center;justify-content: space-between;cursor: pointer;height: 30px;
-  padding:5px;
-transition:border 0.15s;
+  padding:5px;transition: border 0.15s;
+border: solid rgb(19, 25, 33) 1px;
 }
-.header-right-div2:hover{border:solid white 1px ;}
+.header-right-div2:hover{border-color: white;}
 .header-right-div2-img{width: 40px;}
 
-.header-right-div1{position: relative;margin-right: 10px;cursor: pointer;transition:border 1s;height: 30px;padding: 5px;}
-.header-right-div1:hover{border:solid white 1px ;}
+.header-right-div1{position: relative;margin-right: 10px;cursor: pointer;transition:border 1s;height: 30px;padding: 5px;transition: border 0.15s;
+border: solid rgb(19, 25, 33) 1px;}
+.header-right-div1:hover{border-color: white;}
 .header-right-div1-p1{position: absolute;top:-10px;left:5px;font-size: 13px;}
 .header-right-div1-p2{font-size: 13px;font-weight: bold;}
 
@@ -66,7 +70,7 @@ transition:border 0.15s;
 
 
 .navbar_container{background-color:rgb(29, 39, 53);
-display:flex;justify-content: left;margin-top:50px ;
+display:flex;justify-content: left;margin-top:55px ;padding: 2px;
 
 
 
@@ -107,19 +111,21 @@ text-decoration-style: solid ;
 
 
 .nav_p_div{padding-left:2px;
-  padding-right:2px;
+  
   margin-left:13px ;
-  padding-bottom: 10px;
-  padding-top: 2px;
+
   align-content: center;
 transition: border 0.15s;
+border: solid rgb(29, 39, 53) 1px;
+
 }
-nav_p_div:hover{border:solid white 1px;
-  border-radius: 2px;
+.nav_p_div:hover{border-color: white;border-radius: 3px;
 }
 
 
-.location{display:grid ;grid-template-columns:25% 75%;cursor: pointer;}
+.location{display:grid ;grid-template-columns:25% 75%;cursor: pointer;transition: border 0.15s;
+border: solid rgb(19, 25, 33) 1px;}
+.location:hover{border-color: white;}
 .location-a1{color: rgb(204, 204, 204);font-size: 12px;font-family: Roboto;}
 .location-a2{color:white;font-size: 14px;font-family: Roboto;font-weight: 700;line-height: -10px;}
 .location_logo{margin-top: 15px;}
