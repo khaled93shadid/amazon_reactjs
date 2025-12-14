@@ -17,11 +17,11 @@ export default function Main(){
 
 
 return(
-<>
+<nav className='body'>
 <MainProductsNav/>
 
 
-<div className='positionRelative'>{/* position relative start for slider container1  */}
+
 
 
   <div className="App">  {/* slider start */}
@@ -159,7 +159,7 @@ return(
 
 </div>{/* container row1 end first 4 cards*/}
 
-</div  >{/* position relative end for slider container1  */}
+
 
 
 
@@ -301,6 +301,7 @@ return(
 
 
 <div className='relative_for_slider_row2'>{/* relativeSlider start */}
+      <p className='relative_for_slider_p'>Popular products in Wireless internationally</p>
    <div className="App2">  {/* slider start */}
       <CustomSlider2>
         {images2.map((image, index) => {
@@ -310,10 +311,11 @@ return(
      
    </div>{/* slider end */}
 
-   <p className='relative_for_slider_p'>Popular products in Wireless internationally</p>
+  
 </div>{/* relativeSlider end */}
 
 <div className='relative_for_slider_row2'>{/* relativeSlider start */}
+      <p className='relative_for_slider_p'>Best Sellers in Sports & Outdoors</p>
  <div className="App2">  {/* slider start */}
       <CustomSlider2>
         {images3.map((image, index) => {
@@ -322,12 +324,12 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
-    <p className='relative_for_slider_p'>Best Sellers in Sports & Outdoors</p>
+   
 </div>{/* relativeSlider end */}
 
 
 
-<div className='container_row22'>{/* container row2 start first 4 cards*/}
+<div className='container_row2'>{/* container row2 start first 4 cards*/}
 
    <div className='container_row1_1'>{/*  first card start*/}
        
@@ -472,6 +474,7 @@ return(
 
 
 <div className='relative_for_slider_row2'>{/* relativeSlider start */}
+      <p className='relative_for_slider_p'>International Top Sellers for you</p>
 <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images4.map((image, index) => {
@@ -480,10 +483,11 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
-     <p className='relative_for_slider_p'>International Top Sellers for you</p>
+    
 </div>{/* relativeSlider end */}
 
 <div className='relative_for_slider_row2'>{/* relativeSlider start */}
+       <p className='relative_for_slider_p'>Best Sellers in Clothing, Shoes & Jewelry</p>
  <div className="App">  {/* slider start */}
       <CustomSlider2>
         {images5.map((image, index) => {
@@ -492,11 +496,11 @@ return(
       </CustomSlider2>
      
     </div>{/* slider end */}
-     <p className='relative_for_slider_p'>Best Sellers in Clothing, Shoes & Jewelry</p>
+   
 </div>{/* relativeSlider end */}
 
 
-<div className='container_row22'>{/* container row2 start first 4 cards*/}
+<div className='container_row2'>{/* container row2 start first 4 cards*/}
 
    <div className='container_row1_1'>{/*  first card start*/}
        
@@ -644,6 +648,6 @@ return(
 </div> {/* main_body_div_end*/}
 
 <Footer/>
-</>
+</nav>
 )
 }

@@ -189,13 +189,13 @@ return(
 {/* first navbar  */}
 <div className="header-main"> 
 
-     <div className="header-left"><a href="/"><img className="header-logo"  src={logo} /></a> 
+     <div className="header-left"><a href="/"><img className="header-logo"  src={logo}  /></a> 
      <div className='location'>
       <div className='marginLogo'>   <LocationOnIcon className='location_logo'  sx={{ color: 'white' }} /> </div>
          <div>
          <div> <a className='location-a1'>Deliver to</a> </div>
          <div> <a className='location-a2'>Jordan</a></div>
-         </div>
+         </div> 
      </div>
   
 

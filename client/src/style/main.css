@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-body{margin-right:0px;margin-left: 0px;}
+.body{margin-right:0px;margin-left: 0px;overflow-x: hidden;}
+
 .App {
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 100vw;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+  
 }
 .App2 {
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width:100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,28 +18,31 @@ body{margin-right:0px;margin-left: 0px;}
 }
 
 
-.container_row1{display: grid;grid-template-columns:1fr 1fr 1fr 1fr ;
+.container_row1{
+  
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 background-color:transparent;
-width: 100%;
-column-gap: 0px;
-top:300px;
-position: absolute;
-margin-left: 8px;
+width: 100vw;
+column-gap: 10px;
+
+
 }
 
-.container_row2{display: grid;grid-template-columns:310px 310px 310px 310px ;
+.container_row2{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 background-color:transparent;
-column-gap: 24px;
-margin-top: 215px;
+column-gap: 10px;
+row-gap: 10px;
 border-top:solid  rgb(235, 227, 227)20px ;
-margin-left: 10px;
-}
-.container_row22{display: grid;grid-template-columns:310px 310px 310px 310px ;
-background-color:transparent;
-column-gap: 24px;
-margin-top: 0px;
-border-top:solid  rgb(235, 227, 227)20px ;
-margin-left: 10px;
+
 }
 
 
@@ -82,9 +84,14 @@ font-weight: Roboto;font-size: 13px;line-height: 16.90px;
 
 .main_body{background-color: rgb(235, 227, 227);}
 
-.relative_for_slider_row2{position: relative;padding-top:70px;background-color: white;
-margin-top: 20px;width: 97.5%;margin-left: 20px;
+.relative_for_slider_row2{
+  width: 100vw;display: flex;flex-direction: column;
 }
-.relative_for_slider_p{color:rgb(15, 17, 17);position: absolute;
-top:20px;left:20px;font-family: Roboto;
-font-size: 21px;font-weight: 700;}
+.relative_for_slider_p{color:rgb(15, 17, 17);
+font-family: Roboto;
+font-size: 21px;font-weight: 700; margin-bottom: -10px;text-align: left;}
+
+@media screen and (width<600px) {
+ .relative_for_slider_p{font-size: 15px;} 
+.container_row1_1_p{font-size: 15px;}
+}
