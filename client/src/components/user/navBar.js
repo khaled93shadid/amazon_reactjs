@@ -216,13 +216,13 @@ return(
       </div>  
       <a href="/checkout.html"  >   
       <div className="header-right-div2">
-           <a href='/cart' > 
+           <a href='/' > 
              <div className="header-right-div2-img-p">
                   <img className="header-right-div2-img" src={cart}/> 
                  <p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
             </div>
            </a> 
-        <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>
+        <a href='/' >  <p className="header-right-div2-p">cart</p> </a>
       </div>
        </a>
 
