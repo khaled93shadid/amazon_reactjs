@@ -91,7 +91,7 @@ font-weight: Roboto;font-size: 13px;line-height: 16.90px;
 .relative_for_slider_last{margin-bottom: 50px;}
 .relative_for_slider_p{color:rgb(15, 17, 17);
 font-family: Roboto;
-font-size: 21px;font-weight: 700; margin-bottom: -10px;text-align: left;}
+font-size: 21px;font-weight: 700; margin-bottom: -10px;margin-left: 5px;}
 
 @media screen and (width<600px) {
  .relative_for_slider_p{font-size: 15px;} 
