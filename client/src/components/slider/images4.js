@@ -24,16 +24,7 @@ const images4 = [
       "https://m.media-amazon.com/images/I/718f8oZHkSL._AC_SY200_.jpg",
     imgAlt: "img-4"
   },
-  {
-    imgURL:
-      "https://m.media-amazon.com/images/I/71ywz3xycWL._AC_SY200_.jpg",
-    imgAlt: "img-5"
-  },
-  {
-    imgURL:
-      "https://m.media-amazon.com/images/I/61EpVSwr1sL._AC_SY200_.jpg",
-    imgAlt: "img-1"
-  },
+
 
 ];
 

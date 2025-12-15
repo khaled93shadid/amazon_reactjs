@@ -463,7 +463,7 @@ return(
 </div>{/* container row2 end second 4 cards*/}
 
 
-<div className='relative_for_slider_row2'>{/* relativeSlider start */}
+<div  className='relative_for_slider_row2 relative_for_slider_last'>{/* relativeSlider start */}
       <p className='relative_for_slider_p'>International Top Sellers for you</p>
 <div className="App">  {/* slider start */}
       <CustomSlider2>
