@@ -24,8 +24,13 @@ border-radius: 20px;width: 152px;margin-top: 20px;cursor: pointer;color: rgb(53,
 /* header */
 @media screen and (width<600px) {
 
+  
+  .nav_p{padding-right: 4px;}
+
 
 }
+
+
 .header-main{background-color:rgb(19, 25, 33);display:flex;justify-content: space-between;align-items: center;
 width: 100vw ;padding: 5px;flex-wrap: wrap;align-content: center;row-gap: 10px;}
 
@@ -37,7 +42,7 @@ border: solid rgb(19, 25, 33) 1px;}
 
 .header-middle{flex:1;display: flex;align-items: center;max-width: 600px;}
 .header-middle-search{flex:1;
-  height: 28px;width:5px;border-radius: 2px;border: none;
+  height: 28px;width:250px;border-radius: 2px;border: none;
 }
 
 
@@ -71,14 +76,10 @@ border: solid rgb(19, 25, 33) 1px;}
 /* header */
 
 
+
+
 /* header2 */
-@media screen and (width<600px) {
-.nav_p{font-size: 11px;
 
-}
-
-
-}
 .navbar_container{background-color:rgb(29, 39, 53);
 display:flex;justify-content: left;padding: 5px;
 flex-wrap: wrap;width: 100vw;

@@ -71,6 +71,7 @@ font-weight: Roboto;font-size: 13px;line-height: 16.90px;margin-top: -10px;
 }
 .card_last_p{color:rgb(33, 98, 161) ;cursor: pointer;
 font-weight: Roboto;font-size: 13px;line-height: 16.90px;
+
 }
 .card_last_p:hover{color:rgb(17, 52, 87) ;}
 .card_last_p1:hover{color:rgb(17, 52, 87) ;}

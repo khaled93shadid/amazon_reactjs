@@ -244,6 +244,12 @@ for Every Home</p>
 no console required</p>
 
     </div>
+    <div className='footer_div_4_1'>
+      <p className='footer_div_4_p1'>Blink</p>
+      <p className='footer_div_4_p2' >Smart Security
+for Every Home</p>
+
+    </div>
 
 </div>
 

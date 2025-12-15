@@ -48,6 +48,7 @@ return(
                 <p className='container_row1_1_column1_p'>Cleaning Tools</p>
 
            </div>
+
            <div  className='container_row1_1_column1'>
                 <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Sept/HomeStorage_1x._SY116_CB563137408_.jpg'/>
                 <p className='container_row1_1_column1_p'>Home Storage</p>
@@ -314,18 +315,7 @@ return(
   
 </div>{/* relativeSlider end */}
 
-<div className='relative_for_slider_row2'>{/* relativeSlider start */}
-      <p className='relative_for_slider_p'>Best Sellers in Sports & Outdoors</p>
- <div className="App2">  {/* slider start */}
-      <CustomSlider2>
-        {images3.map((image, index) => {
-          return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
-        })}
-      </CustomSlider2>
-     
-    </div>{/* slider end */}
-   
-</div>{/* relativeSlider end */}
+
 
 
 
@@ -486,162 +476,10 @@ return(
     
 </div>{/* relativeSlider end */}
 
-<div className='relative_for_slider_row2'>{/* relativeSlider start */}
-       <p className='relative_for_slider_p'>Best Sellers in Clothing, Shoes & Jewelry</p>
- <div className="App">  {/* slider start */}
-      <CustomSlider2>
-        {images5.map((image, index) => {
-          return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
-        })}
-      </CustomSlider2>
-     
-    </div>{/* slider end */}
-   
-</div>{/* relativeSlider end */}
-
-
-<div className='container_row2'>{/* container row2 start first 4 cards*/}
-
-   <div className='container_row1_1'>{/*  first card start*/}
-       
-       <div>
-            <p className='container_row1_1_p'>Deals on top categories</p>
-       </div>
-       <div className='container_row1_1_column'>{/* 4 cards pictures*/}
-        
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2025/Q1DefectReduction/Fuji_Defect_Reduction_1x_Books._SY116_CB549022351_.jpg'/>
-                <p className='container_row1_1_column1_p'>Books</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2025/Q1DefectReduction/Fuji_Defect_Reduction_1x_Fashion._SY116_CB549022351_.jpg'/>
-                <p className='container_row1_1_column1_p'>Fashion</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2025/Q1DefectReduction/Fuji_Defect_Reduction_1x_Desktops._SY116_CB549022351_.jpg'/>
-                <p className='container_row1_1_column1_p'>PC</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2025/Q1DefectReduction/Fuji_Defect_Reduction_1x_Beauty._SY116_CB549022351_.jpg'/>
-                <p className='container_row1_1_column1_p'>Beauty</p>
-
-           </div>
-           
-           
-     </div>{/* 4 cards pictures end*/}
-       <p className='card_last_p'>Discover more</p>
-   </div>{/* 1card finsh*/}
-
-  
-
-   <div className='container_row1_1'>{/*  first card start*/}
-       
-       <div>
-            <p className='container_row1_1_p'>Most-loved travel essentials</p>
-       </div>
-       <div className='container_row1_1_column'>{/* 4 cards pictures*/}
-        
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Aug/Backpack_1x._SY116_CB566100767_.jpg'/>
-                <p className='container_row1_1_column1_p'>Backpacks</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Aug/TravelBag_1x._SY116_CB566100767_.jpg'/>
-                <p className='container_row1_1_column1_p'>Suitcases</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Aug/Accessories_1x._SY116_CB566100767_.jpg'/>
-                <p className='container_row1_1_column1_p'>Accessories</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Aug/Handbags_1x._SY116_CB566100767_.jpg'/>
-                <p className='container_row1_1_column1_p'>Handbags</p>
-
-           </div>
-           
-           
-     </div>{/* 4 cards pictures end*/}
-       <p className='card_last_p'>Discover more</p>
-   </div>{/* 1card finsh*/}
-
-  
 
 
 
-   <div className='container_row1_1'>{/*  first card start*/}
-       
-       <div>
-            <p className='container_row1_1_p'>New home arrivals under $50</p>
-       </div>
-       <div className='container_row1_1_column'>{/* 4 cards pictures*/}
-        
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/DiscoTec/2024/HomeLifestyle/HomeSummerFlip/Homepage/QuadCards/Home_Flip_Summer_2024_315_HP_NewArrivals_QuadCard_D_01_1x._SY116_CB555960040_.jpg'/>
-                <p className='container_row1_1_column1_p'>Kitchen & Dining</p>
 
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/DiscoTec/2024/HomeLifestyle/HomeSummerFlip/Homepage/QuadCards/Home_Flip_Summer_2024_316_HP_NewArrivals_QuadCard_D_02_1x._SY116_CB555960040_.jpg'/>
-                <p className='container_row1_1_column1_p'>Home Improvement</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/DiscoTec/2024/HomeLifestyle/HomeSummerFlip/Homepage/QuadCards/Home_Flip_Summer_2024_317_HP_NewArrivals_QuadCard_D_03_1x._SY116_CB555960040_.jpg'/>
-                <p className='container_row1_1_column1_p'>Decor</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/DiscoTec/2024/HomeLifestyle/HomeSummerFlip/Homepage/QuadCards/Home_Flip_Summer_2024_318_HP_NewArrivals_QuadCard_D_04_1x._SY116_CB555960040_.jpg'/>
-                <p className='container_row1_1_column1_p'>Bedding & Bath</p>
-
-           </div>
-           
-           
-     </div>{/* 4 cards pictures end*/}
-       <p className='card_last_p'>Shop the latest from home</p>
-   </div>{/* 1card finsh*/}
-  
-   <div className='container_row1_1'>{/*  first card start*/}
-       
-       <div>
-            <p className='container_row1_1_p'>Score the top PCs & Accessories</p>
-       </div>
-       <div className='container_row1_1_column'>{/* 4 cards pictures*/}
-        
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/DskBTFQuadCards/Fuji_BTF_Quad_Cards_1x_Desktops._SY116_CB558654384_.jpg'/>
-                <p className='container_row1_1_column1_p'>Desktops</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/DskBTFQuadCards/Fuji_BTF_Quad_Cards_1x_laptop._SY116_CB558654384_.jpg'/>
-                <p className='container_row1_1_column1_p'>Laptops</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/DskBTFQuadCards/Fuji_BTF_Quad_Cards_1x_Hard_Drives._SY116_CB558654384_.jpg'/>
-                <p className='container_row1_1_column1_p'>Hard Drives</p>
-
-           </div>
-           <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/DskBTFQuadCards/Fuji_BTF_Quad_Cards_1x_Accessories._SY116_CB558654384_.jpg'/>
-                <p className='container_row1_1_column1_p'>PC Accessories</p>
-
-           </div>
-           
-           
-     </div>{/* 4 cards pictures end*/}
-       <p className='card_last_p'>See more</p>
-   </div>{/* 1card finsh*/}
-  
-
-</div>{/* container row2 end second 4 cards*/}
 
 
 

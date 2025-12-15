@@ -248,11 +248,11 @@ return(
     <div className='nav_p_div_container'></div>
    <div className='nav_p_div'> <p className='nav_p'>Today's Deals</p> </div>
     <div className='nav_p_div'> <p className='nav_p'>Prime Video</p> </div>
-    <div className='nav_p_div'> <p className='nav_p'>Buy Again</p> </div>
+    <div className='nav_p_div'> <p className='nav_p nav_p2'>Buy Again</p> </div>
     <div className='nav_p_div'> <p className='nav_p'>Customer Service</p> </div>
    <div className='nav_p_div'> <p className='nav_p'>Registry</p> </div>
    <div className='nav_p_div'> <p className='nav_p'>Gift Cards</p> </div>
-   <div className='nav_p_div'> <p className='nav_p'>sell</p> </div>
+   <div className='nav_p_div'> <p className='nav_p nav_p2'>sell</p> </div>
 </div>
 {/* end second navbar  */}
 

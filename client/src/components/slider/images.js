@@ -1,7 +1,7 @@
 const images = [
    {
     imgURL:
-      "https://m.media-amazon.com/images/I/81wG6h06QLL._SX3000_.jpg",
+      "https://m.media-amazon.com/images/I/81YK5C5+3vL._SX3000_.jpg",
     imgAlt: "img-4"
   },
   {
