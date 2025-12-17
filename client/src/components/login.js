@@ -1,4 +1,4 @@
-import react,{useState} from 'react';
+import react,{useState , useEffect} from 'react';
 import axios from 'axios';
 import {Navigate,useNavigate} from 'react-router-dom';
 import {TextField,Button,Typography,Box} from '@mui/material'
@@ -13,6 +13,12 @@ const[userdata,setuserdata]=useState({
 
 })
 
+// const msg=()=>{
+//    alert("if you dont have account click on : Create a free business account")  
+// }
+// useEffect(()=>{
+//      msg()
+// },[msg])
 
 return(
    <> 

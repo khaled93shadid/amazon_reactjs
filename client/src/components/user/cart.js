@@ -102,7 +102,7 @@ export default function Cart() {
       //const selectedDate=deliveryOption||deliveryDate1String
 
       return (
-            <>
+            <nav className='bodyContainer'>
 
                   <div class="header-container">{/*--navbar start */}
                         <div class="left_section"><a href="/productuser"><img class="left_section_logo" src={logo} /></a> </div>
@@ -169,6 +169,7 @@ export default function Cart() {
 
 
                               </div>{/*div for iteration product end  */}
+                              
                               <div className="checkout-right"> {/*<!--checkout-right start -->*/}
                                     <p className="checkout-right-p">Order Summary</p>
                                     <div className="checkout-right-horizontal">
@@ -204,6 +205,6 @@ export default function Cart() {
 
                   </div>{/*-body cart end  */}
                   <Footer />
-            </>
+            </nav>
       )
 }

@@ -62,7 +62,7 @@ const addToCart =async(productId,quantity)=>{
 
 return(
 
-<>
+<nav className='pageProduct'>
 <MainProductsNav/>
 <div className="all-products-container">
 {productData.map((product)=>(
@@ -80,7 +80,7 @@ addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedTo
 </div>
 
 <Footer />
-</>
+</nav>
 )
 
 }

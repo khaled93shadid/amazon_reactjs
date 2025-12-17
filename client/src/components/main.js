@@ -8,13 +8,12 @@ import images4 from './slider/images4.js'
 import images5 from './slider/images5.js'
 import CustomSlider from'./slider/custom.slider.js'
 import CustomSlider2 from'./slider/custom.slider2.js'
+import { useEffect } from 'react'
 
 
 
 
 export default function Main(){
-
-
 
 return(
 <nav className='body'>

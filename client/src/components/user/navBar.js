@@ -210,19 +210,19 @@ return(
     <div className="header-right-login"> <a href='/'><img className='header-right-login_flag' src={flag} />AR</a> </div>
     <div className="header-right-login"> <a href='/login'>{user.username1?`welcome${user.username}`:"login"}</a> </div>
       <div className="header-right-div1">
-         <a href='/'>  <p className="header-right-div1-p1">Returns</p> </a>
+         <a href='/productuser'>  <p className="header-right-div1-p1">Returns</p> </a>
     
-         <a href='/'>  <p className="header-right-div1-p2">& Orders</p> </a>
+         <a href='/productuser'>  <p className="header-right-div1-p2">& Orders</p> </a>
       </div>  
-      <a href="/checkout.html"  >   
+      <a href="/cart"  >   
       <div className="header-right-div2">
-           <a href='/' > 
+           <a href='/cart' > 
              <div className="header-right-div2-img-p">
                   <img className="header-right-div2-img" src={cart}/> 
                  <p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
             </div>
            </a> 
-        <a href='/' >  <p className="header-right-div2-p">cart</p> </a>
+        <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>
       </div>
        </a>
 
