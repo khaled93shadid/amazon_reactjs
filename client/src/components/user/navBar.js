@@ -214,7 +214,7 @@ return(
     
          <a href='/productuser'>  <p className="header-right-div1-p2">& Orders</p> </a>
       </div>  
-      <a href="/cart"  >   
+      <a href="/"  >   
       <div className="header-right-div2">
            <a href='/cart' > 
              <div className="header-right-div2-img-p">
@@ -222,7 +222,7 @@ return(
                  <p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
             </div>
            </a> 
-        <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>
+        <a href='/' >  <p className="header-right-div2-p">cart</p> </a>
       </div>
        </a>
 
