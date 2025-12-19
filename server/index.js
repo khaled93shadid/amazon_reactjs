@@ -15,12 +15,9 @@ const app =express()
 app.use(express.json())
 // app.use(cors());
 app.use(cors({
-  origin: ['http://localhost:5000',
-  'https://amazon-reactjs-kqw8tx0qc-khaled-shadids-projects.vercel.app',
-  'https://amazon-reactjs.vercel.app',
-  'https://*.vercel.app'],
+  origin: "*",
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: "*",
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use('/uploads',express.static('uploads'))
