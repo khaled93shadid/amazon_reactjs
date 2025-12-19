@@ -59,13 +59,14 @@ font-family: Roboto;font-size: 14px;}
 .return_order_body_div_p{height: 100px;display: flex;align-items: center;justify-content: center;padding: 5px;}
 .return_order_last{border:solid rgb(194, 190, 190) 1px ;
   display: flex;flex-wrap: wrap;align-items: center;justify-content: center;align-content:center ;
-  border-radius: 5px;
+  border-radius: 5px;column-gap: 5px;
 }
 .return_order_last1_p{color: black;font-family: Roboto;text-align: center;
-font-size: 13px;line-height: 75px;margin-left: 20px;}
+font-size: 13px;line-height: 75px;}
+
 .return_order_last2_p{color:rgb(33, 98, 161) ;cursor: pointer;
 font-size: 10px;font-weight: 700;line-height: 11px;text-align: center;
-;margin-top: 30px;
+
 }
-.return_order_last2{display: flex;justify-content: center;}
+.return_order_last2{display: flex;justify-content: center;align-items: center;column-gap: 50px; }
 .return_order_last2_p:hover{color: rgb(15, 67, 119);text-decoration: underline;}
