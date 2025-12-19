@@ -15,7 +15,7 @@ return(
     <div className='return_order_horizontal'>{/*return_order_horizontal start*/ }
       <div> <p  className='return_order_p1'>Your Orders</p> </div>
       <div className='return_order_horizontal2'> 
-       <div className='searchIcon_div'> <SearchIcon className='SearchIcon' /> </div> 
+       {/* <div className='searchIcon_div'> <SearchIcon className='SearchIcon' /> </div>  */}
         <input className='return_order_search' type='text' placeholder='search all orders' /> 
         <button className='return_order_b1'>search orders</button>
       </div>

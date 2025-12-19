@@ -7,12 +7,12 @@ font-size: 28px;font-weight: 400;line-height:36px ;
 @media screen and (width<800px) {
 
  .return_order_container{padding-left:5px;padding-right: 5px;} 
-
+.SearchIcon{width:0px}
 }
 .return_order_horizontal{display: flex;justify-content: space-between;align-items: center;}
 .return_order_search{height: 26px;border-radius: 4px;border:solid gray 1px;
 flex-grow:1;font-family: Roboto;font-size: 14px;font-weight: 500;
-border-left: none;border-bottom-left-radius: 0px;border-top-left-radius: 0px;
+
 max-width: 300px;
 }
 
