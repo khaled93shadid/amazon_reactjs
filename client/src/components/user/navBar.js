@@ -41,10 +41,10 @@ useEffect(()=>{
    const abortController = new AbortController();
   const fetchCartQuantity=async()=>{
      
-    await axios.get("http://127.0.0.1:5000/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
+    await axios.get("https://amazon-reactjs.onrender.com/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
     }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
     // end fetch cart quantity
-   await axios.get("http://127.0.0.1:5000/api/users/getprofile",{headers:{"Authorization":`${token}`,}}).then(res=>setUser(res.data)).catch(error=>console.log(error))
+   await axios.get("https://amazon-reactjs.onrender.com/api/users/getprofile",{headers:{"Authorization":`${token}`,}}).then(res=>setUser(res.data)).catch(error=>console.log(error))
     //end fetch user information
 
   }//fetch cart one time

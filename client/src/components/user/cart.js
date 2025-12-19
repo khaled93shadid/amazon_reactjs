@@ -33,14 +33,14 @@ export default function Cart() {
       useEffect(() => {
             const abortController = new AbortController();
             const fetchCart = async () => {
-                  await axios.get('http://127.0.0.1:5000/api/users/getcart', { headers: { 'Authorization': `${token}` } }
+                  await axios.get('https://amazon-reactjs.onrender.com/api/users/getcart', { headers: { 'Authorization': `${token}` } }
                   ).then(res => setcart(res.data.items)).catch(err => console.log(err))
 
-                  await axios.get('http://127.0.0.1:5000/api/users/cartMoney', { headers: { 'Authorization': `${token}` } }
+                  await axios.get('https://amazon-reactjs.onrender.com/api/users/cartMoney', { headers: { 'Authorization': `${token}` } }
                   ).then(res => setCartMoney(res.data)).catch(err => console.log(err))
 
 
-                  await axios.get("http://127.0.0.1:5000/api/users/cartQuantity", {
+                  await axios.get("https://amazon-reactjs.onrender.com/api/users/cartQuantity", {
                         headers: {
                               "Authorization": `${token}`
                         }
@@ -69,7 +69,7 @@ export default function Cart() {
 
 
       const place_order = async () => {
-            await axios.post('http://127.0.0.1:5000/api/users/placeOrder', {}, { headers: { 'Authorization': `${token}` } }
+            await axios.post('https://amazon-reactjs.onrender.com/api/users/placeOrder', {}, { headers: { 'Authorization': `${token}` } }
             ).catch(err => alert(err))
             alert('order added successfuly')
             navigate('/order2')
@@ -81,11 +81,11 @@ export default function Cart() {
 
       const removeCart = async (productId) => {
             const fetchCart = async () => {
-                  await axios.get('http://127.0.0.1:5000/api/users/getcart', { headers: { 'Authorization': `${token}` } }
+                  await axios.get('https://amazon-reactjs.onrender.com/api/users/getcart', { headers: { 'Authorization': `${token}` } }
                   ).then(res => setcart(res.data.items)).catch(err => alert(err))
             }//fetchCart 
 
-            await axios.delete(`http://127.0.0.1:5000/api/users/removefromcart2/${productId}`, { headers: { 'Authorization': `${token}` } }
+            await axios.delete(`https://amazon-reactjs.onrender.com/api/users/removefromcart2/${productId}`, { headers: { 'Authorization': `${token}` } }
             ).then(window.dispatchEvent(new Event('cartUpdated')), fetchCart()).catch(err => console.log(err))
 
             //alert('Item removed successfully');

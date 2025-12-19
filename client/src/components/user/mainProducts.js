@@ -21,12 +21,12 @@ const abortController=new AbortController();
  
 try
 {
-await axios.get("http://127.0.0.1:5000/api/users/getAllProducts",  { headers:   {Authorization:token}   } 
+await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllProducts",  { headers:   {Authorization:token}   } 
 
 ).then(res=>setproductData(res.data))
 
 
-await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers:   {Authorization:token}   } 
+await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllCategory", { headers:   {Authorization:token}   } 
 ).then(res=>setcategoryData(res.data))
 
 
@@ -54,7 +54,7 @@ const handleAddedToCart=(productId)=>{
 
 const addToCart =async(productId,quantity)=>{
   const token=localStorage.getItem('token')
-  await axios.post('http://127.0.0.1:5000/api/users/addtocart',{productId,quantity},{ headers:{'Authorization':`${token}`} }  
+  await axios.post('https://amazon-reactjs.onrender.com/api/users/addtocart',{productId,quantity},{ headers:{'Authorization':`${token}`} }  
   ).then(res=>window.dispatchEvent(new Event('cartUpdated'))).catch(err=>console.log(err));
     
       

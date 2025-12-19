@@ -58,7 +58,7 @@ return(
           
 
             //async function fetch(){
-              const res = await axios.post("http://127.0.0.1:5000/api/users/changepassword",{oldpassword,newpassword},
+              const res = await axios.post("https://amazon-reactjs.onrender.com/api/users/changepassword",{oldpassword,newpassword},
               {headers: {Authorization:localStorage.getItem('token')}   }  
             )
                

@@ -53,7 +53,7 @@ useEffect(()=>{
 const fetchProfile=async()=>{
   try{
 const token = localStorage.getItem('token');
-const res=await axios.get("http://127.0.0.1:5000/api/users/getprofile",
+const res=await axios.get("https://amazon-reactjs.onrender.com/api/users/getprofile",
    {headers: {Authorization:token}   })
 console.log(res.data.phone)
 setprofileData(res.data||'')
@@ -163,7 +163,7 @@ return(
          try{
           const user1={fullname:fullname1,email:email1,address:address1,phone:phone1}
           
-              const res = await axios.put("http://127.0.0.1:5000/api/users/updateUser", user1,{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
+              const res = await axios.put("https://amazon-reactjs.onrender.com/api/users/updateUser", user1,{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
                
           
                
@@ -209,7 +209,7 @@ return(
          try{
           const user1={oldpassword,newpassword}
           
-              const res = await axios.post("http://127.0.0.1:5000/api/users/changepassword", {oldpassword,newpassword},{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
+              const res = await axios.post("https://amazon-reactjs.onrender.com/api/users/changepassword", {oldpassword,newpassword},{headers: {Authorization:localStorage.getItem('token'),"Content-Type":"application/json"} })
                
           
                

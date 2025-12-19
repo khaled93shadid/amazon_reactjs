@@ -20,7 +20,7 @@ useEffect(()=>{
    const token = localStorage.getItem('token') 
    const fetchOrders=async()=>{
        
-        await axios.get("http://127.0.0.1:5000/api/users/getAllOrders",{headers:{'Authorization':`${token}`}}
+        await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllOrders",{headers:{'Authorization':`${token}`}}
         ).then(res=>setOrders(res.data)).catch(err=>console.log(err))
 
    }; //fetch function  end 

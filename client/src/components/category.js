@@ -41,7 +41,7 @@ export default function Category() {
 
     async function fetchdata() {
 
-      await axios.get("http://127.0.0.1:5000/api/users/getAllCategory", { headers: { Authorization: `${token}` } }
+      await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllCategory", { headers: { Authorization: `${token}` } }
       ).then(res => setcategoryData(res.data)).catch(err => console.log(err)) 
       }//function end
       fetchdata()
@@ -73,7 +73,7 @@ export default function Category() {
               <TableCell >
                 <button className="button1" onClick={async () => {
                   if (window.confirm('are you sure you want to delete this category')) {//if
-                    await axios.delete(`http://127.0.0.1:5000/api/users/deleteCategory/${category._id}`,
+                    await axios.delete(`https://amazon-reactjs.onrender.com/api/users/deleteCategory/${category._id}`,
                       { headers: { Authorization: localStorage.getItem('token') } }
                     ).then(setcategoryData(categoryData.filter(r => r._id !== category._id))).catch(err => console.log(err))
 
@@ -92,7 +92,7 @@ export default function Category() {
       <h1>Add Category</h1>
       <form onSubmit={async (e) => {
         e.preventDefault();
-        await axios.post('http://127.0.0.1:5000/api/users/createCategory', { name }, {
+        await axios.post('https://amazon-reactjs.onrender.com/api/users/createCategory', { name }, {
           headers: {
             "Authorization": `${localStorage.getItem('token')}`
           }
@@ -123,7 +123,7 @@ export default function Category() {
             </Typography>
             <form onSubmit={async (e) => {
               e.preventDefault();
-              await axios.put(`http://127.0.0.1:5000/api/users/updateCategory/${updatedId}`, { name: updatedname },
+              await axios.put(`https://amazon-reactjs.onrender.com//users/updateCategory/${updatedId}`, { name: updatedname },
                 { headers: { Authorization: localStorage.getItem('token') } }
               ).then(() => { setcategoryData(prevData => prevData.map(item => item.id === updatedId ? { ...item, name: updatedname } : item)); setupdatedname('') }
               ).catch(err=>console.log(err))

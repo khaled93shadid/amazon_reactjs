@@ -81,9 +81,9 @@ export default function Product() {
     const fetchdata = async () => {
 
      
-         await axios.get("http://127.0.0.1:5000/api/users/getAllProducts", { headers: { Authorization: token } }).then(res=>setproductData(res.data)).catch(err=>alert(err))
+         await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllProducts", { headers: { Authorization: token } }).then(res=>setproductData(res.data)).catch(err=>alert(err))
         
-        await axios.get('http://127.0.0.1:5000/api/users/getAllCategory', { headers: { Authorization: localStorage.getItem('token') } }  
+        await axios.get('https://amazon-reactjs.onrender.com/api/users/getAllCategory', { headers: { Authorization: localStorage.getItem('token') } }  
         ).then(res=>setApiCategory(res.data)).catch(err=>console.log(err))
 
 
@@ -137,7 +137,7 @@ useEffect(()=>{
               <TableCell ><button className="button1" onClick={async () => {
                 if (window.confirm("are you sure you want to delete this product")) {
                   const token = localStorage.getItem('token')
-                  await axios.delete(`http://127.0.0.1:5000/api/users/deleteProduct/${row._id}`, {
+                  await axios.delete(`https://amazon-reactjs.onrender.com/api/users/deleteProduct/${row._id}`, {
                   headers: {"Authorization": `${token}`}}).then(setproductData(productData.filter(r => r._id !== row._id))
                   ).catch(err=>console.log(err))
                   //window.location.reload()    
@@ -167,7 +167,7 @@ useEffect(()=>{
       
           const token=localStorage.getItem('token')
 
-          await axios.post("http://127.0.0.1:5000/api/users/createProduct", newProduct1, 
+          await axios.post("https://amazon-reactjs.onrender.com/api/users/createProduct", newProduct1, 
             {headers: {"Authorization": `${token}`}}).then(()=>{
               alert('product added successfully')
               setproductData([...productData, newProduct1])
@@ -237,7 +237,7 @@ useEffect(()=>{
               const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage, quantity: updatedquantity, category: updatedcategory }
               try{
                 
-              const response= await axios.put(`http://127.0.0.1:5000/api/users/updateproduct/${id}`,updatedproduct , {headers: {Authorization: token}})
+              const response= await axios.put(`https://amazon-reactjs.onrender.com/api/users/updateproduct/${id}`,updatedproduct , {headers: {Authorization: token}})
               setproductData(prevData=> prevData.map(item => item._id === id ?response.data.product1 : item))  
               alert('product updated successfully') 
               handleClose();

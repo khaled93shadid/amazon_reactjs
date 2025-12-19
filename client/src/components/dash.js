@@ -176,7 +176,7 @@ export default function DashboardLayoutSlots(props) {
 const token = localStorage.getItem('token')
 if(token){
   async function fetchdata(){
-    try{const res= await axios.get("http://127.0.0.1:5000/api/users/getprofile",  { headers:   {Authorization:`${token}`}   }  )
+    try{const res= await axios.get("https://amazon-reactjs.onrender.com/api/users/getprofile",  { headers:   {Authorization:`${token}`}   }  )
      
 console.log("profile data:",res.data)
  setisAdmin(res.data.role==='admin')
