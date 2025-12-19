@@ -56,6 +56,7 @@ return(
                {order.items.map((item)=>(
 
                   <div key={item._id} className='order2_container_bottom'>
+                     
                   <div className='order2_container_bottom_l'>
                       <div>
                           <img className='order2_container_bottom_l_img' src={item.product.image} />

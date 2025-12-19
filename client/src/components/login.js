@@ -32,12 +32,12 @@ e.preventDefault();
 try{
 const res = await axios.post("http://127.0.0.1:5000/api/users/login",userdata)
 localStorage.setItem('token',res.data.token);
-console.log('login successfully',res.data)
+console.log('login successfully',res.data.userx)
 console.log(res.data.userx.role)   
 if(res.data.userx.role === 'user'){alert('you login successfully');navigate('/ProfileUser');}
 else{alert('you login successfully');navigate('/dash');}
 }
-catch(error){console.log(error)}
+catch(error){console.log(error.message)}
 
     }}>
         

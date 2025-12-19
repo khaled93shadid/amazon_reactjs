@@ -1,34 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-.return_order_container{padding-left:200px;padding-right: 200px;padding-top:50px ;}
+.return_order_container{padding-left:200px;padding-right: 200px;overflow-x: hidden;}
 .return_order_p1{color:rgb(15, 17, 17);font-family:Roboto;
 font-size: 28px;font-weight: 400;line-height:36px ;
 }
+.body_return_order{overflow-x: hidden;}
+@media screen and (width<800px) {
+
+ .return_order_container{padding-left:5px;padding-right: 5px;} 
+
+}
 .return_order_horizontal{display: flex;justify-content: space-between;align-items: center;}
 .return_order_search{height: 26px;border-radius: 4px;border:solid gray 1px;
-width:350px;font-family: Roboto;font-size: 14px;font-weight: 500;
+flex-grow:1;font-family: Roboto;font-size: 14px;font-weight: 500;
 border-left: none;border-bottom-left-radius: 0px;border-top-left-radius: 0px;
+max-width: 300px;
 }
 
 .return_order_b1{background-color: rgb(34, 39, 39);color: white;
 margin-left: 12px;border: none;
-border-radius: 20px;width:120px ;height:33px ;font-weight: bold;font-family: Roboto;font-size: 14px;
+border-radius: 20px; ;height:33px ;font-weight: bold;font-family: Roboto;font-size: 14px;
 cursor: pointer;
 }
 .return_order_b1:hover{background-color: black;}
 .SearchIcon{border:solid gray 1px;border-right: none;margin-right: -1px;padding: 2px;border-radius: 4px;border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;}
-.searchIcon_div{}
+.searchIcon_div{display: flex;}
 .return_order_horizontal2{display: flex;}
 .return_order_horizontal3{display: flex;align-items: center;
-border-bottom: solid rgb(192, 191, 191) 1px;
+border-bottom: solid rgb(192, 191, 191) 1px;flex-wrap: wrap;justify-content: baseline;align-content: baseline;
 
 
 
 }
 
+.return_order_horizontal{
+  display: flex;flex-wrap: wrap;padding: 20px;
+}
+
 .return_order_horizontal3_b{border: none;color:rgb(33, 98, 161) ;
 font-family: Roboto;cursor: pointer;font-size: 14px;line-height: 20px;
-font-weight: 400;margin-right: 20px;
+font-weight: 400;padding: 5px;
 }
 .return_order_horizontal3_b:hover{text-decoration: underline;
   color:rgb(8, 54, 100) ;}
@@ -45,15 +56,16 @@ text-align: center;margin-top: 30px; }
 .return_order_body_span2{color: rgb(33, 98, 161);cursor: pointer;
 font-family: Roboto;font-size: 14px;}
 .return_order_body_span2:hover{color: rgb(12, 60, 109);text-decoration: underline;}
-.return_order_body_div_p{height: 100px;}
+.return_order_body_div_p{height: 100px;display: flex;align-items: center;justify-content: center;padding: 5px;}
 .return_order_last{border:solid rgb(194, 190, 190) 1px ;
-  display: grid;grid-template-columns: 90% 10% ;
+  display: flex;flex-wrap: wrap;align-items: center;justify-content: center;align-content:center ;
   border-radius: 5px;
 }
-.return_order_last1_p{color: black;font-family: Roboto;
+.return_order_last1_p{color: black;font-family: Roboto;text-align: center;
 font-size: 13px;line-height: 75px;margin-left: 20px;}
 .return_order_last2_p{color:rgb(33, 98, 161) ;cursor: pointer;
-font-size: 10px;font-weight: 700;line-height: 11px;
-margin-right: 70px;margin-top: 30px;
+font-size: 10px;font-weight: 700;line-height: 11px;text-align: center;
+;margin-top: 30px;
 }
+.return_order_last2{display: flex;justify-content: center;}
 .return_order_last2_p:hover{color: rgb(15, 67, 119);text-decoration: underline;}

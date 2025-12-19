@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-body{}
+body{overflow-x: hidden;}
 .p-txt{color:rgb(15, 17, 17);font-family:Roboto;
 font-size: 28px;font-weight: bold;
 line-height: 16px;padding-left: 100px;
@@ -11,9 +11,18 @@ column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
 padding-bottom: 50px;
 
 }
-@media(width<900px){.container_div{display: grid;grid-template-columns:340px ;padding-left: 100px;padding-right:100px ;
+/* .container_div{display: grid;grid-template-columns:340px 340px 340px;
+padding-left: 100px;padding-right:100px ;
 column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
-padding-bottom: 50px;}}
+padding-bottom: 50px;
+
+}  */
+
+@media(width<900px){.container_div{display: grid;grid-template-columns:340px ;padding-left: 10px;padding-right:100px ;
+  column-gap: 12px;row-gap:15px;border-bottom: solid rgb(213, 217, 217)1px;
+  padding-bottom: 50px;}
+  .p-txt{padding-left: 10px;}
+  } 
 .item-continer{border: solid rgb(213, 217, 217)1px;border-radius:8px;
 width: 310px;height:95px;padding: 12px;cursor: pointer;transition: background-color 0.15s;
 }
@@ -23,10 +32,15 @@ width: 310px;height:95px;padding: 12px;cursor: pointer;transition: background-co
 .item-continer-p2{color: rgb(86, 89, 89);font-family: Roboto; font-size:14px;}
 .item-continer-img{width:65px;margin-top: 0px;margin-top:10px;}
 
-.parent_div{display: grid;grid-template-columns:340px 340px 340px;
-padding-left: 100px;padding-right:100px ;
+.parent_div{display:flex;
+justify-content: center;
+flex-wrap: wrap;
 column-gap: 12px;row-gap:15px;margin-top:50px ;
 }
+/* .parent_div{display: grid;grid-template-columns:340px 340px 340px;
+padding-left: 100px;padding-right:100px ;
+column-gap: 12px;row-gap:15px;margin-top:50px ;
+} */
 
 .child_div{border: solid rgb(213, 217, 217) 1px;border-radius:8px;
 width: 250px;padding: 12px;

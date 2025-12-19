@@ -7,7 +7,7 @@ import Footer from "./footer"
 export default function Returns_order(){
 
 return(
-<>
+<nav className='body_return_order'> 
 <MainProductsNav />
 <div className='return_order_container'>{/*return_order_container start */}
 
@@ -52,6 +52,6 @@ return(
 </div>
 
 <Footer />
-</>
+</nav>
 )
 }
