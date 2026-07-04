@@ -67,8 +67,7 @@ return(
 <div className="all-products-container">
 {productData.map((product)=>(
 
-<Product key={product._id} product={product} 
-addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedToCart} />
+<Product key={product._id} product={product} addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedToCart} />
 
 
 
