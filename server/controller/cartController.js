@@ -1,102 +1,118 @@
 const Cart = require('../model/cart')
+const Product = require('../model/cart')
 
 
-exports.addToCart=async(req,res)=>{
-  const {productId,quantity}=req.body;
-try{
+exports.addToCart = async (req, res) => {
+  const { productId, quantity } = req.body;
+  if (!productId) {
+    return res.status(400).json({ success: false, message: 'Product ID  is required' });
+  }
+  try {
 
-let cart = await Cart.findOne({user:req.user})
-if(!cart){cart=new Cart({user:req.user,items:[]})}
-//##############
-const existedItems =await cart.items.find(item=>item.product.toString()===productId)
+    const existingProduct = await Product.findById(productId).exec()
+    if (!existingProduct) { return res.status(404).json({ message: 'product not found' }) }
 
-if(existedItems){existedItems.quantity+=quantity}
-else{cart.items.push({product:productId,quantity})}
+    let cart = await Cart.findOne({ user: req.user })
+    if (!cart) { cart = new Cart({ user: req.user, items: [] }) }
+    //##############
 
-//##############
-await cart.save()
-res.status(200).json({message:'item added to cart successfuly ',cart})
-}
-catch(error){res.status(500).json({message:'server error',error:error.message})}
-}
+    const existingItem = cart.items.find(item => item.product.toString() === productId.toString())
 
-
-
-exports.getCart = async(req,res)=>{
-
-  const cart = await Cart.findOne({user:req.user}).populate('items.product')
-  res.status(200).json(cart||{message:'cart is empty'})
+    if (existingItem) { existingItem.quantity += quantity }
+    else { cart.items.push({ product: productId, quantity }) }
 
 
-}
+    await cart.save()
 
-
-
-exports.removeFromCart=async (req,res)=>{
-const {productId}=req.params
-try{
-const cart= await Cart.findOne({user:req.user});
-if(!cart){return res.status(404).json({message:'cart not found'})}
-cart.items=cart.items.filter(item=>item.product.toString()!==productId);
-//##########
-await cart.save();
-res.status(200).json({message:'item removed from cart successfully',cart})
-}
-catch(error){return res.status(500).json({message:'server error',error:error.message})}
+    res.status(200).json({ success: true, message: 'Item added to cart successfully ', cart: cart })
+  }
+  catch (error) { return res.status(500).json({ success: false, message: 'server error', error: error.message }) }
 }
 
 
-exports.removeFromCart2=async (req,res)=>{
-const {productId}=req.params
-try{
-const cart= await Cart.findOne({user:req.user});
-if(!cart){return res.status(404).json({message:'cart not found'})}
-//##########
-const item= await cart.items.find(item=>item.product.toString()===productId)
-if(!item){return res.status(404).json({message:'item not found'})}
 
-if(item.quantity>1){item.quantity-=1}
-else{cart.items=cart.items.filter(item=>item.product.toString()!==productId)}
+exports.getCart = async (req, res) => {
 
-//##########
-await cart.save();
-res.status(200).json({message:'item removed from cart successfully',cart})
-}
-catch(error){return res.status(500).json({message:'server error',error:error.message})}
-}
-
-
-exports.cartQuantity=async (req,res)=>{
-try{
-const cart= await Cart.findOne({user:req.user}).populate('items.product')
-if(!cart){return res.status(404).json({message:'cart not found'})}
-//##########################
-const Quantity=await cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
-const total =cart?.items.reduce((sum,item)=>sum+item.product.price*item.quantity,0)||0;
-const money={Quantity,total}
-res.status(200).json(Quantity)
-}
-catch(error){return res.status(500).json({message:'server error',error:error.message})}
+  const cart = await Cart.findOne({ user: req.user }).populate('items.product')
+  res.status(200).json(cart || { message: 'cart is empty' })
 
 
 }
 
 
-exports.cartMoney=async (req,res)=>{
-try{
-const cart= await Cart.findOne({user:req.user}).populate('items.product')
-if(!cart){return res.status(404).json({message:'cart not found'})}
-//##########################
 
-const total =await cart?.items.reduce((sum,item)=>sum+item.product.price*item.quantity,0)||0;
-const totalCents=(Math.round(total))
-const estimatedTax=((Math.round(total))/10)
-const delivery=0
-const totalTax=totalCents+estimatedTax
-const money={total,totalCents,estimatedTax,totalTax,delivery}
-res.status(200).json(money)
+exports.removeFromCart = async (req, res) => {
+  const { productId } = req.params
+  try {
+    const cart = await Cart.findOne({ user: req.user });
+    if (!cart) { return res.status(404).json({ message: 'cart not found' }) }
+    cart.items = cart.items.filter(item => item.product.toString() !== productId);
+    //##########
+    await cart.save();
+    res.status(200).json({ message: 'item removed from cart successfully', cart })
+  }
+  catch (error) { return res.status(500).json({ message: 'server error', error: error.message }) }
 }
-catch(error){return res.status(500).json({message:'server error',error:error.message})}
+
+
+exports.removeFromCart2 = async (req, res) => {
+  const { productId } = req.params
+  if (!productId) { return res.status(400).json({ success: false, message: 'product ID is required' }); }
+
+  try {
+    const cart = await Cart.findOne({ user: req.user });
+    if (!cart) { return res.status(404).json({ success: false, message: 'Cart Not Found' }) }
+    //
+    const item = cart.items.find(item => item.product.toString() === productId.toString())
+    if (!item) { return res.status(404).json({ success: false, message: 'item not found' }) }
+
+    if (item.quantity > 1) { item.quantity -= 1 }
+    else { cart.items = cart.items.filter(item => item.product.toString() !== productId.toString()) }
+
+    //
+    await cart.save();
+    res.status(200).json({ success: true, message: 'item removed from cart successfully', cart: cart })
+
+  }//try
+
+  catch (error) { return res.status(500).json({ message: 'server error', error: error.message, success: false }) }
+
+}
+
+
+
+exports.cartQuantity = async (req, res) => {
+
+  try {
+    const cart = await Cart.findOne({ user: req.user }).populate('items.product')
+    if (!cart) { return res.status(404).json({ message: 'cart not found' }) }
+    
+    const Quantity = await cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+    
+    res.status(200).json({quantity:Quantity,success:true,message:'quantity is up to date'})
+  }
+
+  catch (error) { return res.status(500).json({success:false,message: 'server error', error: error.message }) }
+
+
+}
+
+
+exports.cartMoney = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ user: req.user }).populate('items.product')
+    if (!cart) { return res.status(404).json({ message: 'cart not found' }) }
+    //##########################
+
+    const total = await cart?.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0) || 0;
+    const totalCents = (Math.round(total))
+    const estimatedTax = ((Math.round(total)) / 10)
+    const delivery = 0
+    const totalMoney = totalCents + estimatedTax
+    const money = { totalCents, estimatedTax, totalMoney, delivery }
+    res.status(200).json({money:money,message:' totalCents, estimatedTax, totalMoney, delivery in object money'})
+  }
+  catch (error) { return res.status(500).json({success:false , message: 'server error' , error: error.message }) }
 
 
 }

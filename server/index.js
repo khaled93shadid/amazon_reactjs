@@ -20,13 +20,14 @@ app.use(cors({
   methods: "*",
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use('/uploads',express.static('uploads'))
-app.use('/api/users',userRouter)
-app.use('/api/users',productRouter)//api/product
-app.use('/api/users',categoryRouter)//api/categories
-app.use('/api/users',cartRouter)//api/cart
-app.use('/api/users',orderRouter)//api/cart
-app.use('/api/users',addressRouter)//api/cart
+app.use('/users',userRouter)
+app.use('/product',productRouter)
+app.use('/categories',categoryRouter)
+app.use('/cart',cartRouter)
+app.use('/order',orderRouter)
+app.use('/address',addressRouter)
 
 
 

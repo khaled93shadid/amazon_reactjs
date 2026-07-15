@@ -2,17 +2,18 @@ const express = require('express')
 const usercontroller = require('../controller/usercontroller.js')
 const {auth} = require('../middleware/authmiddleware.js')
 const router = express.Router()
-const multer = require('multer')
 
-const storage=multer.diskStorage({
+// const multer = require('multer')
 
-  destination:'uploads/',
-  filename:(req,file,cb)=>{cb(null,`${Date.now()}-${file.originalname}`)
+// const storage=multer.diskStorage({
 
-  }
-})//end object 
+//   destination:'uploads/',
+//   filename:(req,file,cb)=>{cb(null,`${Date.now()}-${file.originalname}`)
 
-const upload = multer({storage});
+//   }
+// })//end object 
+
+// const upload = multer({storage});
 
 router.get("/users",usercontroller.getAllUser)
 router.get("/getprofile",auth,usercontroller.getprofile)

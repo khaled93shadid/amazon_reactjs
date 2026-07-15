@@ -6,7 +6,7 @@ require('dotenv').config();
 
 exports.auth =(req,res,next)=>{
 const token = req.header('authorization');
-if(!token){res.status(401).json({message:"No token access denied"})}
+if(!token){return res.status(401).json({message:"No token access denied"})}
 
 try{
     const decoded = jwt.verify(token,process.env.JWT_SECRET);
@@ -16,7 +16,7 @@ try{
     next();
 }
 
-catch(error){res.status(500).json({message:'invalid token catch error'})}
+catch(error){res.status(401).json({message:'Invalid or expired token'})}
 
 };
 
@@ -24,7 +24,7 @@ catch(error){res.status(500).json({message:'invalid token catch error'})}
 
 exports.adminAuth =(req,res,next)=>{
 const token = req.header('authorization');
-if(!token){res.status(401).json({message:"No token access denied"})}
+if(!token){return res.status(401).json({message:"No token access denied"})}
 
 try{
     const decoded = jwt.verify(token,process.env.JWT_SECRET);
@@ -35,7 +35,7 @@ try{
     next();
 }
 
-catch(error){res.status(500).json({message:'invalid token catch error'})}
+catch(error){res.status(401).json({message:'Invalid or expired token'})}
 
 };
 
