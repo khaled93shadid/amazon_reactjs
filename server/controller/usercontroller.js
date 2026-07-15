@@ -96,14 +96,14 @@ exports.login = async (req, res) => {
     try {
 
         const userx = await User.findOne({ email });
-        if (!userx) { return res.status(400).json({ message: 'invalid credintails' }) }
+        if (!userx) { return res.status(400).json({ message: 'Invalid Credentials ⛔ ' }) }
 
         const ismatch = await bcrypt.compare(password, userx.password)
 
-        if (!ismatch) { return res.status(400).json({ message: 'invalid credintails' }) }
+        if (!ismatch) { return res.status(400).json({ message: 'Invalid Credentials ⛔' }) }
 
         const token = jwt.sign({ id: userx._id, role: userx.role }, process.env.JWT_SECRET, { expiresIn: '7d' })
-        return res.status(200).json({ token, userx });
+        return res.status(200).json({ token, user:userx });
 
     }
     catch (error) { res.status(500).json({ message: error.message }) }
