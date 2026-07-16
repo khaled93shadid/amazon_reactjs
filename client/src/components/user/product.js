@@ -42,7 +42,10 @@ return(
     {addedToCart[product._id] && (  <div className='added_to_cart_div'> <img className='added_to_cart_img' src="https://supersimple.dev/projects/amazon/images/icons/checkmark.png" alt=''/> 
     <p className='added_to_cart_p'>added to cart</p> </div>)}
   </div>  
-    <button className="button-add-to-cart" onClick={()=>{addToCart(product._id,quantity);handleAddedToCart(product._id)} }>Add to Cart</button>
+    <button className="button-add-to-cart" onClick={()=>{
+       console.log('Product ID being sent:', product._id);
+        console.log('Product object:', product);
+      addToCart(product._id,quantity);handleAddedToCart(product._id)} }>Add to Cart</button>
   </div>
   </div>         
 

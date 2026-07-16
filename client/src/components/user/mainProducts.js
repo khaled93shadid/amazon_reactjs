@@ -2,84 +2,77 @@ import '../../style/mainProduct.css'
 import MainProductsNav from './navBar'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Footer from "../footer"
 import { Product } from './product'
+import URL from '../URL'
 
 
+export default function MainProducts() {
+  const navigate = useNavigate();
+  const [productData, setproductData] = useState([])
+  //const [categoryData, setcategoryData] = useState([])
+  const [addedToCart, setAddedToCart] = useState({})
 
-export default function MainProducts(){ 
-const navigate= useNavigate();
-const [productData,setproductData]=useState([])
-const [categoryData,setcategoryData]=useState([])
-const [addedToCart,setAddedToCart]=useState({})
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const abortController = new AbortController();
+    const fetchdata = async () => {
 
-useEffect(()=>{
-const token = localStorage.getItem('token')
-const abortController=new AbortController();
-  const fetchdata = async ()=>{
- 
-try
-{
-await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllProducts",  { headers:   {Authorization:token}   } 
-
-).then(res=>setproductData(res.data))
-
-
-await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllCategory", { headers:   {Authorization:token}   } 
-).then(res=>setcategoryData(res.data))
+      try {
+        const res = await axios.get(`${URL}/product/getAllProducts`, { headers: { Authorization: token } })
+        setproductData(res.data)
+      }
+      catch (error) {
+        const message = error.response?.data?.message || error.message
+        alert(message)
+      }
+    }
+    fetchdata();
+  }, [])
 
 
+  const handleAddedToCart = (productId) => {
+    setAddedToCart(prev => ({ ...prev, [productId]: true }));
+
+    setTimeout(() => setAddedToCart(prev => ({ ...prev, [productId]: false })), 3000);
 
   }
- catch(error){console.log(error);navigate('/login')}
 
+  const addToCart = async (productId, quantity) => {
+    const token = localStorage.getItem('token')
+    try {
+      await axios.post(`${URL}/cart/addtocart`, { productId, quantity }, { headers: { 'Authorization': `${token}` } })
+      window.dispatchEvent(new Event('cartUpdated'))
+    }
 
-  } 
-  
-    
- 
- fetchdata();
- return ()=>{ abortController.abort()}
+    catch (error) {
+      const message = error.response?.data?.message || error.message
+      alert(message)
+    }
 
-  },[])
+  } //add to cart
 
-  
-const handleAddedToCart=(productId)=>{
-   setAddedToCart(prev=>({...prev,[productId]:true}));
-  
-   setTimeout(() =>  setAddedToCart(prev=>({...prev,[productId]:false})), 3000); 
-  
-            }  
+  return (
 
-const addToCart =async(productId,quantity)=>{
-  const token=localStorage.getItem('token')
-  await axios.post('https://amazon-reactjs.onrender.com/api/users/addtocart',{productId,quantity},{ headers:{'Authorization':`${token}`} }  
-  ).then(res=>window.dispatchEvent(new Event('cartUpdated'))).catch(err=>console.log(err));
-    
-      
-} //add to cart
+    <nav className='pageProduct'>
+      <MainProductsNav />
+      <div className="all-products-container">
+        {productData.map((product) => (
 
-return(
-
-<nav className='pageProduct'>
-<MainProductsNav/>
-<div className="all-products-container">
-{productData.map((product)=>(
-
-<Product key={product._id} product={product} addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedToCart} />
+          <Product key={product._id} product={product} addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedToCart} />
 
 
 
 
 
 
-))}
+        ))}
 
-</div>
+      </div>
 
-<Footer />
-</nav>
-)
+      <Footer />
+    </nav>
+  )
 
 }

@@ -13,8 +13,8 @@ exports.getAllproducts = async (req, res) => {
 
 
 exports.createProduct = async (req, res) => {
-    const { name, price, dis, image, stars, quantity, category } = req.body;
-    if (!name || !price || !dis) { return res.status(400).json({ message: 'Name, price, and discription are required' }); }
+    const { name, price, dis, image, stars, quantity } = req.body;
+    if (!name || !price ) { return res.status(400).json({ message: 'Nameare required' }); }
 
     try {
 
@@ -25,7 +25,7 @@ exports.createProduct = async (req, res) => {
 
 
 
-        const product1 = { name, price, dis: dis || "amazon", image, stars, quantity: quantity || 1, category };
+        const product1 = { name, price, dis: dis || "amazon", image, stars, quantity: quantity || 1 };
 
         const savedproduct = new Product(product1);
         await savedproduct.save();

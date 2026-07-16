@@ -4,6 +4,19 @@ import { Typography, Box } from '@mui/material'
 import { useEffect } from 'react';
 import '../style/product.css'
 import URL from './URL';
+import rate_0 from '../ratings/rating-0.png'
+import rate_05 from '../ratings/rating-05.png'
+import rate_10 from '../ratings/rating-10.png'
+import rate_15 from '../ratings/rating-15.png'
+import rate_20 from '../ratings/rating-20.png'
+import rate_25 from '../ratings/rating-25.png'
+import rate_30 from '../ratings/rating-30.png'
+import rate_35 from '../ratings/rating-35.png'
+import rate_40 from '../ratings/rating-40.png'
+import rate_45 from '../ratings/rating-45.png'
+import rate_50 from '../ratings/rating-50.png'
+
+import img_1 from'./images/athletic-cotton-socks-6-pairs.jpg'
 
 
 
@@ -47,7 +60,7 @@ export default function Product() {
   const [quantity, setquantity] = useState('')
   const [category, setcategory] = useState('')
   const [image, setimage] = useState('')
-  const [star, setstars] = useState('')
+  const [stars, setstars] = useState('')
   const [apiCategory, setApiCategory] = useState([]);
 
 
@@ -123,6 +136,7 @@ export default function Product() {
         </TableHead>
         <TableBody>
           {(productData ? productData : []).map((row) => (
+            
             <TableRow key={row._id}>
               <TableCell ><img id='product-img' src={row.image} alt='' /></TableCell>
               <TableCell ><img id='product-stars' src={row.stars} alt='' /></TableCell>
@@ -148,7 +162,7 @@ export default function Product() {
       <h1>Add product</h1>
       <form onSubmit={async (e) => {
         e.preventDefault();
-        const newProduct1 = { name, price, dis, image, star, quantity, category }
+        const newProduct1 = { name, price, dis, image, stars, quantity, category }
         const token = localStorage.getItem('token')
         try {
           await axios.post(`${URL}/product/createProduct`, newProduct1, { headers: { "Authorization": `${token}` } })
@@ -169,14 +183,14 @@ export default function Product() {
         <br />
         <input className='input1' type='text' placeholder='productimage' value={image} onChange={(e) => setimage(e.target.value)} />
         <br />
-        <input className='input1' type='text' placeholder='productStars' value={star} onChange={(e) => setstars(e.target.value)} />
+        <input className='input1' type='text' placeholder='productStars' value={stars} onChange={(e) => setstars(e.target.value)} />
         <br />
         <input className='input1' type='text' placeholder='product quantity' value={quantity} onChange={(e) => setquantity(e.target.value)} />
         <br />
 
         <br />
 
-        <Box sx={{ minWidth: 120 }}>
+        {/* <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">category</InputLabel>
             <Select
@@ -195,7 +209,7 @@ export default function Product() {
 
             </Select>
           </FormControl>
-        </Box>
+        </Box> */}
         <button type='submit' className='b1'>Add</button>
       </form>
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Typography, Box } from '@mui/material'
-
+import URL from './URL';
 
 import * as React from 'react';
 import Table from '@mui/material/Table';
@@ -38,15 +38,24 @@ export default function Category() {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
+    try {
+      async function fetchdata() {
 
-    async function fetchdata() {
+        const res = await axios.get(`${URL}/categories/getAllCategory`, { headers: { Authorization: `${token}` } })
+        setcategoryData(Array.isArray(res.data) ? res.data : [])
 
-      await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllCategory", { headers: { Authorization: `${token}` } }
-      ).then(res => setcategoryData(res.data)).catch(err => console.log(err)) 
       }//function end
       fetchdata()
 
-  },[])
+    }
+    catch (error) {
+
+      const message = error.response?.data?.message || error.message
+      alert(message)
+    }
+
+
+  }, [])
 
 
 
@@ -66,15 +75,14 @@ export default function Category() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {(categoryData?categoryData:[]).map((category) => (
+          {(categoryData ? categoryData : []).map((category) => (
             <TableRow key={category._id}>
               <TableCell >{category._id}</TableCell>
               <TableCell >{category.name}</TableCell>
               <TableCell >
                 <button className="button1" onClick={async () => {
                   if (window.confirm('are you sure you want to delete this category')) {//if
-                    await axios.delete(`https://amazon-reactjs.onrender.com/api/users/deleteCategory/${category._id}`,
-                      { headers: { Authorization: localStorage.getItem('token') } }
+                    await axios.delete(`${URL}/categories/deleteCategory/${category._id}`, { headers: { Authorization: localStorage.getItem('token') } }
                     ).then(setcategoryData(categoryData.filter(r => r._id !== category._id))).catch(err => console.log(err))
 
 
@@ -92,13 +100,17 @@ export default function Category() {
       <h1>Add Category</h1>
       <form onSubmit={async (e) => {
         e.preventDefault();
-        await axios.post('https://amazon-reactjs.onrender.com/api/users/createCategory', { name }, {
-          headers: {
-            "Authorization": `${localStorage.getItem('token')}`
-          }
+        try {
+
+          await axios.post(`${URL}/categories/createCategory`, { name }, { headers: { "Authorization": `${localStorage.getItem('token')}` } })
+          setcategoryData([...categoryData, { name }]); setname('');
+          alert('category added succussfuly')
         }
-        ).then(() => { setcategoryData(...categoryData, name); setname(''); alert('category added succussfuly') }
-        ).catch(err => console.log(err))
+        catch (error) {
+          const message = error.response?.data?.message || error.message
+          alert(message)
+        }
+
 
       }}>
 
@@ -123,12 +135,14 @@ export default function Category() {
             </Typography>
             <form onSubmit={async (e) => {
               e.preventDefault();
-              await axios.put(`https://amazon-reactjs.onrender.com//users/updateCategory/${updatedId}`, { name: updatedname },
+              await axios.put(`${URL}/categories/updateCategory/${updatedId}`, { name: updatedname },
                 { headers: { Authorization: localStorage.getItem('token') } }
-              ).then(() => { setcategoryData(prevData => prevData.map(item => item.id === updatedId ? { ...item, name: updatedname } : item)); setupdatedname('') }
-              ).catch(err=>console.log(err))
+              ).then(() => { setcategoryData(prevData => prevData.map(item => item._id === updatedId ? { ...item, name: updatedname } : item)); setupdatedname('') }
+              ).catch(err => console.log(err))
 
-              alert('category updated succesfuly')
+              alert('category updated succesfuly  ✅')
+               
+              
 
             }}>
               <input type='text' placeholder='name' value={updatedname} onChange={(e) => { setupdatedname(e.target.value) }} />
