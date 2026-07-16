@@ -147,8 +147,8 @@ exports.updateUser = async (req, res) => {
    
 
     try {
-        const existingUser = await User.findOne({ email: email });
-        if (existingUser) {return res.status(400).json({ message: 'Email already in use' });}
+        // const existingUser = await User.findOne({ email: email });
+        // if (existingUser) {return res.status(400).json({ message: 'Email already in use' });}
 
         const user1 = await User.findByIdAndUpdate(req.user, { fullname, email, address, phone }, { new: true });
         if (!user1) { return res.status(400).json({ message: "user not found" }) }

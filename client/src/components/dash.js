@@ -12,11 +12,11 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import SearchIcon from '@mui/icons-material/Search';
-import { AppProvider,  Navigation } from '@toolpad/core/AppProvider';
-import {DashboardLayout,ThemeSwitcher, SidebarFooterProps,} from '@toolpad/core/DashboardLayout';
+import { AppProvider, Navigation } from '@toolpad/core/AppProvider';
+import { DashboardLayout, ThemeSwitcher, SidebarFooterProps, } from '@toolpad/core/DashboardLayout';
 import { Account } from '@toolpad/core/Account';
 import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
-import { useEffect ,useState} from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -27,7 +27,7 @@ import Category from './category';
 import CategoryIcon from '@mui/icons-material/Category';
 import MainProducts from './user/mainProducts'
 import '../style/login.css'
-
+import URL from './URL';
 const demoTheme = createTheme({
   cssVariables: {
     colorSchemeSelector: 'data-toolpad-color-scheme',
@@ -44,7 +44,7 @@ const demoTheme = createTheme({
   },
 });
 
-function DemoPageContent({ pathname,profileData }) {
+function DemoPageContent({ pathname, profileData }) {
   return (
     <Box
       sx={{
@@ -54,21 +54,21 @@ function DemoPageContent({ pathname,profileData }) {
         alignItems: 'center',
         textAlign: 'center',
       }}  >
-        {pathname==="/profile"&&<Profile profileData={profileData}/> }
-        {pathname==="/product"&&<Product />}
-        {pathname==="/category"&& <Category/>}
-        {pathname==="/productuser"&& <MainProducts/>}
-        
-        {pathname==="/dashboard"&&(<Typography>dash page</Typography> )}
+      {pathname === "/profile" && <Profile profileData={profileData} />}
+      {pathname === "/product" && <Product />}
+      {pathname === "/category" && <Category />}
+      {pathname === "/productuser" && <MainProducts />}
+
+      {pathname === "/dashboard" && (<Typography>dash page</Typography>)}
 
 
-      
+
     </Box>
   );
 }
 
 function ToolbarActionsSearch() {
-   
+
   return (
     <Stack direction="row">
       <Tooltip title="Search" enterDelay={1000}>
@@ -118,12 +118,12 @@ function SidebarFooter({ mini }) {
 }
 
 function CustomAppTitle() {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <CloudCircleIcon fontSize="large" color="primary" />
-     <Typography variant="h6"><a className='amazon_dash' href='/productuser'> amazon </a> </Typography> 
-      
+      <Typography variant="h6"><a className='amazon_dash' href='/productuser'> amazon </a> </Typography>
+
       <Tooltip title="Connected to production">
         <CheckCircleIcon color="success" fontSize="small" />
       </Tooltip>
@@ -140,61 +140,67 @@ interface DemoProps {
 }
 
 export default function DashboardLayoutSlots(props) {
-  
-  const [profileData,setprofileData]=useState([])
-  const[isAdmin,setisAdmin]=useState(false)
-  const navigate=useNavigate();
+
+  const [profileData, setprofileData] = useState([])
+  const [isAdmin, setisAdmin] = useState(false)
+  const navigate = useNavigate();
   const NAVIGATION = [
-  {
-    kind: 'header',
-    title: 'Main items',
-  },
-  {
-    segment: 'dashboard',
-    title: 'Dashboard',
-    icon: <DashboardIcon />,
-  },
-  {
-    segment: 'orders',
-    title: 'Orders',
-    icon: <ShoppingCartIcon />,
-  },
-  ...(isAdmin ?[{segment: 'product',
-    title: 'product',
-    icon: <RedeemIcon />},
-  {segment: 'category',
-    title: 'category',
-    icon: <CategoryIcon />}
-  ]:[]),
-  {
-    segment: 'profile',
-    title: 'profile',
-    icon: <AccountCircleIcon />,
-  },
-];
-  useEffect(()=>{
-const token = localStorage.getItem('token')
-if(token){
-  async function fetchdata(){
-    try{const res= await axios.get("https://amazon-reactjs.onrender.com/api/users/getprofile",  { headers:   {Authorization:`${token}`}   }  )
-     
-console.log("profile data:",res.data)
- setisAdmin(res.data.role==='admin')
- setprofileData(res.data)  }
- 
+    {
+      kind: 'header',
+      title: 'Main items',
+    },
+    {
+      segment: 'dashboard',
+      title: 'Dashboard',
+      icon: <DashboardIcon />,
+    },
+    {
+      segment: 'orders',
+      title: 'Orders',
+      icon: <ShoppingCartIcon />,
+    },
+    ...(isAdmin ? [{
+      segment: 'product',
+      title: 'product',
+      icon: <RedeemIcon />
+    },
+    {
+      segment: 'category',
+      title: 'category',
+      icon: <CategoryIcon />
+    }
+    ] : []),
+    {
+      segment: 'profile',
+      title: 'profile',
+      icon: <AccountCircleIcon />,
+    },
+  ];
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      async function fetchdata() {
+        try {
+          const res = await axios.get(`${URL}/users/getprofile`, { headers: { Authorization: `${token}` } })
 
-catch(error){
-  console.log(error);
-  navigate('/login');
-  return
-}
-  }
-  fetchdata()
-}
+          console.log("profile data:", res.data)
+          setisAdmin(res.data.role === 'admin')
+          setprofileData(res.data)
+        }
 
-else{navigate('/login')}
 
-  },[])
+        catch (error) {
+          const message = error.response?.data?.message || error.message
+          alert(message)
+          navigate('/login');
+        }
+      }
+      fetchdata()
+    }
+
+    else { navigate('/login') }
+
+  }, [])
 
   const { window } = props;
 
@@ -220,7 +226,7 @@ else{navigate('/login')}
             sidebarFooter: SidebarFooter,
           }}
         >
-          <p> welcome {profileData.role? profileData.role:"notfound"}</p>
+          <p> welcome {profileData ? profileData.fullname : "notfound"}</p>
           <DemoPageContent profileData={profileData} pathname={router.pathname} />
         </DashboardLayout>
         {/* preview-end */}

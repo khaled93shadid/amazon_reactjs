@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { Typography, Box } from '@mui/material'
 import { useEffect } from 'react';
 import '../style/product.css'
-
+import URL from './URL';
 
 
 
@@ -12,17 +11,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-
-
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
 
 import Modal from '@mui/material/Modal';
 const style = {
@@ -44,11 +39,6 @@ export default function Product() {
 
   const [productData, setproductData] = useState([])
 
-  const [age, setAge] = useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  }
 
 
   const [name, setname] = useState('')
@@ -57,7 +47,7 @@ export default function Product() {
   const [quantity, setquantity] = useState('')
   const [category, setcategory] = useState('')
   const [image, setimage] = useState('')
-  const [stars, setstars] = useState('')
+  const [star, setstars] = useState('')
   const [apiCategory, setApiCategory] = useState([]);
 
 
@@ -67,6 +57,7 @@ export default function Product() {
   const [updatedquantity, setupdatedquantity] = useState('')
   const [updatedcategory, setupdatedcategory] = useState('')
   const [id, setId] = useState({})
+  const [updatedstars, setupdatedstars] = useState('')
   const [updatedimage, setupdatedimage] = useState('')
 
   const [open, setOpen] = React.useState(false);
@@ -74,36 +65,41 @@ export default function Product() {
   const handleClose = () => setOpen(false);
 
 
-  const navigate = useNavigate();
+
   useEffect(() => {
-    const abortController =new AbortController()
     const token = localStorage.getItem('token')
     const fetchdata = async () => {
 
-     
-         await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllProducts", { headers: { Authorization: token } }).then(res=>setproductData(res.data)).catch(err=>alert(err))
-        
-        await axios.get('https://amazon-reactjs.onrender.com/api/users/getAllCategory', { headers: { Authorization: localStorage.getItem('token') } }  
-        ).then(res=>setApiCategory(res.data)).catch(err=>console.log(err))
+      try {
+        const res = await axios.get(`${URL}/product/getAllProducts`, { headers: { Authorization: token } })
+        setproductData(Array.isArray(res.data) ? res.data : [])
 
+        const res2 = await axios.get(`${URL}/categories/getAllCategory`, { headers: { Authorization: token } })
+        setApiCategory(Array.isArray(res2.data) ? res2.data : [])
+      }
 
-                                  }
+      catch (error) {
+        const message = error.response?.data?.message || error.message
+        alert(message)
+      }
+
+    }
 
     fetchdata();
 
-    return () => { abortController.abort();}
+
   }, [])
 
-useEffect(()=>{
+  useEffect(() => {
 
-  console.log(productData)
+    console.log(productData)
 
-},[productData])
-useEffect(()=>{
+  }, [productData])
+  useEffect(() => {
 
-  console.log(apiCategory)
+    console.log(apiCategory)
 
-},[apiCategory])
+  }, [apiCategory])
 
 
 
@@ -126,7 +122,7 @@ useEffect(()=>{
           </TableRow>
         </TableHead>
         <TableBody>
-          {(productData?productData:[]).map((row) => (
+          {(productData ? productData : []).map((row) => (
             <TableRow key={row._id}>
               <TableCell ><img id='product-img' src={row.image} alt='' /></TableCell>
               <TableCell ><img id='product-stars' src={row.stars} alt='' /></TableCell>
@@ -137,14 +133,13 @@ useEffect(()=>{
               <TableCell ><button className="button1" onClick={async () => {
                 if (window.confirm("are you sure you want to delete this product")) {
                   const token = localStorage.getItem('token')
-                  await axios.delete(`https://amazon-reactjs.onrender.com/api/users/deleteProduct/${row._id}`, {
-                  headers: {"Authorization": `${token}`}}).then(setproductData(productData.filter(r => r._id !== row._id))
-                  ).catch(err=>console.log(err))
+                  await axios.delete(`${URL}/product/deleteProduct/${row._id}`, { headers: { "Authorization": `${token}` } })
+                  setproductData(productData.filter(r => r._id !== row._id))
                   //window.location.reload()    
                 }//end if (delete)
-                }} >Delete</button>
+              }} >Delete</button>
 
-                <button className='button1' onClick={() => {handleOpen();setId(row._id)}}>Update</button></TableCell>
+                <button className='button1' onClick={() => { handleOpen(); setId(row._id) }}>Update</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -153,33 +148,18 @@ useEffect(()=>{
       <h1>Add product</h1>
       <form onSubmit={async (e) => {
         e.preventDefault();
-        const newProduct1 = { name, price, dis, image, stars, quantity, category }
-        /*
-        const newProduct = new FormData();
-        newProduct.append('name',name)
-        newProduct.append('price',price)
-        newProduct.append('dis',dis)
-        newProduct.append('image',image)
-        newProduct.append('quantity',quantity)
-        newProduct.append('category',category)
-        console.log(newProduct)
-        */
-      
-          const token=localStorage.getItem('token')
-
-          await axios.post("https://amazon-reactjs.onrender.com/api/users/createProduct", newProduct1, 
-            {headers: {"Authorization": `${token}`}}).then(()=>{
-              alert('product added successfully')
-              setproductData([...productData, newProduct1])
-              setname(''); setprice('');setdis('');setquantity('');
-              setcategory('');setimage('');setstars('') 
-               }).catch(err=>console.log(err))
-          
-
-        
-        
-
-
+        const newProduct1 = { name, price, dis, image, star, quantity, category }
+        const token = localStorage.getItem('token')
+        try {
+          await axios.post(`${URL}/product/createProduct`, newProduct1, { headers: { "Authorization": `${token}` } })
+          alert('product added successfully ✅')
+          setproductData([...productData, newProduct1])
+          setname(''); setprice(''); setdis(''); setquantity(''); setcategory(''); setimage(''); setstars('')
+        }
+        catch (error) {
+          const message = error.response?.data?.message || error.message
+          alert(message)
+        }
       }}>
         <input className='input1' type='text' placeholder='product name' value={name} onChange={(e) => setname(e.target.value)} />
         <br />
@@ -189,7 +169,7 @@ useEffect(()=>{
         <br />
         <input className='input1' type='text' placeholder='productimage' value={image} onChange={(e) => setimage(e.target.value)} />
         <br />
-        <input className='input1' type='text' placeholder='productStars' value={stars} onChange={(e) => setstars(e.target.value)} />
+        <input className='input1' type='text' placeholder='productStars' value={star} onChange={(e) => setstars(e.target.value)} />
         <br />
         <input className='input1' type='text' placeholder='product quantity' value={quantity} onChange={(e) => setquantity(e.target.value)} />
         <br />
@@ -206,7 +186,7 @@ useEffect(()=>{
               label="category"
               onChange={(e) => setcategory(e.target.value)}
             >
-              {(apiCategory?apiCategory:[]).map((categoryItem) => (
+              {(apiCategory ? apiCategory : []).map((categoryItem) => (
 
                 <MenuItem value={categoryItem._id}>{categoryItem.name}</MenuItem>
 
@@ -234,19 +214,22 @@ useEffect(()=>{
             <form onSubmit={async (e) => {
               e.preventDefault();
               const token = localStorage.getItem('token')
-              const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage, quantity: updatedquantity, category: updatedcategory }
-              try{
-                
-              const response= await axios.put(`https://amazon-reactjs.onrender.com/api/users/updateproduct/${id}`,updatedproduct , {headers: {Authorization: token}})
-              setproductData(prevData=> prevData.map(item => item._id === id ?response.data.product1 : item))  
-              alert('product updated successfully') 
-              handleClose();
+              const updatedproduct = { name: updatedname, price: updatedprice, dis: updateddis, image: updatedimage,stars:setupdatedstars ,quantity: updatedquantity, category: updatedcategory }
+              try {
+
+                const response = await axios.put(`${URL}/product/updateproduct/${id}`, updatedproduct, { headers: { Authorization: token } })
+                setproductData(prevData => prevData.map(item => item._id === id ? response.data.product1 : item))
+                alert('product updated successfully')
+                handleClose();
               }//try
-              catch(error){console.log(error)}
-              }}
-              
-              >
-                  
+              catch (error) {
+                const message = error.response?.data?.message || error.message
+                alert(message)
+              }
+            }}
+
+            >
+
               <input className='input11' type='text' placeholder='product name' value={updatedname} onChange={(e) => setupdatedname(e.target.value)} />
               <br />
               <input className='input11' type='text' placeholder='product price' value={updatedprice} onChange={(e) => setupdatedprice(e.target.value)} />
@@ -254,6 +237,8 @@ useEffect(()=>{
               <input className='input11' type='text' placeholder='product discription' value={updateddis} onChange={(e) => setupdateddis(e.target.value)} />
               <br />
               <input className='input11' type='text' placeholder='product image' value={updatedimage} onChange={(e) => setupdatedimage(e.target.value)} />
+
+              <input className='input11' type='text' placeholder='product stars' value={updatedstars} onChange={(e) => setupdatedstars(e.target.value)} />
               <br />
               <input className='input11' type='text' placeholder='product quantity' value={updatedquantity} onChange={(e) => setupdatedquantity(e.target.value)} />
               <br />
@@ -268,7 +253,7 @@ useEffect(()=>{
                     label="category"
                     onChange={(e) => setupdatedcategory(e.target.value)}
                   >
-                    {(apiCategory?apiCategory:[]).map((categoryItem) => (
+                    {(apiCategory ? apiCategory : []).map((categoryItem) => (
 
                       <MenuItem value={categoryItem._id}>{categoryItem.name}</MenuItem>
 
