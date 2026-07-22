@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Footer from "../footer"
 import logo from '../icons/amazon-checkout -logo.png'
 import lock from '../icons/checkout-lock-icon.png'
+import URL from '../URL' 
 
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -31,20 +32,19 @@ export default function Cart() {
       const [deliveryOption, setDeliveryOption] = useState({})
       const token = localStorage.getItem('token')
       useEffect(() => {
-            const abortController = new AbortController();
+           
             const fetchCart = async () => {
-                  await axios.get('https://amazon-reactjs.onrender.com/api/users/getcart', { headers: { 'Authorization': `${token}` } }
+                  
+                  await axios.get(`${URL}/cart/getcart`, { headers: { 'Authorization': `${token}` } }
                   ).then(res => setcart(res.data.items)).catch(err => console.log(err))
 
-                  await axios.get('https://amazon-reactjs.onrender.com/api/users/cartMoney', { headers: { 'Authorization': `${token}` } }
-                  ).then(res => setCartMoney(res.data)).catch(err => console.log(err))
+
+                  await axios.get(`${URL}/cart/cartMoney`, { headers: { 'Authorization': `${token}` } }
+                  ).then(res => setCartMoney(res.data.money)).catch(err => console.log(err))
 
 
-                  await axios.get("https://amazon-reactjs.onrender.com/api/users/cartQuantity", {
-                        headers: {
-                              "Authorization": `${token}`
-                        }
-                  }).then(res => { setCartQuantity(res.data || 0); }).catch(error => console.log(error))
+                  await axios.get(`${URL}/cart/cartQuantity`,{headers: {"Authorization": `${token}`}}
+                  ).then(res => { setCartQuantity(res.data.quantity || 0); }).catch(error => console.log(error))
                   // end fetch cart quantity
 
             }//fetchCart 
@@ -52,9 +52,10 @@ export default function Cart() {
             fetchCart()
 
             const handelCartUpdate = () => { fetchCart() }
+
             window.addEventListener('cartUpdated', handelCartUpdate)
 
-            return () => { abortController.abort(); window.removeEventListener('cartUpdated', handelCartUpdate); };
+            return () => {window.removeEventListener('cartUpdated', handelCartUpdate); };
 
 
 
@@ -69,7 +70,7 @@ export default function Cart() {
 
 
       const place_order = async () => {
-            await axios.post('https://amazon-reactjs.onrender.com/api/users/placeOrder', {}, { headers: { 'Authorization': `${token}` } }
+            await axios.post(`${URL}/order/placeOrder`, {}, { headers: { 'Authorization': `${token}` } }
             ).catch(err => alert(err))
             alert('order added successfuly')
             navigate('/order2')
@@ -81,11 +82,11 @@ export default function Cart() {
 
       const removeCart = async (productId) => {
             const fetchCart = async () => {
-                  await axios.get('https://amazon-reactjs.onrender.com/api/users/getcart', { headers: { 'Authorization': `${token}` } }
+                  await axios.get(`${URL}/cart/getcart`, { headers: { 'Authorization': `${token}` } }
                   ).then(res => setcart(res.data.items)).catch(err => alert(err))
             }//fetchCart 
 
-            await axios.delete(`https://amazon-reactjs.onrender.com/api/users/removefromcart2/${productId}`, { headers: { 'Authorization': `${token}` } }
+            await axios.delete(`${URL}/cart/removefromcart2/${productId}`, { headers: { 'Authorization': `${token}` } }
             ).then(window.dispatchEvent(new Event('cartUpdated')), fetchCart()).catch(err => console.log(err))
 
             //alert('Item removed successfully');
@@ -181,13 +182,13 @@ export default function Cart() {
                                                 <p className="ordertotal">Order total:</p>
 
                                           </div>
-
+                                                                          
                                           <div className="checkout-right-horizontal_2">
-                                                <p class="checkout-right-horizontal_2_p">${cartMoney.totalCents}</p>
-                                                <p class="checkout-right-horizontal_2_p">${cartMoney.delivery}</p>
-                                                <p class="checkout-right-horizontal_2_p">${(cartMoney.totalCents+Math.round(cartMoneyDelivery))||0}</p>
-                                                <p class="checkout-right-horizontal_2_p">${cartMoney.estimatedTax}</p>
-                                                <p class="ordertotal">${cartMoney.totalTax+Math.round(cartMoneyDelivery)||0}</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.totalCents/100}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.delivery}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{(cartMoney.totalCents+Math.round(cartMoneyDelivery))/100||0}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.estimatedTax/100}</p>
+                                                <p class="ordertotal">{Math.round((cartMoney.totalMoney)/100)||0}$</p>
                                           </div>
                                     </div>
 

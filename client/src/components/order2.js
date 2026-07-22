@@ -3,6 +3,7 @@ import Footer from './footer.js'
 import MainProductsNav from './user/navBar.js'
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import URL from './URL.js'
 import axios from 'axios' 
 
 
@@ -20,8 +21,8 @@ useEffect(()=>{
    const token = localStorage.getItem('token') 
    const fetchOrders=async()=>{
        
-        await axios.get("https://amazon-reactjs.onrender.com/api/users/getAllOrders",{headers:{'Authorization':`${token}`}}
-        ).then(res=>setOrders(res.data)).catch(err=>console.log(err))
+        await axios.get(`${URL}/order/getAllOrders`,{headers:{'Authorization':`${token}`}}
+        ).then(res=>setOrders(res.data.orders)).catch(err=>console.log(err))
 
    }; //fetch function  end 
    fetchOrders(); 

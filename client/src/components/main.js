@@ -9,6 +9,7 @@ import images5 from './slider/images5.js'
 import CustomSlider from'./slider/custom.slider.js'
 import CustomSlider2 from'./slider/custom.slider2.js'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -85,6 +86,7 @@ return(
            
            
      </div>{/* 4 cards pictures end*/}
+    
        <p className='card_last_p'>Shop gaming</p>
    </div>{/* 1card finsh*/}
    

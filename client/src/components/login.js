@@ -30,7 +30,7 @@ export default function Login() {
                             const res = await axios.post(`${URL}/users/login`, userdata)
                             localStorage.setItem('token', res.data.token);
                             
-                            if (res.data.user.role === 'user') { alert('you login successfully ✅'); navigate('/ProfileUser'); }
+                            if (res.data.user.role === 'user') { alert('you login successfully ✅'); navigate('/productuser'); }
                             else { alert('you login successfully ✅'); navigate('/dash'); }
                         }
                         catch (error) { 

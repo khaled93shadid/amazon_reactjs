@@ -1,5 +1,5 @@
 const Cart = require('../model/cart')
-const Product = require('../model/cart')
+const Product = require('../model/product')
 
 
 exports.addToCart = async (req, res) => {
@@ -8,9 +8,12 @@ exports.addToCart = async (req, res) => {
     return res.status(400).json({ success: false, message: 'Product ID  is required' });
   }
   try {
+    console.log(`productID  khs:${productId}`)
+    const existingProduct = await Product.findById(productId)
+    if (!existingProduct) { return res.status(404).json({ message: 'product not found ' }) }
+    
+    console.log(`existing product :${existingProduct}`)
 
-    const existingProduct = await Product.findById(productId).exec()
-    if (!existingProduct) { return res.status(404).json({ message: 'product not found' }) }
 
     let cart = await Cart.findOne({ user: req.user })
     if (!cart) { cart = new Cart({ user: req.user, items: [] }) }
@@ -86,13 +89,13 @@ exports.cartQuantity = async (req, res) => {
   try {
     const cart = await Cart.findOne({ user: req.user }).populate('items.product')
     if (!cart) { return res.status(404).json({ message: 'cart not found' }) }
-    
+
     const Quantity = await cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
-    
-    res.status(200).json({quantity:Quantity,success:true,message:'quantity is up to date'})
+
+    res.status(200).json({ quantity: Quantity, success: true, message: 'quantity is up to date' })
   }
 
-  catch (error) { return res.status(500).json({success:false,message: 'server error', error: error.message }) }
+  catch (error) { return res.status(500).json({ success: false, message: 'server error', error: error.message }) }
 
 
 }
@@ -110,9 +113,9 @@ exports.cartMoney = async (req, res) => {
     const delivery = 0
     const totalMoney = totalCents + estimatedTax
     const money = { totalCents, estimatedTax, totalMoney, delivery }
-    res.status(200).json({money:money,message:' totalCents, estimatedTax, totalMoney, delivery in object money'})
+    res.status(200).json({ money: money, message: ' totalCents, estimatedTax, totalMoney, delivery in object money' })
   }
-  catch (error) { return res.status(500).json({success:false , message: 'server error' , error: error.message }) }
+  catch (error) { return res.status(500).json({ success: false, message: 'server error', error: error.message }) }
 
 
 }

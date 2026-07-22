@@ -24,6 +24,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CloseIcon from '@mui/icons-material/Close';
+import URL from '../URL';
 /* sidebar drawer end */
 
 
@@ -38,13 +39,13 @@ let cartQ=cartQuantity;
 
 useEffect(()=>{
   const token=localStorage.getItem('token')
-   const abortController = new AbortController();
+
   const fetchCartQuantity=async()=>{
      
-    await axios.get("https://amazon-reactjs.onrender.com/api/users/cartQuantity",{headers:{"Authorization":`${token}` 
-    }}).then(res=>{setCartQuantity(res.data||0);}).catch(error=>console.log(error))
+    await axios.get(`${URL}/cart/cartQuantity`,{headers:{"Authorization":`${token}` 
+    }}).then(res=>{setCartQuantity(res.data.quantity||0);}).catch(error=>console.log(error))
     // end fetch cart quantity
-   await axios.get("https://amazon-reactjs.onrender.com/api/users/getprofile",{headers:{"Authorization":`${token}`,}}).then(res=>setUser(res.data)).catch(error=>console.log(error))
+   await axios.get(`${URL}/users/getprofile`,{headers:{"Authorization":`${token}`,}}).then(res=>setUser(res.data)).catch(error=>console.log(error))
     //end fetch user information
 
   }//fetch cart one time
@@ -53,7 +54,7 @@ useEffect(()=>{
   const handelCartUpdate=()=>{fetchCartQuantity() }
 window.addEventListener('cartUpdated', handelCartUpdate)
 
-return () => { abortController.abort(); window.removeEventListener('cartUpdated', handelCartUpdate);};
+return () => { window.removeEventListener('cartUpdated', handelCartUpdate);};
 
 
 },[])
