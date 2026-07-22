@@ -33,6 +33,7 @@ return(
      
     </div>{/* slider end */}
 
+<Link to='/productuser'>
 
 <div className='container_row1'>{/* container row1 start first 4 cards*/}
 
@@ -44,7 +45,7 @@ return(
        <div className='container_row1_1_column'>{/* 4 cards pictures*/}
         
            <div  className='container_row1_1_column1'>
-                <img className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Sept/CleaningTool_1x._SY116_CB563137408_.jpg'/>
+                <img alt='pic' className='container_row1_1_column1_img' src='https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Sept/CleaningTool_1x._SY116_CB563137408_.jpg'/>
                 <p className='container_row1_1_column1_p'>Cleaning Tools</p>
 
            </div>
@@ -67,7 +68,9 @@ return(
            
            
      </div>{/* 4 cards pictures end*/}
-       <p className='card_last_p'>Discover more in Home</p>
+
+
+       <p className='card_last_p1'>Discover more in Home</p>
    </div>{/* 1card finsh*/}
 
    <div className='container_row1_1'>{/*  first card start*/}
@@ -161,7 +164,7 @@ return(
 
 </div>{/* container row1 end first 4 cards*/}
 
-
+</Link>
 
 
 
@@ -171,6 +174,9 @@ return(
 {/* row2 start*/}
 {/* row2 start*/}
 <div className='main_body'>
+
+
+<Link to='/productuser'>
 
 <div className='container_row2'>{/* container row2 start first 4 cards*/}
 
@@ -300,8 +306,10 @@ return(
   
 
 </div>{/* container row2 end second 4 cards*/}
+</Link>
 
 
+<Link to='/productuser'>
 <div className='relative_for_slider_row2'>{/* relativeSlider start */}
       <p className='relative_for_slider_p'>Popular products in Wireless internationally</p>
    <div className="App2">  {/* slider start */}
@@ -315,11 +323,11 @@ return(
 
   
 </div>{/* relativeSlider end */}
+</Link>
 
 
 
-
-
+<Link to='/productuser'>
 <div className='container_row2'>{/* container row2 start first 4 cards*/}
 
    <div className='container_row1_1'>{/*  first card start*/}
@@ -462,9 +470,11 @@ return(
   
 
 </div>{/* container row2 end second 4 cards*/}
+</Link>
 
 
 
+<Link to='/productuser'>
 <div  className='relative_for_slider_row2 relative_for_slider_last'>{/* relativeSlider start */}
       <p className='relative_for_slider_p'>International Top Sellers for you</p>
 <div className="App">  {/* slider start */}
@@ -477,7 +487,7 @@ return(
     </div>{/* slider end */}
     
 </div>{/* relativeSlider end */}
-
+</Link>
 
 
 

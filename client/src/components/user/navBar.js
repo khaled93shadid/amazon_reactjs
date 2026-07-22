@@ -203,7 +203,7 @@ return(
   </div>
 
   <div className="header-middle">
-    <input className="header-middle-search" type="text" placeholder="Search" />
+    <input className="header-middle-search" type="text" placeholder="Search Amazon" />
     <button className="header-middle-search-button"><img className="header-middle-search-button-img" src={search} /></button>
   </div>
 
@@ -220,7 +220,12 @@ return(
            <a href='/cart' > 
              <div className="header-right-div2-img-p">
                   <img className="header-right-div2-img" src={cart}/> 
-                 <p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
+                 
+                {cartQuantity<10?<p className="cart-quantity cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>:
+                  <p className="cart-quantity-1 cart-quantity-js">{cartQuantity?cartQuantity:cartQ}</p>
+                  }
+                  
+                 
             </div>
            </a> 
         <a href='/cart' >  <p className="header-right-div2-p">cart</p> </a>

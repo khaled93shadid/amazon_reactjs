@@ -52,21 +52,21 @@ border-radius: 20px;width: 152px;margin-top: 20px;cursor: pointer;color: rgb(53,
 .header-main{background-color:rgb(19, 25, 33);display:flex;justify-content: space-between;align-items: center;
 width: 99vw ;padding: 5px;flex-wrap: wrap;align-content: center;row-gap: 10px;}
 
-.header-left{display: flex;justify-content: center;padding-right: 25px;}
+.header-left{display: flex;justify-content: center;}
 
-.header-logo{width:80px; cursor: pointer;height: 30px;padding:5px;transition: border 0.15s;
+.header-logo{width:105px; cursor: pointer;height: 40px;padding:5px;transition: border 0.15s;
 border: solid rgb(19, 25, 33) 1px;}
 .header-logo:hover{border-color: white;}
 
-.header-middle{flex:1;display: flex;align-items: center;max-width: 600px;padding-right: 5px;}
+.header-middle{flex:1;display: flex;align-items: center;max-width: 1000px;margin-right: 20px;}
 .header-middle-search{flex:1;
-  height: 28px;width:250px;border-radius: 2px;border: none;
+  height: 50px;width:250px;border-radius: 2px;border: none;
 }
 
 
-.header-middle-search-button{background-color:rgb(254, 189, 105);margin-left:-37px ;border: none;border-top-right-radius:2px;
-border-bottom-right-radius:2px; cursor: pointer;}
-.header-middle-search-button-img{width:15px;padding: 5px;}
+.header-middle-search-button{background-color:rgb(254, 189, 105);margin-left:-42px ;border: none;border-top-right-radius:4px;
+border-bottom-right-radius:4px; cursor: pointer;}
+.header-middle-search-button-img{width:20px;height: 36px;padding: 5px;}
 
 .header-right{display: flex;align-items: center;justify-content: space-between;align-content: space-between;column-gap: 5px;}
 
@@ -85,12 +85,13 @@ border: solid rgb(19, 25, 33) 1px;padding-right: 30px;
 .header-right-div1{position: relative;margin-right: 10px;cursor: pointer;transition:border 1s;height: 30px;padding: 5px;transition: border 0.15s;
 border: solid rgb(19, 25, 33) 1px;}
 .header-right-div1:hover{border-color: white;}
-.header-right-div1-p1{position: absolute;top:-10px;left:5px;font-size: 13px;}
-.header-right-div1-p2{font-size: 13px;font-weight: bold;}
+.header-right-div1-p1{position: absolute;top:-10px;left:5px;font-size: 15px;}
+.header-right-div1-p2{font-size: 15px;font-weight: bold;}
 
 .header-right-div2-img-p{position:relative;}
-.cart-quantity{position: absolute;left: 18px;top:-8px;color: rgb(240, 136, 4);font-weight: bold;font-size: 11px;}
-.header-right-div2-p{font-weight: bold;font-size: 15px;}
+.cart-quantity{position: absolute;left: 18px;top:-20px;color: rgb(240, 136, 4);font-weight: bold;font-size: 15px;}
+.cart-quantity-1{position: absolute;left: 14px;top:-25px;color: rgb(240, 136, 4);font-weight: bold;font-size: 15px;}
+.header-right-div2-p{font-weight: bold;font-size: 18px;}
 /* header */
 
 
@@ -146,6 +147,7 @@ text-decoration-style: solid ;
 transition: border 0.15s;
 border: solid rgb(29, 39, 53) 1px;
 
+
 }
 .nav_p_div:hover{border-color: white;border-radius: 3px;
 }
@@ -164,8 +166,8 @@ border: solid rgb(29, 39, 53) 1px;
 .location{display:grid ;grid-template-columns:25% 75%;cursor: pointer;transition: border 0.15s;
 border: solid rgb(19, 25, 33) 1px;}
 .location:hover{border-color: white;}
-.location-a1{color: rgb(204, 204, 204);font-size: 12px;font-family: Roboto;}
-.location-a2{color:white;font-size: 14px;font-family: Roboto;font-weight: 700;line-height: -10px;}
+.location-a1{color: rgb(204, 204, 204);font-size: 14px;font-family: Roboto;}
+.location-a2{color:white;font-size: 16px;font-family: Roboto;font-weight: 700;line-height: -10px;}
 .location_logo{margin-top: 15px;}
 .marginLogo{margin-right: 10px;}
 .nav_p_div_container{display: flex;align-items: center;
@@ -182,7 +184,8 @@ justify-content: space-between
 .arrow{margin-left: 100px;}
 .ListItemText1{color:rgb(17, 17, 17);cursor: pointer;font-size: 14px;font-family: Roboto;}
 .closeIcon{position: absolute;right:1px;top:1px;border: solid white 1px;padding: 2px;cursor: pointer;}
-.header-right-login_flag{width:20px;margin-right: 6px;}
+.header-right-login_flag{width:25px;margin-right: 6px;}
+.header-right-login{font-size: 18px;}
 
 .added_to_cart_p{font-family: Roboto;color: rgb(6, 125, 98);
 font-size: 16px;}

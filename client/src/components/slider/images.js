@@ -1,7 +1,7 @@
 const images = [
    {
     imgURL:
-      "https://m.media-amazon.com/images/I/81YK5C5+3vL._SX3000_.jpg",
+      "https://m.media-amazon.com/images/I/71ROLBmB4AL._SX3000_.jpg",
     imgAlt: "img-4"
   },
   {
@@ -9,7 +9,7 @@ const images = [
       "https://m.media-amazon.com/images/I/61Yx5-N155L._SX3000_.jpg",
     imgAlt: "img-0"
   },
-
+  
   {
     
     imgURL:
@@ -18,20 +18,10 @@ const images = [
   },
   {
     imgURL:
-      "https://m.media-amazon.com/images/I/619geyiQI5L._SX3000_.jpg",
+      "https://m.media-amazon.com/images/I/81hIlE5xocL._SX3000_.jpg",
     imgAlt: "img-2"
   },
-  {
-    imgURL:
-      "https://m.media-amazon.com/images/I/81hIlE5xocL._SX3000_.jpg",
-    imgAlt: "img-3"
-  },
-  {
-    imgURL:
-      "https://m.media-amazon.com/images/I/71qcoYgEhzL._SX3000_.jpg",
-    imgAlt: "img-4"
-  },
-  
+
  
   
 ];
