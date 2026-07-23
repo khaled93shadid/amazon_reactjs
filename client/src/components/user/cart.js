@@ -7,7 +7,6 @@ import Footer from "../footer"
 import logo from '../icons/amazon-checkout -logo.png'
 import lock from '../icons/checkout-lock-icon.png'
 import URL from '../URL' 
-
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import RadioGroup from '@mui/material/RadioGroup'
 {/*DATE START */ }
@@ -72,7 +71,7 @@ export default function Cart() {
       const place_order = async () => {
             await axios.post(`${URL}/order/placeOrder`, {}, { headers: { 'Authorization': `${token}` } }
             ).catch(err => alert(err))
-            alert('order added successfuly')
+            alert('order added successfuly ✅')
             navigate('/order2')
 
 
@@ -103,22 +102,25 @@ export default function Cart() {
       //const selectedDate=deliveryOption||deliveryDate1String
 
       return (
+
+
             <nav className='bodyContainer'>
 
                   <div class="header-container">{/*--navbar start */}
-                        <div class="left_section"><a href="/productuser"><img class="left_section_logo" src={logo} /></a> </div>
+                        <div class="left_section"><a href="/"><img class="left_section_logo" src={logo} /></a> </div>
                         <div class="middle_section"><p class="middle_section_p">Checkout (<span class=" middle_section_span">{cartQuantity} items </span>)</p></div>
                         <div class="right_section"><img class="right_section_img" src={lock} /> </div>
 
                   </div>
                   {/*--navbar finish */}
 
-
-                  <div className='bodycart'>
+              
+              {cart.length>0?<div className='bodycart'>
                         <p className="Review_your_order_p">Review your order</p>
 
 
 
+              
 
                         <div className="checkout-continer"> {/*!--checkout-container start -->*/}
                               <div className='forIterationProduct'> {/*div for iteration product start  */}
@@ -184,11 +186,11 @@ export default function Cart() {
                                           </div>
                                                                           
                                           <div className="checkout-right-horizontal_2">
-                                                <p class="checkout-right-horizontal_2_p">{cartMoney.totalCents/100}$</p>
-                                                <p class="checkout-right-horizontal_2_p">{cartMoney.delivery}$</p>
-                                                <p class="checkout-right-horizontal_2_p">{(cartMoney.totalCents+Math.round(cartMoneyDelivery))/100||0}$</p>
-                                                <p class="checkout-right-horizontal_2_p">{cartMoney.estimatedTax/100}</p>
-                                                <p class="ordertotal">{Math.round((cartMoney.totalMoney)/100)||0}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.totalCents?(cartMoney.totalCents/100).toFixed(2):0}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.delivery?cartMoney.delivery:0}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.totalCents?((cartMoney.totalCents+cartMoneyDelivery)/100).toFixed(2):0}$</p>
+                                                <p class="checkout-right-horizontal_2_p">{cartMoney.estimatedTax?(cartMoney.estimatedTax/100).toFixed(2):0}</p>
+                                                <p class="ordertotal">{cartMoney.totalMoney?((cartMoney.totalMoney/100)+cartMoneyDelivery).toFixed(2):0}$</p>
                                           </div>
                                     </div>
 
@@ -204,7 +206,13 @@ export default function Cart() {
 
 
 
-                  </div>{/*-body cart end  */}
+                  </div>:<h1 style={{marginTop:'100px',textAlign:'center'}}>LOADING...⏳</h1>}
+{/*-body cart end  */} 
+
+                  
+
+
+
                   <Footer />
             </nav>
       )

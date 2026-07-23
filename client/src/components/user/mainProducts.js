@@ -57,8 +57,10 @@ export default function MainProducts() {
 
     <nav className='pageProduct'>
       <MainProductsNav />
-      <div className="all-products-container">
-        {productData.map((product) => (
+
+      {productData.length>0?<div className="all-products-container">
+        {
+        productData.map((product) => (
 
           <Product key={product._id} product={product} addToCart={addToCart} handleAddedToCart={handleAddedToCart} addedToCart={addedToCart} />
 
@@ -67,9 +69,13 @@ export default function MainProducts() {
 
 
 
-        ))}
+        )) 
+        }
 
-      </div>
+      </div> : <h1 style={{fontSize:'20px',textAlign:'center',color:'rgb(29, 39, 53)'}}>LOADING...⏳</h1>}
+      
+
+
 
       <Footer />
     </nav>

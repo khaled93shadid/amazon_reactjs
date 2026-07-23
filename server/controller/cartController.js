@@ -111,7 +111,7 @@ exports.cartMoney = async (req, res) => {
     const totalCents = (Math.round(total))
     const estimatedTax = ((Math.round(total)) / 10)
     const delivery = 0
-    const totalMoney = totalCents + estimatedTax
+    const totalMoney = totalCents + estimatedTax 
     const money = { totalCents, estimatedTax, totalMoney, delivery }
     res.status(200).json({ money: money, message: ' totalCents, estimatedTax, totalMoney, delivery in object money' })
   }
