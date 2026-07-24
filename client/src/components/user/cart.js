@@ -115,7 +115,7 @@ export default function Cart() {
                   {/*--navbar finish */}
 
               
-              {cart.length>0?<div className='bodycart'>
+              {cart.length>=0?<div className='bodycart'>
                         <p className="Review_your_order_p">Review your order</p>
 
 

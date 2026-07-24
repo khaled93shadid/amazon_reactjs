@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 .info_container{padding-left: 300px;padding-right: 200px;
-padding-top: 50px;
+padding-top: 50px;overflow-x: hidden;
 
 
 }
@@ -40,4 +40,26 @@ padding-right: 15px;
 height:30px ;
 margin-bottom: 5px;
 border-radius:5px;
+}
+
+@media screen and (width<900px) {
+.info_input{width: 150px;height:30px ;margin-bottom: 5px;border-radius:5px;}
+.item_info_border{border: solid rgb(213, 217, 217)1px;border-radius:8px;width:300px;padding-left: 15px;padding-right: 15px;} 
+.item_info_B{color:rgb(15, 17, 17);font-family: Roboto;font-size: 13px;width:50px;height: 30px;border-radius:15px ;
+  border: solid gray 1px;
+  background-color: white;
+  cursor: pointer;
+  margin-top:10px ;
+  margin-left: 0px;
+}
+.item_info{display: grid;grid-template-columns:220px 50px ; 
+  border-bottom:solid rgb(213, 217, 217)1px ;
+  border-bottom:solid rgb(213, 217, 217)1px ;
+  margin-top: 10px;
+}  
+
+.info_container{padding-left: 100px;
+padding-top: 50px;overflow-x: hidden;}
+
+
 }

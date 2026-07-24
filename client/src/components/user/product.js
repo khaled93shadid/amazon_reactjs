@@ -20,7 +20,7 @@ return(
   </div>
   
   <div className="vertical-last-div">
-    <p className="product-price">{product.price}</p>
+    <p className="product-price">{(product.price/100).toFixed(2)}$</p>
    <select  value={quantity} onChange={(event)=>{
         const quantitySelected= Number(event.target.value)
         setquantity(quantitySelected)
